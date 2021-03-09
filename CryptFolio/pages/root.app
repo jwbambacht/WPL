@@ -11,7 +11,7 @@ page root(){
 		}
 		div[class="btn btn-sm btn-success" , onclick := action {
 			apiGET();
-			// replace(ph);
+			replace(ph);
 		}] {
 			"Refresh"
 		}
@@ -22,16 +22,23 @@ page root(){
 			}
 		}
 		
-		row[class="mt-4 mb-2"] {
-			if(loggedIn()) {
-				if(getPortfolios().length == 0) {
+		
+		if(loggedIn()) {
+			if(getPortfolios().length == 0) {
+				row[class="mt-4 mb-2"] {
 					portfolio_block_new()
-				}else{
-					for(p : Portfolio in getPortfolios()) {
-						portfolio_block(p)
-					}
 				}
 			}else{
+				placeholder ph {
+					row[class="mt-4 mb-2"] {
+						for(p : Portfolio in getPortfolios()) {
+							portfolio_block(p)
+						}
+					}
+				}
+			}
+		}else{
+			row[class="mt-4 mb-2"] {
 				col("col-12 col-md-4 d-flex align-items-stretch mb-2") {
 					card[class="p-0 border-0 w-100"] {
 						card_body[class="rounded-3 p-3 fs-2 text-center"] {
@@ -72,8 +79,6 @@ page root(){
 						}
 					}
 				}
-					
-				
 			}
 		}
 	}
