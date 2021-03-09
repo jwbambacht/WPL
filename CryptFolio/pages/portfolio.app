@@ -17,6 +17,10 @@ page portfolio(page: String, p: Portfolio) {
 			return portfolios();	
 		}
 		
+		if(p.user != currentUser()) {
+			return portfolios();
+		}
+		
 		// if(p.user != securityContext.principal) {
 		// 	"This portfolio is not owned by me"	
 		// }
@@ -47,11 +51,16 @@ template viewPortfolio(portfolio: Portfolio) {
 		} 
 	}
 
-	pageTitle() {
-		"~portfolio.name"
+	pageTitle {
+		span[class="fw-bold fs-1 me-2"] {
+			"Portfolio: "
+		}
+		span[class="fs-3"] {
+			"~portfolio.name"	
+		}
 	}
 	
-	pageSubTitle() {
+	pageSubTitle {
 		if(portfolio.assets.length == 0) {
 			"Please edit your portfolio and add some assets to start tracking your value!" 
 		}else{
@@ -202,7 +211,7 @@ template viewPortfolio(portfolio: Portfolio) {
 										}
 									}
 								}
-								navigate(url("../viewAsset/"+asset.id))[class="w-auto"] {
+								navigate(asset(asset))[class="w-auto"] {
 									div[class="portfolio-asset-view h-100 d-flex align-items-center text-white fs-2 rounded-0 rounded-end"] {
 										icon("bi-chevron-right")
 									}
@@ -213,9 +222,9 @@ template viewPortfolio(portfolio: Portfolio) {
 				}
 				
 				col("col-12")[class="mb-2"] {
-					card[class="border-0 bg-dark"] {
+					card("bg-dark")[class="border-0"] {
 						row {
-							col("col")[class="w-100 text-center p-2"] {
+							col("col")[class="w-100 text-center p-0"] {
 								navigate(portfolio("edit",portfolio))[class="fs-7 text-muted"] {
 									"Edit Portfolio"
 								}
@@ -241,9 +250,8 @@ template overviewPortfolio() {
 	}
 	
 	row[class="mt-4"] {
-		if((from Portfolio).length > 0) {
-			col("col-12 col-lg-3 mb-3")[class="mb-3"] {
-				
+		if(getPortfolios().length > 0) {
+			col("col-12 col-lg-3 mb-3") {
 				card[class="border-0"] {
 					card_body[class="p-3 rounded-3"] {
 						badge[class="bg-darker w-100 py-2 mb-3 lh-1-25"] {
