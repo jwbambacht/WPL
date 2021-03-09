@@ -1,12 +1,6 @@
 body {
 	background-color: #343a40;
 }
-nav {
-	border-bottom: 2px solid #6c757d;
-}
-.card {
-	border: 1px solid rgba(255,255,255,.125);
-}
 
 /* Colors */ 
 .bg-dark {
@@ -49,13 +43,7 @@ nav {
 	border-color: #454d55 !important;	
 }
 
-
-.brand-image {
-	background-image: url("/images/cryptofolio.svg");
-}
-.mt--5 {
-	margin-top: -5px;
-}
+/* Font sizes */
 .fs-7 { /* 12px */
 	font-size: 0.75rem !important;	
 }
@@ -75,22 +63,20 @@ nav {
 	font-size: 100pt !important;
 }
 
-.portfolio-asset-view:hover {
-	background-color: #505d6b !important;
-	cursor: hand;
-}
-.flex-0 {
-	-ms-flex: 0 0 0px;
-	flex: 0 0 0px;
-}
+/* Line heights */
 .lh-1-25 {
 	line-height: 1.25;
 }
 .lh-1-5 {
 	line-height: 1.5;
 }
+
+/* Height and Width */
 .h-200px {
 	height: 200px;
+}
+.h-400px {
+	height: 400px;
 }
 .w-48px {
 	width: 48px;
@@ -107,8 +93,10 @@ nav {
 .w-125px {
 	width: 125px;
 }
-.change-chart-interval {
-	cursor: pointer;
+
+/* Navbar */
+nav {
+	border-bottom: 2px solid #6c757d;
 }
 .nav-link {
 	text-transform: uppercase;
@@ -116,19 +104,52 @@ nav {
 	font-weight: bold;
 }
 .nav-link.active {
-		border-bottom: 2px solid #FFF;
-	}
+	border-bottom: 2px solid #FFF;
+}
 @media (max-width: 767px) {
 	.nav-link.active {
 		border-bottom: 0px;
 	}
 }
+.brand-image {
+	background-image: url("/images/cryptofolio.svg");
+}
+
+/* Highchart */
 .chart-spinner-container {
 	position: absolute; 
 	z-index: 100;
-	height: 200px; 
-	margin-top: 100px; 
 	margin-left: calc(50% - 32px);
+}
+#portfolio-chart * .chart-spinner-container {
+	margin-top: 100px; 
+	height: 200px;
+}
+#asset-chart * .chart-spinner-container {
+	margin-top: 200px;
+	height: 400px; 
+}
+.change-chart-interval {
+	cursor: pointer;
+}
+.highcharts-button {
+    display: none;
+}
+
+/* Custom */
+.card {
+	border: 1px solid rgba(255,255,255,.125);
+}
+.mt--5 {
+	margin-top: -5px;
+}
+.portfolio-asset-view:hover {
+	background-color: #505d6b !important;
+	cursor: hand;
+}
+.flex-0 {
+	-ms-flex: 0 0 0px;
+	flex: 0 0 0px;
 }
 .col-icon {
 	-ms-flex: 0 0 60px;
@@ -141,6 +162,3 @@ nav {
 .select-asset-new {
 	width: calc(100% - 100px - 48px - 22px);
 }
-/* .asset-price:before, .asset-high:before, .asset-low:before, .asset-value:before, .portfolio-value:before, .portfolios-value:before, .portfolio-change-value:before {
-	content: "$";
-} */

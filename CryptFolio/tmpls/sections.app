@@ -15,7 +15,8 @@ template metadata {
 	includeCSS("bootstrap.min.css")
 	includeCSS("bootstrap-icons.css")
 	includeCSS("custom.css")
-	includeJS("highcharts.js")
+	// includeJS("highcharts.js")
+	includeJS("highstock.js")
 	includeJS("highcharts-data.js")
 }
 
@@ -55,6 +56,7 @@ template footerScrips {
 	<script src="~navigate(root())javascript/bootstrap.bundle.min.js"></script>
 	<script src="https://www.jbambacht.nl/WPL/fetchData.js"></script>
 	<script src="~navigate(root())javascript/highcharts.theme.js"></script>
+	
 }
 
 // template footerScrips {

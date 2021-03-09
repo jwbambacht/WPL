@@ -144,6 +144,19 @@ template badge {
 	}
 }
 
+template badge_interval(selected: Bool, interval: String, datapage: String) {
+	
+	if(selected == true) {
+		badge[class="col btn btn-sm btn-dark me-1 mb-1 change-chart-interval px-1 text-white selected-interval", data-interval=interval, data-page=datapage, all attributes] {
+			"~interval"
+		}
+	}else{
+		badge[class="col btn btn-sm btn-dark me-1 mb-1 change-chart-interval px-1 text-muted", data-interval=interval, data-page=datapage, all attributes] {
+			"~interval"
+		}
+	}
+}
+
 template icon(name: String) {
 	<i class="bi "+name all attributes></i>
 }
@@ -245,6 +258,14 @@ template form_col_input(col_width: String) {
 template form_row_validation {
 	form_row {
 		form_col_input("col-12 col-md-8 offset-md-4") {
+			elements
+		}
+	}
+}
+
+template form_row_validation(col_width: String) {
+	form_row {
+		form_col_input("col-12") {
 			elements
 		}
 	}
@@ -386,7 +407,7 @@ template listitem_asset_new(p: Portfolio) {
 
 template portfolio_block_new() {
 	col("col-12 col-md-6") {
-		navigate(url("~navigate(root())portfolio/create"))[class="text-white"] {
+		navigate(portfolios())[class="text-white"] {
 			card[class="border-lighter p-0"] {
 				card_body[class="p-0 align-middle pt-5 pb-5 text-center"] {
 					div[class="fs-1 text-white"] {
@@ -433,7 +454,7 @@ template portfolio_block(p: Portfolio) {
 										badge[class="asset-balance bg-info me-1"] {
 											"~nDecimals(asset.balance,2, true) ~asset.token.symbol"
 										}
-										navigate(url("./viewAsset/"+asset.id))[class="badge bg-light text-dark"] {
+										navigate(asset(asset))[class="badge bg-light text-dark"] {
 											icon("bi-eye")
 										}
 									}

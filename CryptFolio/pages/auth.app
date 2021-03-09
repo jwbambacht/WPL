@@ -54,8 +54,10 @@ override page login {
 							form_row {
 								form_col_label("")
 								form_col_input {
-									input(stayLoggedIn)
-									" Stay logged in"
+									div[class="form-check form-check-inline"] {
+										input(stayLoggedIn)[class="form-check-input", id="stayLoggedInCheckbox"]
+										label("Stay logged in")[class="form-check-label", for="stayLoggedInCheckbox"]	
+									}
 								}
 							}
 							

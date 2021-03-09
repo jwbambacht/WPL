@@ -2,18 +2,16 @@ module pages/root
 
 page root(){ 
 	
+	init {
+		fetchData();
+	}
+	
 	main()
 	
 	define body() {
 		
 		pageTitle {
 			"Welcome to Cryptfolio, the portfolio tracker for cryptocurrencies!"
-		}
-		div[class="btn btn-sm btn-success" , onclick := action {
-			apiGET();
-			replace(ph);
-		}] {
-			"Refresh"
 		}
 		
 		if(loggedIn()) {
@@ -24,16 +22,14 @@ page root(){
 		
 		
 		if(loggedIn()) {
-			if(getPortfolios().length == 0) {
+			if(myPortfolios().length == 0) {
 				row[class="mt-4 mb-2"] {
 					portfolio_block_new()
 				}
 			}else{
-				placeholder ph {
-					row[class="mt-4 mb-2"] {
-						for(p : Portfolio in getPortfolios()) {
-							portfolio_block(p)
-						}
+				row[class="mt-4 mb-2"] {
+					for(p : Portfolio in myPortfolios()) {
+						portfolio_block(p)
 					}
 				}
 			}

@@ -2,6 +2,10 @@ module pages/portfolio
 
 page portfolios() {
 	
+	init {
+		fetchData();
+	}
+	
 	main()
 	
 	define body() {
@@ -20,6 +24,8 @@ page portfolio(page: String, p: Portfolio) {
 		if(p.user != currentUser()) {
 			return portfolios();
 		}
+		
+		fetchData();
 		
 		// if(p.user != securityContext.principal) {
 		// 	"This portfolio is not owned by me"	
@@ -50,6 +56,9 @@ template viewPortfolio(portfolio: Portfolio) {
 			return portfolio("edit",portfolio);
 		} 
 	}
+	
+	var intervals := ["1d","3d","7d"]
+	var interval_selected := 0
 
 	pageTitle {
 		span[class="fw-bold fs-1 me-2"] {
@@ -104,14 +113,8 @@ template viewPortfolio(portfolio: Portfolio) {
 							}
 							col("col-12") {
 								row[class="mx-1 text-center"] {
-									badge[class="col btn btn-dark badge me-1 change-chart-interval selected-interval text-white", data-interval="1"] { 
-										"1D"
-									}
-									badge[class="col btn btn-dark badge me-1 change-chart-interval text-muted", data-interval="3"] { 
-										"3D"
-									}
-									badge[class="col btn btn-dark badge change-chart-interval text-muted", data-interval="7"] { 
-										"7D"
+									for(index: Int from 0 to intervals.length) {
+										badge_interval(index==interval_selected, intervals.get(index), "portfolio")
 									}
 								}
 							}
@@ -250,7 +253,7 @@ template overviewPortfolio() {
 	}
 	
 	row[class="mt-4"] {
-		if(getPortfolios().length > 0) {
+		if(myPortfolios().length > 0) {
 			col("col-12 col-lg-3 mb-3") {
 				card[class="border-0"] {
 					card_body[class="p-3 rounded-3"] {
@@ -285,7 +288,7 @@ template overviewPortfolio() {
 			}
 			
 			col("col-12 col-md-6 col-lg-5") {
-				for(p : Portfolio) {
+				for(p : Portfolio in myPortfolios()) {
 					col("col-12")[class="mb-3"] {
 						card[class="border-0"] {
 							row[class="portfolio"] {
