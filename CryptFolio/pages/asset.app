@@ -1,129 +1,128 @@
 module pages/asset
 
-// template createNewAsset {
-// 	var asset := Asset{}
-// 	form {
-// 		block {
-// 			label("Currency")
-// 			input(t.name)[class="form-control"]
-// 		}
-// 		input(t.symbol)
-// 		submit action {
-// 			t.save();
-// 		}{ "Create new Token" }
-// 	}
-// }
-
-// page viewAsset(asset: Asset) {
-// 	main()
-// 	define body() {
-// 		output(asset.id)
-// 	}
-// }
-// 
-// override page createAsset(p : Portfolio) {
-// 	
-// 	main()
-// 	
-// 	define body() {
-// 	
-// 		pageTitle {
-// 			"Create a new asset for ~p.name"
-// 		}
-// 	
-// 		pageSubTitle {
-// 			"Select a token that is not yet added to your portfolio and fill in its balance."
-// 		}
-// 		
-// 		var asset := Asset{}
-// 		
-// 		form[class="mt-4"] {
-// 			row[class="align-items-center mb-2"] {
-// 				col("col-12 col-lg-2") {
-// 					label("Currency")[class="col-form-label text-white fst-italic fw-bold"]
-// 				}
-// 				col("col-12 col-lg-4") {
-// 					input(asset.token)[class="form-select btn-dark"]	
-// 				}
-// 			}
-// 			row[class="mb-2"] {
-// 				col("col-12 col-lg-2") {
-// 					label("Balance")[class="col-form-label text-white fst-italic fw-bold"]
-// 				}
-// 				col("col-12 col-lg-4") {
-// 					input(asset.balance)[class="form-control btn-dark"] {
-// 						validate((asset.balance) >= 0.0, "Balance should be bigger or equal to 0")
-// 					}
-// 				}
-// 			}
-// 			row[class="mt-2"] {
-// 				col("col-12 col-lg-2 text") {
-// 					
-// 				}
-// 				col("col-12 col-lg-4") {
-// 					submit action {
-// 						asset.save();
-// 					}[class="btn btn-sm btn-success w-100"] { "Create" }
-// 				}
-// 			}
-// 		}
-// 		
-// 	}
-// }
-// 
-// override page editAsset(asset: Asset) {
-// 	main()
-// 	
-// 	define body() {
-// 		
-// 		pageTitle {
-// 			"Change Balance" 
-// 		}
-// 		
-// 		pageSubTitle {
-// 			"Edit your balance or remove the asset from the portfolio."
-// 		}
-// 		
-// 		form[class="mt-4"] {
-// 			row[class="align-items-center"] {
-// 				col("col-12 col-lg-2") {
-// 					label("Currency")[class="col-form-label text-white fst-italic fw-bold"]
-// 				}
-// 				col("col-12 col-lg-4") {
-// 					span[class="text-muted"] {
-// 						"~asset.token.name (~asset.token.symbol)"
-// 					}	
-// 				}
-// 			}
-// 			row {
-// 				col("col-12 col-lg-2") {
-// 					label("Balance")[class="col-form-label text-white fst-italic fw-bold"]
-// 				}
-// 				col("col-12 col-lg-4") {
-// 					input(asset.balance)[class="form-control btn-dark"] {
-// 						validate((asset.balance) >= 0.0, "Balance should be bigger or equal to 0")
-// 					}
-// 				}
-// 			}
-// 			row[class="align-items-center"] {
-// 				col("col-12 col-lg-2 text") {
-// 					
-// 				}
-// 				col("col-12 col-lg-4") {
-// 					row[class="align-items-center mt-4"] {
-// 						col("col-6") {
-// 							submit action {
-// 								asset.delete();
-// 							}[class="btn btn-sm btn-danger w-100"] { "Remove" }
-// 						}
-// 						col("col-6 text-end") {
-// 							submit action {
-// 								asset.save();
-// 							}[class="btn btn-sm btn-success w-100"] { "Save" }
-// 						}
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}	
-// }
+page asset(asset: Asset) {
+	
+	init {
+		if(asset == null) {
+			return portfolios();	
+		}
+		
+		if(asset.portfolio.user != currentUser()) {
+			return portfolios();
+		}
+	}
+	
+	main()
+	
+	define body() {
+		
+		pageTitle[class="d-flex align-items-center justify-content-between"] {
+			div[class="me-auto"] {
+				span[class="fw-bold fs-1 me-2"] {
+					"Asset: "
+				}
+				span[class="fs-3"] {
+					"~asset.name"	
+				}
+			}
+			badge[class="bg-secondary"] {
+				"Portfolio: ~asset.portfolio.name"
+			}
+		}
+		
+		pageSubTitle {
+			"Your asset has the following characteristics"
+		}
+		
+		row {
+			col("col-12 col-md-3 mb-3") {
+				card[class="border-0"] {
+					card_body[class="p-3 rounded-3"] {
+						badge[class="bg-darker w-100 py-2 mb-3 lh-1-25"] {
+							span[class="fs-4 text-secondary"] {
+								"Total Asset Value"
+							}
+							div[class="asset-value fs-2 text-white"] {
+								"$~nDecimals(asset.value,2, true)"
+							}
+						}
+						
+						badge[class="d-flex align-items-center fs-7 text-white fw-bold"] {
+							span[class="me-auto"] {
+								"Balance:"
+							}
+							span {
+								"~nDecimals(asset.balance,2,true)"
+								" ~asset.token.symbol"
+							}
+						}
+						
+						badge[class="d-flex align-items-center fs-7 text-white fw-bold"] {
+							span[class="me-auto"] {
+								"Current Price:"
+							}
+							span[class=""] {
+								"$~nDecimals(asset.token.data.price,2,true)"
+							}
+							
+						}
+						
+						badge[class="d-flex align-items-center fs-7 text-white fw-bold"] {
+							span[class="me-auto"] {
+								"Price 24h:"
+							}
+							span {
+								"$~nDecimals(asset.token.data.prevDay,2,true)"
+							}
+						}
+						
+						badge[class="d-flex align-items-center fs-7 text-white fw-bold"] {
+							span[class="me-auto"] {
+								"Change:"
+							}
+							badge[class="~bgColor(asset.value-asset.value24h) me-2"] {
+								icon("~arrowIcon(asset.value-asset.value24h)")
+								"$~nDecimals(asset.value-asset.value24h,2,true)"
+							}
+							badge[class="~bgColor(asset.token.data.change)"] {
+								icon("~arrowIcon(asset.token.data.change)")
+								"~nDecimals(asset.token.data.change,2,true)%"
+							}
+						}
+						
+						br
+						
+						badge[class="d-flex align-items-center fs-7 text-white fw-bold"] {
+							span[class="me-auto"] {
+								"High price:"
+							}
+							span[class="text-success"] {
+								"$~nDecimals(asset.token.data.high,2,true)"
+								icon("bi-arrow-up-short")[class="text-white"]
+							}
+						}
+						
+						badge[class="d-flex align-items-center fs-7 text-white fw-bold"] {
+							span[class="me-auto"] {
+								"Low price:"
+							}
+							span[class="text-danger"] {
+								"$~nDecimals(asset.token.data.low,2,true)"
+								icon("bi-arrow-down-short")[class="text-white"]
+							}
+						}
+					}
+				}
+			}
+			
+			col("col-12 col-md-6") {
+				
+			}
+			
+			col("col-12 col-md-3") {
+				
+			}
+		}
+		
+	}
+}

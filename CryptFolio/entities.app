@@ -82,6 +82,8 @@ entity Portfolio {
 	assets 		: {Asset} (inverse = portfolio)
 	cost		: Float (default = 0.0)
 	user 		: User
+	// sortValue	: Bool (default = true)
+	
 	value		: Float (default = 0.0) := sum([x.value | x in assets])
 	value24h	: Float (default = 0.0) := sum([x.value24h | x in assets])
 	changePercentage : Float (default = 0.0) := if(value24h != 0.0) (value-value24h)/value24h*100.0 else 0.0
@@ -124,4 +126,5 @@ rule page register { true }
 rule page account { loggedIn() }
 rule page portfolios { loggedIn() }
 rule page portfolio(*) { loggedIn() }
+rule page asset(*) { loggedIn() }
 rule page tokens { isAdmin() }
