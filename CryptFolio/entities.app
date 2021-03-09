@@ -64,6 +64,7 @@ entity TokenData {
 	change		: Float (default = 0.0)
 	high		: Float (default = 0.0)
 	low			: Float (default = 0.0)
+	volume		: Float (default = 0.0)
 }
 
 entity Asset {
@@ -91,8 +92,20 @@ entity Portfolio {
 	profit		: Float (default = 0.0) := value-cost
 }
 
-function getPortfolios() : [Portfolio] {
+function myPortfolios() : [Portfolio] {
 	return (from Portfolio as p where p.user = ~currentUser());
+}
+
+function myAssets(): [Asset] {
+	return (from Asset as a where a.portfolio.user = ~currentUser());
+}
+
+function getToken(symbol: String): Token {
+	return (from Token as token where token.symbol = ~symbol)[0];
+}
+
+function isToken(symbol: String): Bool {
+	return (from Token as token where token.symbol = ~symbol).length == 1;
 }
 
 function changePercentage(old: Float, new: Float): Float {
