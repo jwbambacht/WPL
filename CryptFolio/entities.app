@@ -33,12 +33,16 @@ derive CRUD User
 extend entity User {
 	function resetPassword(password: Secret) {
 		
-		var randomString := email+now().format("yyyyMMddHmmss");
-		
 		this.activated := false;
 		this.password := password.digest();
-		this.authToken := (randomString as Secret).digest();
+		this.generateAuthToken();
 		this.save();
+	}
+	
+	function generateAuthToken() {
+		var randomString := email+now().format("yyyyMMddHmmss");
+		
+		this.authToken := (randomString as Secret).digest().split("/").concat().split("+").concat().split("-").concat();
 	}
 	
 	function activateAccount(token: String): Bool {

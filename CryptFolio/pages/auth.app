@@ -12,6 +12,8 @@ override page login {
 	var password : Secret
 	var stayLoggedIn := false
 	
+	var loginError : String
+	
 	main()
 	
 	define body() {
@@ -58,9 +60,15 @@ override page login {
 										input(stayLoggedIn)[class="form-check-input", id="stayLoggedInCheckbox"]
 										label("Remember me")[class="form-check-label", for="stayLoggedInCheckbox"]	
 									}
-									navigate(forgotPassword()) {
+									navigate(forgotPassword())[class="fs-7 text-muted"] {
 										"Forgot password?"
 									}
+								}
+							}
+							
+							form_row_validation {
+								placeholder ph_login_error {
+									errorTemplateAction([loginError])
 								}
 							}
 							
@@ -70,13 +78,21 @@ override page login {
 									navigate(register())[class="btn btn-sm btn-dark float-start"] {
 										"Go to Register"
 									}
-									submit action {										
-										getSessionManager().stayLoggedIn := stayLoggedIn;
+									div[class="btn btn-sm btn-success float-end", onclick := action {	
+										if(findUser(username).activated) {
+											if(authenticate(username, password)) {									
+												getSessionManager().stayLoggedIn := stayLoggedIn;
 										
-										validate(authenticate(username, password),"The login credentials are not valid.");
-										
-										return root();
-									}[class="btn btn-sm btn-success float-end"] {
+												return root();
+											}else{
+												loginError := "The login credentials are not valid";
+												replace(ph_login_error);
+											}
+										}else{
+											loginError := "Please activate your account";
+											replace(ph_login_error);	
+										}
+									}] {
 										"Login"
 									}
 								}
@@ -115,7 +131,7 @@ page forgotPassword {
 							"Forgot Password"
 						}
 						div[class="fs-6 text-muted"] {
-							"Please fill in your email to reset your password."
+							"Please fill in your email and choose a new password."
 						}
 					}
 					card_body[class="rounded-3 pb-2"] {
@@ -165,10 +181,9 @@ page forgotPassword {
 											resetRequestError := "Please supply a valid emailadress";
 											resetRequestSuccess := "";
 										}else{
-											resetRequestError := "";
-											resetRequestSuccess := "Password reset succesfully requested.";
-											
 											users[0].resetPassword(password);
+											resetRequestError := "";
+											resetRequestSuccess := "A confirmation mail has been sent to activate your account";
 										}
 										
 										replace(ph_reset_feedback);
@@ -195,7 +210,7 @@ page activateAccount(token: String) {
 	
 	var authToken : String
 	// var confirmAccountSuccess : String
-	var confirmAccountError : String
+	var activateAccountError : String
 	
 	main()
 	
@@ -206,17 +221,25 @@ page activateAccount(token: String) {
 				card[class="border-0"] {
 					card_header[class="fs-3"] {
 						div[class="fw-bold"] {
-							"Confirm Account"
+							"activate Account"
 						}
 						div[class="fs-6 text-muted"] {
-							"Please fill in your email to reset your password."
+							"Please fill in your authentication token to activate your account."
 						}
 					}
 					card_body[class="rounded-3 pb-2"] {
 						if(token != "" && User{}.activateAccount(token)) {
 							row {
-								col("col-12") {
-									"Your account has been activated successfully"
+								col("col-12 text-center") {
+									h1 {
+										"Success!"
+									}
+									"Your CryptFolio account has been activated successfully."
+									br
+									br
+									navigate(login())[class="btn btn-success mb-3"] {
+										"Go to Login page"
+									}
 								}
 							}
 						}else{
@@ -231,7 +254,7 @@ page activateAccount(token: String) {
 								form_row_validation {
 									placeholder ph_reset_feedback {
 										validate((authToken) != "", "Please fill in a valid authToken")
-										errorTemplateAction([confirmAccountError])[class="mb-2"]
+										errorTemplateAction([activateAccountError])[class="mb-2"]
 										// templateSuccess([confirmAccountSuccess])[class="mb-2"]
 									}
 								}
@@ -242,29 +265,26 @@ page activateAccount(token: String) {
 										navigate(login())[class="btn btn-sm btn-dark float-start"] {
 											"Back to Login page"
 										}
-										submitlink action {
-											if((from User as user where user.authToken = ~authToken).length == 0) {
-												confirmAccountError := "The authToken is invalid.";
-												replace(ph_reset_feedback);
-											}else{
-												return activateAccount(authToken);	
-											}
-										}[class="btn btn-sm btn-success float-end"] {
-											"Activate Account"
-										}
-										// div[class="btn btn-sm btn-success float-end", onclick := action {	
-										// 	if(User{}.activateAccount(authToken)) {
-										// 		confirmAccountError := "";
-										// 		confirmAccountSuccess := "Your account has been activated succesfully.";
-										// 	}else{
+										// submitlink action {
+										// 	if((from User as user where user.authToken = ~authToken).length == 0) {
 										// 		confirmAccountError := "The authToken is invalid.";
-										// 		confirmAccountSuccess := "";
+										// 		replace(ph_reset_feedback);
+										// 	}else{
+										// 		return activateAccount(authToken);	
 										// 	}
-										// 	
-										// 	replace(ph_reset_feedback);
-										// }] {
+										// }[class="btn btn-sm btn-success float-end"] {
 										// 	"Activate Account"
 										// }
+										div[class="btn btn-sm btn-success float-end", onclick := action {	
+											if((from User as user where user.authToken = ~authToken).length == 0) {
+												activateAccountError := "The authToken is invalid.";
+												replace(ph_reset_feedback);
+											}else{
+												return activateAccount(authToken);
+											}
+										}] {
+											"Activate Account"
+										}
 									}
 								}
 							}
@@ -336,6 +356,7 @@ page register {
 							form_row_validation {
 								// Validate password requirements: length, special characters, .etc
 								validate((user.email) != "", "Please fill in your email")
+								validate((findUserByEmail(user.email).length) == 0, "Emailadress already in use")
 							}
 							
 							form_row {
@@ -347,6 +368,7 @@ page register {
 									submit action {										
 										// validate if username or email is not yet in used
 										user.password := user.password.digest();
+										user.generateAuthToken();
 										user.save();
 		
 		    							return login();
