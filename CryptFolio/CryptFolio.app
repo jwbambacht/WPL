@@ -10,6 +10,58 @@ imports helper
 imports templates
 imports entities
 
+section application initialisation
+
+init {
+	User{}.initAdmin();								// username: admin, password: secretpassword, email is a dummy
+	User{username := "wpl", password := ("Wpl2021pw" as Secret).digest(), email := "dummy@dummy.com", activated := true}.save();
+	
+	Token{}.initToken("Aave", "AAVE");
+	Token{}.initToken("Algorand", "ALGO");
+	Token{}.initToken("Avalanche", "AVAX");
+	Token{}.initToken("Binance Coin", "BNB");
+	Token{}.initToken("Bitcoin", "BTC");
+	Token{}.initToken("Bitcoin Cash", "BCH");
+	Token{}.initToken("Cardano", "ADA");
+	Token{}.initToken("Chainlink", "LINK");
+	Token{}.initToken("Compound", "COMP");
+	Token{}.initToken("Cosmos", "ATOM");
+	Token{}.initToken("Dai", "DAI");
+	Token{}.initToken("Dash", "DASH");
+	Token{}.initToken("Decred", "DCR");
+	Token{}.initToken("Dogecoin", "DOGE");
+	Token{}.initToken("Elrond", "EGLD");
+	Token{}.initToken("EOS", "EOS");
+	Token{}.initToken("Ethereum", "ETH");
+	Token{}.initToken("Filecoin", "FIL");
+	Token{}.initToken("FTX Token", "FTT");
+	Token{}.initToken("Holo", "HOT");
+	Token{}.initToken("Icon", "ICX");
+	Token{}.initToken("Kusama", "KSM");
+	Token{}.initToken("Litecoin", "LTC");
+	Token{}.initToken("Maker", "MKR");
+	Token{}.initToken("Monero", "XMR");
+	Token{}.initToken("NEM", "XEM");
+	Token{}.initToken("Neo", "NEO");
+	Token{}.initToken("PancakeSwap", "CAKE");
+	Token{}.initToken("Polkadot", "DOT");
+	Token{}.initToken("Ripple", "XRP");
+	Token{}.initToken("Solana", "SOL");
+	Token{}.initToken("Stellar", "XLM");
+	Token{}.initToken("SushiSwap", "SUSHI");
+	Token{}.initToken("Synthetix", "SNX");
+	Token{}.initToken("Terra", "LUNA");
+	Token{}.initToken("Tezos", "XTZ");
+	Token{}.initToken("The Graph", "GRT");
+	Token{}.initToken("THETA", "THETA");
+	Token{}.initToken("Tron", "TRX");
+	Token{}.initToken("Uniswap", "UNI");
+	Token{}.initToken("USD Coin", "USDC");
+	Token{}.initToken("VeChain", "VET");
+	Token{}.initToken("yearn.finance", "YFI");
+	Token{}.initToken("Zcash", "ZEC");
+}
+
 section pages
 
 imports pages/root				// public

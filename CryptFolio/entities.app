@@ -33,7 +33,7 @@ derive CRUD User
 extend entity User {
 	function initAdmin() {
 		this.username := "admin";
-		this.password := ("secretpassword" as Secret).digest();
+		this.password := ("Administrator123" as Secret).digest();
 		this.email := "admin@cryptofolio.com";
 		this.admin := true;
 		this.activated := true;
