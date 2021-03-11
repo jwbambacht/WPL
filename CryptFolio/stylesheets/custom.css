@@ -114,6 +114,9 @@ nav {
 .brand-image {
 	background-image: url("/images/cryptofolio.svg");
 }
+.navbar-toggler:hover {
+	cursor: pointer;
+}
 
 /* Highchart */
 .chart-spinner-container {

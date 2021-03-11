@@ -42,7 +42,7 @@ template navbar() {
     			image("/images/cryptfolio_long.svg")[width="auto", height="27px"]
     		}
     		
-    		button[type="button", class="navbar-toggler collapsed", data-bs-toggle="collapse", data-bs-target="#navbarCollapse", data-target="#navbarCollapse", aria-controls="navbarCollapse", aria-expanded="false", aria-label="Toggle navigation"]  {
+    		div[class="navbar-toggler collapsed", data-bs-toggle="collapse", data-bs-target="#navbarCollapse", data-target="#navbarCollapse", aria-controls="navbarCollapse", aria-expanded="false", aria-label="Toggle navigation"]  {
    				span[class="navbar-toggler-icon"]
    			}
     		
@@ -132,12 +132,6 @@ define pageSubTitle {
 
 // UI Elements
 
-template button {
-	<button class="btn" all attributes>
-		elements
-	</button>
-}
-
 template badge {
 	span[class="badge", all attributes] {
 		elements
@@ -145,7 +139,6 @@ template badge {
 }
 
 template badge_interval(selected: Bool, interval: String, datapage: String) {
-	
 	if(selected == true) {
 		badge[class="col btn btn-sm btn-dark me-1 mb-1 change-chart-interval px-1 text-white selected-interval", data-interval=interval, data-page=datapage, all attributes] {
 			"~interval"
@@ -241,8 +234,8 @@ template form_col_label(text: String, col_width: String) {
 	col("~col_width") {
 		form_label(text)[all attributes]
 	}
-}
 
+}
 template form_col_input {
 	form_col_input("col-12 col-md-8")[all attributes] {
 		elements
@@ -352,10 +345,7 @@ template listitem_asset(asset: Asset) {
 				}
 			
 				span[class="input-group w-100px"] {
-					input(asset.balance)[class="form-control form-control-sm bg-darker border-0 text-white fs-8", data-symbol=asset.token.symbol, onchange := action {
-						asset.save();
-						replace(ph);
-					}]
+					input(asset.balance)[class="form-control form-control-sm bg-darker border-0 text-white fs-8", data-symbol=asset.token.symbol]
 					div[class="input-group-text bg-darker border-0 text-white fs-10 px-2"] {
 						"~asset.token.symbol"
 					}
@@ -486,11 +476,10 @@ template portfolio_content(p: Portfolio) {
 			form {
 				card[class="border-lighter"] {
 					card_body {
-						row[class="align-items-center mb-2"] {
-							col("col-12 col-md-3") {
-								label("Name")[class="col-form-label text-white fst-italic fw-bold"]
-							}
-							col("col-12 col-md-9") {
+						
+						form_row {
+							form_col_label("Name")
+							form_col_input {
 								placeholder ph_name {
 									input(p.name)[class="form-control btn-dark w-100", onchange := action {
 										p.save();
@@ -498,15 +487,29 @@ template portfolio_content(p: Portfolio) {
 									}] {
 										validate((p.name) != "", "Please fill in a portfolio name")
 									}
-								}	
+								}
 							}
 						}
 						
-						row[class="align-items-center mb-2"] {
-							col("col-12 col-md-3") {
-								label("Cost")[class="col-form-label text-white fst-italic fw-bold"]
-							}
-							col("col-12 col-md-9") {
+						// row[class="align-items-center mb-2"] {
+						// 	col("col-12 col-md-3") {
+						// 		label("Name")[class="col-form-label text-white fst-italic fw-bold"]
+						// 	}
+						// 	col("col-12 col-md-9") {
+						// 		placeholder ph_name {
+						// 			input(p.name)[class="form-control btn-dark w-100", onchange := action {
+						// 				p.save();
+						// 				replace(ph_name);
+						// 			}] {
+						// 				validate((p.name) != "", "Please fill in a portfolio name")
+						// 			}
+						// 		}	
+						// 	}
+						// }
+						
+						form_row {
+							form_col_label("Cost")
+							form_col_input {
 								placeholder ph_cost {
 									input(p.cost)[class="form-control btn-dark w-100", onchange := action {
 										p.save();
@@ -517,20 +520,42 @@ template portfolio_content(p: Portfolio) {
 								}	
 							}
 						}
-							
-						row[class="mb-2"] {
-							col("col-12 col-md-3") {
-								label("Add Asset")[class="col-form-label text-white fst-italic fw-bold"]
-							}
-							col("col-12 col-md-9") {
-								listitem_asset_new(p)
+						
+						// row[class="align-items-center mb-2"] {
+						// 	col("col-12 col-md-3") {
+						// 		label("Cost")[class="col-form-label text-white fst-italic fw-bold"]
+						// 	}
+						// 	col("col-12 col-md-9") {
+						// 		placeholder ph_cost {
+						// 			input(p.cost)[class="form-control btn-dark w-100", onchange := action {
+						// 				p.save();
+						// 				replace(ph_cost);
+						// 			}] {
+						// 				validate((p.cost) >= 0.0, "The cost must be non-negative")
+						// 			}
+						// 		}	
+						// 	}
+						// }
+						
+						form_row {
+							form_col_label("Add Asset")
+							form_col_input {
+								listitem_asset_new(p)	
 							}
 						}
-						row[class="mb-2"] {
-							col("col-12 col-md-3") {
-								label("Assets")[class="col-form-label text-white fst-italic fw-bold"]
-							}
-							col("col-12 col-md-9") {
+							
+						// row[class="mb-2"] {
+						// 	col("col-12 col-md-3") {
+						// 		label("Add Asset")[class="col-form-label text-white fst-italic fw-bold"]
+						// 	}
+						// 	col("col-12 col-md-9") {
+						// 		listitem_asset_new(p)
+						// 	}
+						// }
+						
+						form_row {
+							form_col_label("Assets")
+							form_col_input {
 								if(p.assets.length > 0) {
 									list[class="ps-0 list-sortable"] {
 										for(asset : Asset in p.assets order by asset.order asc) {
@@ -539,15 +564,30 @@ template portfolio_content(p: Portfolio) {
 									}
 								}else{
 									label("No assets added")[class="col-form-label"]
-								}
+								}	
 							}
 						}
 						
-						row[class="align-items-center"] {
-							col("col-12 col-md-3") {
-					
-							}
-							col("col-12 col-md-9") {
+						// row[class="mb-2"] {
+						// 	col("col-12 col-md-3") {
+						// 		label("Assets")[class="col-form-label text-white fst-italic fw-bold"]
+						// 	}
+						// 	col("col-12 col-md-9") {
+						// 		if(p.assets.length > 0) {
+						// 			list[class="ps-0 list-sortable"] {
+						// 				for(asset : Asset in p.assets order by asset.order asc) {
+						// 					listitem_asset(asset)
+						// 				}
+						// 			}
+						// 		}else{
+						// 			label("No assets added")[class="col-form-label"]
+						// 		}
+						// 	}
+						// }
+						
+						form_row {
+							form_col_label("")
+							form_col_input {
 								row[class="align-items-center"] {
 									col("col-12 d-flex justify-content-between") {
 										submit action {
@@ -562,6 +602,9 @@ template portfolio_content(p: Portfolio) {
 										}
 										
 										submit action {
+											for(asset : Asset in p.assets) {
+												asset.save();
+											}
 											p.save();
 										}[class="btn btn-sm btn-success"] { 
 											"Save" 
@@ -570,6 +613,34 @@ template portfolio_content(p: Portfolio) {
 								}
 							}
 						}
+						
+					// 	row[class="align-items-center"] {
+					// 		col("col-12 col-md-3") {
+					// 
+					// 		}
+					// 		col("col-12 col-md-9") {
+					// 			row[class="align-items-center"] {
+					// 				col("col-12 d-flex justify-content-between") {
+					// 					submit action {
+					// 						for(asset : Asset in p.assets) {
+					// 							asset.portfolio := null;
+					// 							asset.delete();
+					// 						}
+					// 						p.delete();
+					// 						return portfolios();
+					// 					}[class="btn btn-sm btn-danger"] { 
+					// 						"Remove Portfolio" 
+					// 					}
+					// 					
+					// 					submit action {
+					// 						p.save();
+					// 					}[class="btn btn-sm btn-success"] { 
+					// 						"Save" 
+					// 					}
+					// 				}
+					// 			}
+					// 		}
+					// 	}
 					}
 				}			
 			}
