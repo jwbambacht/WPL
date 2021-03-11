@@ -9,10 +9,12 @@ entity User {
 	password 	: Secret
 	firstName 	: String
 	lastName	: String
-	authToken	: String
+	
 	admin 		: Bool (default = false)
+	authToken	: String
+	activated   : Bool (default = false)
+	
 	portfolios 	: {Portfolio} (inverse = user)
-
 	value		: Float := sum([x.value | x in portfolios])
 	value24h	: Float := sum([x.value24h | x in portfolios])
 	cost		: Float := sum([x.cost | x in portfolios])
@@ -26,11 +28,34 @@ entity User {
 	}
 }
 
-function currentUser(): User {
-	return securityContext.principal;
-}
+derive CRUD User
 
-// extend entity User {
+extend entity User {
+	function resetPassword(password: Secret) {
+		
+		var randomString := email+now().format("yyyyMMddHmmss");
+		
+		this.activated := false;
+		this.password := password.digest();
+		this.authToken := (randomString as Secret).digest();
+		this.save();
+	}
+	
+	function activateAccount(token: String): Bool {
+		var users := (from User as user where authToken = ~token);
+		
+		if(users.length == 0 || users.length > 1) {
+			return false;
+		}else{
+			users[0].authToken := "";
+			users[0].activated := true;
+			users[0].save();
+			
+			return true;
+		}
+		
+	}
+}
 	 
 	// password(validate(password.length() >= 8, "Password needs to be at least 8 characters"),
 	// 	validate(/[a-z]/.find(password), "Password must contain a lower-case character"),
@@ -38,23 +63,12 @@ function currentUser(): User {
  //   		validate(/[0-9]/.find(password), "Password must contain a digit")
  //   	)
 // } 
-	
-// 	function accountLinkName() : String {
-// 		if(!loggedIn() || securityContext.principal.firstName != "") {
-// 			var firstNameSplit := securityContext.principal.firstName.split();
-// 			return ""+nameSplit[0];
-// 		}else{
-// 			return "Account";
-// 		}
-// 	}
-// }
-
-derive CRUD User
 
 entity Token {
 	name 		: String (not null)
 	symbol 		: String (not null)
 	data		: TokenData (inverse = token)
+	favorite	: Bool (default = false) := tokenIsFavorite(this)
 }
 
 entity TokenData {
@@ -83,7 +97,6 @@ entity Portfolio {
 	assets 		: {Asset} (inverse = portfolio)
 	cost		: Float (default = 0.0)
 	user 		: User
-	// sortValue	: Bool (default = true)
 	
 	value		: Float (default = 0.0) := sum([x.value | x in assets])
 	value24h	: Float (default = 0.0) := sum([x.value24h | x in assets])
@@ -92,38 +105,11 @@ entity Portfolio {
 	profit		: Float (default = 0.0) := value-cost
 }
 
-function myPortfolios() : [Portfolio] {
-	return (from Portfolio as p where p.user = ~currentUser());
+function tokenIsFavorite(token: Token): Bool {
+	return ((from Asset as asset where asset.portfolio.user = ~currentUser() and asset.token = ~token).length != 0);
 }
 
-function myAssets(): [Asset] {
-	return (from Asset as a where a.portfolio.user = ~currentUser());
-}
-
-function getToken(symbol: String): Token {
-	return (from Token as token where token.symbol = ~symbol)[0];
-}
-
-function isToken(symbol: String): Bool {
-	return (from Token as token where token.symbol = ~symbol).length == 1;
-}
-
-function changePercentage(old: Float, new: Float): Float {
-	if(old == 0.0) {
-		return 0.0;
-	}
-	return (new-old)/old*100.0;
-}
-
-function sum(list: [Float]): Float {
-	var total := 0.0;
-	
-	for(item in list) {
-		total := total + item;
-	}
-	
-	return total;
-}
+section access control
 
 principal is User with credentials username, password
 
@@ -135,9 +121,12 @@ predicate isAdmin() {
 
 rule page root { true }
 rule page login { true }
+rule page forgotPassword { true }
+rule page activateAccount(*) { true }
 rule page register { true }
 rule page account { loggedIn() }
 rule page portfolios { loggedIn() }
 rule page portfolio(*) { loggedIn() }
 rule page asset(*) { loggedIn() }
+rule page watchlist { loggedIn() }
 rule page tokens { isAdmin() }
