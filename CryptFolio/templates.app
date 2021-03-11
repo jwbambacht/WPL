@@ -376,22 +376,29 @@ template listitem_asset_new(p: Portfolio) {
 	
 	var asset := Asset{}
 	
+	var usedTokens := [a.token | a in p.assets]
+	
 	listitem[class="list-group-item bg-darkest border-darkest rounded-3 text-white mb-1 d-flex align-items-center pe-0"] {
 
-		input(asset.token)[class="form-select form-select-sm select-asset-new bg-darker border-0 text-white me-auto fs-7", not null]
+		if(usedTokens.length < (from Token).length) {
+			input(asset.token, (from Token as token where token not in ~usedTokens order by name asc))[class="form-select form-select-sm select-asset-new bg-darker border-0 text-white me-auto fs-7", not null]
 									
-		span[class="input-group w-100px", id=p.id] {
-			input(asset.balance)[class="form-control form-control-sm bg-darker border-0 text-white fs-8"]
-		}
-			
-		span[class="btn btn-sm btn-success border-0 text-white ms-2 me-2 w-48px fs-7", onclick := action {
-			asset.portfolio := p;
-			asset.order := p.assets.length-1;
-			p.save();
+			span[class="input-group w-100px", id=p.id] {
+				input(asset.balance)[class="form-control form-control-sm bg-darker border-0 text-white fs-8"]
+			}
 				
-		}] { "Add" }
-		
-		validate((asset.balance) >= 0.0, "Balance should be bigger or equal to 0")
+			span[class="btn btn-sm btn-success border-0 text-white ms-2 me-2 w-48px fs-7", onclick := action {
+				asset.portfolio := p;
+				asset.order := p.assets.length-1;
+				p.save();
+					
+			}] { "Add" }
+			
+			validate((asset.balance) >= 0.0, "Balance should be bigger or equal to 0")
+			validate((asset.token) != null, "")
+		}else{
+			"All tokens already included in your portfolio"
+		}
 	}
 }
 
@@ -491,22 +498,6 @@ template portfolio_content(p: Portfolio) {
 							}
 						}
 						
-						// row[class="align-items-center mb-2"] {
-						// 	col("col-12 col-md-3") {
-						// 		label("Name")[class="col-form-label text-white fst-italic fw-bold"]
-						// 	}
-						// 	col("col-12 col-md-9") {
-						// 		placeholder ph_name {
-						// 			input(p.name)[class="form-control btn-dark w-100", onchange := action {
-						// 				p.save();
-						// 				replace(ph_name);
-						// 			}] {
-						// 				validate((p.name) != "", "Please fill in a portfolio name")
-						// 			}
-						// 		}	
-						// 	}
-						// }
-						
 						form_row {
 							form_col_label("Cost")
 							form_col_input {
@@ -521,37 +512,12 @@ template portfolio_content(p: Portfolio) {
 							}
 						}
 						
-						// row[class="align-items-center mb-2"] {
-						// 	col("col-12 col-md-3") {
-						// 		label("Cost")[class="col-form-label text-white fst-italic fw-bold"]
-						// 	}
-						// 	col("col-12 col-md-9") {
-						// 		placeholder ph_cost {
-						// 			input(p.cost)[class="form-control btn-dark w-100", onchange := action {
-						// 				p.save();
-						// 				replace(ph_cost);
-						// 			}] {
-						// 				validate((p.cost) >= 0.0, "The cost must be non-negative")
-						// 			}
-						// 		}	
-						// 	}
-						// }
-						
 						form_row {
 							form_col_label("Add Asset")
 							form_col_input {
 								listitem_asset_new(p)	
 							}
 						}
-							
-						// row[class="mb-2"] {
-						// 	col("col-12 col-md-3") {
-						// 		label("Add Asset")[class="col-form-label text-white fst-italic fw-bold"]
-						// 	}
-						// 	col("col-12 col-md-9") {
-						// 		listitem_asset_new(p)
-						// 	}
-						// }
 						
 						form_row {
 							form_col_label("Assets")
@@ -567,23 +533,6 @@ template portfolio_content(p: Portfolio) {
 								}	
 							}
 						}
-						
-						// row[class="mb-2"] {
-						// 	col("col-12 col-md-3") {
-						// 		label("Assets")[class="col-form-label text-white fst-italic fw-bold"]
-						// 	}
-						// 	col("col-12 col-md-9") {
-						// 		if(p.assets.length > 0) {
-						// 			list[class="ps-0 list-sortable"] {
-						// 				for(asset : Asset in p.assets order by asset.order asc) {
-						// 					listitem_asset(asset)
-						// 				}
-						// 			}
-						// 		}else{
-						// 			label("No assets added")[class="col-form-label"]
-						// 		}
-						// 	}
-						// }
 						
 						form_row {
 							form_col_label("")
