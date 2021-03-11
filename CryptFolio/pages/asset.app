@@ -10,8 +10,6 @@ page asset(asset: Asset) {
 		if(asset.portfolio.user != currentUser()) {
 			return portfolios();
 		}
-		
-		fetchData();
 	}
 	
 	var intervals := ["1m","3m","5m","15m","30m","1h","2h","4h","8h","12h","1d","3d","1w","1M"]
@@ -102,11 +100,11 @@ page asset(asset: Asset) {
 									}
 									badge[class="~bgColor(asset.value-asset.value24h) me-2"] {
 										icon("~arrowIcon(asset.value-asset.value24h)")
-										"$~nDecimals(asset.value-asset.value24h,2,true)"
+										"$~nDecimals(absolute(asset.value-asset.value24h),2,true)"
 									}
 									badge[class="~bgColor(asset.token.data.change)"] {
 										icon("~arrowIcon(asset.token.data.change)")
-										"~nDecimals(asset.token.data.change,2,true)%"
+										"~nDecimals(absolute(asset.token.data.change),2,true)%"
 									}
 								}
 								
@@ -135,7 +133,7 @@ page asset(asset: Asset) {
 										"Volume:"
 									}
 									span {
-										"$~nDecimals(asset.token.data.volume,2,true)"
+										"~nDecimals(asset.token.data.volume,2,true)M"
 									}
 								}
 							}

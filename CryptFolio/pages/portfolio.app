@@ -2,10 +2,6 @@ module pages/portfolio
 
 page portfolios() {
 	
-	init {
-		fetchData();
-	}
-	
 	main()
 	
 	define body() {
@@ -24,8 +20,6 @@ page portfolio(page: String, p: Portfolio) {
 		if(p.user != currentUser()) {
 			return portfolios();
 		}
-		
-		fetchData();
 		
 		// if(p.user != securityContext.principal) {
 		// 	"This portfolio is not owned by me"	
