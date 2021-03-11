@@ -2,18 +2,10 @@ module pages/account
 
 page account() {
 
-	var oldEmail : String
-	var newPassword : Secret
-	var newPasswordRepeat : Secret
+	var password : Secret
+	var passwordRepeat : Secret
 	var profileSuccess : String := ""
 	var passwordSuccess : String := ""
-	
-	init {
-		if(currentUser() != null) {
-			// user := currentUser();
-			oldEmail := currentUser().email;
-		}
-	}
 	
 	main()
 	
@@ -113,21 +105,21 @@ page account() {
 							form_row {
 								form_col_label("New Password")
 								form_col_input {
-									input(newPassword)[class="form-control btn-dark w-100"]
+									input(password)[class="form-control btn-dark w-100"]
 								}
 							}
 							
 							form_row {
 								form_col_label("Repeat Password")
 								form_col_input {
-									input(newPasswordRepeat)[class="form-control btn-dark w-100"]
+									input(passwordRepeat)[class="form-control btn-dark w-100"]
 								}
 							}
 							
 							placeholder ph_password {
 								form_row_validation {
-									validate((newPassword != "" && newPasswordRepeat != ""), "Password cannot be empty")
-									validate((newPassword == newPasswordRepeat), "The new passwords don't match")
+									validate((password != "" && passwordRepeat != ""), "Password cannot be empty")
+									validate((password == passwordRepeat), "The new passwords don't match")
 									templateSuccess([passwordSuccess])
 								}
 							}
@@ -136,7 +128,7 @@ page account() {
 								form_col_label("")
 								form_col_input[class="text-end"] {
 									div[class="btn btn-sm btn-success", onclick := action {
-										currentUser().password := newPassword;
+										currentUser().password := password;
 										currentUser().password := currentUser().password.digest();
 										currentUser().save();
 										
