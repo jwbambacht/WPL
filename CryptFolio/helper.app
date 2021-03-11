@@ -52,31 +52,6 @@ function updateTokenData(symbol: String, obj: JSONObject) {
 	token.data.save();
 }
 
-// function apiGET() {
-// 	for(token : Token) {
-// 		var response := Request.doGet("https://api.binance.com/api/v3/ticker/24hr?symbol="+token.symbol+"USDT");
-// 		// log(response);
-// 		
-// 		if(response == "FAILED") {
-// 			return;
-// 		}
-// 		
-// 		var json := JSONObject(response);
-// 		
-// 		if(token.data == null) {
-// 			token.data := TokenData{};
-// 			token.data.save();
-// 		}
-// 		
-// 		token.data.price := json.getString("lastPrice").parseFloat();
-// 		token.data.prevDay := json.getString("prevClosePrice").parseFloat();
-// 		token.data.change := json.getString("priceChangePercent").parseFloat();
-// 		token.data.high := json.getString("highPrice").parseFloat();
-// 		token.data.low := json.getString("lowPrice").parseFloat();
-// 		token.data.save();
-// 	}
-// }
-
 section helper functions
 
 function currentUser(): User {

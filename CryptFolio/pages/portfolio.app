@@ -19,18 +19,7 @@ page portfolio(page: String, p: Portfolio) {
 		
 		if(p.user != currentUser()) {
 			return portfolios();
-		}
-		
-		// if(p.user != securityContext.principal) {
-		// 	"This portfolio is not owned by me"	
-		// }
-	
-		// if(page != "view" || page != "edit") {
-		// 	return portfolios();
-		// }
-		// if(((page == "view" || page == "edit") && p == null) || page == null || page == "") {
-		// 	return portfolios();	
-		// }	
+		}	
 	}
 	
 	main()
@@ -97,9 +86,7 @@ template viewPortfolio(portfolio: Portfolio) {
 							figure[class="highcharts-figure mb-0"] {
 								div[class="w-100 chart-spinner-container"]	{
 									div[class="spinner-grow text-light", role="status"] {
-										span[class="visually-hidden"] {
-											"Loading..."
-										}
+										span[class="visually-hidden"] { "Loading..." }
 									}
 								}
 	
@@ -146,12 +133,12 @@ template viewPortfolio(portfolio: Portfolio) {
 									}
 								}
 							}
-							div[class="w-56px"] {}
+							div[class="w-56px"]
 						}
 					}
 				}
 				
-				for(asset : Asset in portfolio.assets where asset.active == true && asset.portfolio.user == currentUser() order by asset.order asc) {
+				for(asset : Asset in portfolio.assets where asset.portfolio.user == currentUser() && asset.active == true order by asset.order asc) {
 					col("col-12")[class="mb-2 portfolio-row", data-symbol=asset.token.symbol, data-balance=asset.balance, data-price="", data-value=""] {
 						card[class="border-0"] {
 							row {
@@ -260,8 +247,8 @@ template overviewPortfolio() {
 							}
 						}
 						
-						badge[class="d-flex align-items-center fs-7 text-secondary fw-bold"] {
-							span[class="me-auto text-muted"] {
+						badge[class="d-flex align-items-center fs-7 fw-bold"] {
+							span[class="me-auto"] {
 								"Total Cost:"
 							}
 							span {
@@ -269,8 +256,8 @@ template overviewPortfolio() {
 							}
 						}
 						
-						badge[class="d-flex align-items-center fs-7 text-secondary fw-bold"] {
-							span[class="me-auto text-muted"] {
+						badge[class="d-flex align-items-center fs-7 fw-bold"] {
+							span[class="me-auto"] {
 								"Total Profit:"
 							}
 							span {
@@ -305,7 +292,7 @@ template overviewPortfolio() {
 										col("col-12") {
 											if(p.assets.length > 0) {
 												for(asset : Asset in p.assets) {
-													badge[class="bg-darker portfolio-row me-2", data-symbol=asset.token.symbol, data-balance=asset.balance, data-price="", data-value=""] {
+													badge[class="bg-darker portfolio-row me-2"] {
 														"~asset.token.symbol"
 													}
 												}
@@ -317,7 +304,6 @@ template overviewPortfolio() {
 								}
 								navigate(portfolio("view",p))[class="w-auto ps-2"] {
 									div[class="portfolio-asset-view h-100 d-flex align-items-center text-white fs-2 rounded-0 rounded-end"] {
-									// div[class="portfolio-asset-view pt-3 pb-3 text-white fs-2 rounded-0 rounded-end"] {
 										icon("bi-chevron-right")
 									}
 								}		
@@ -336,7 +322,7 @@ template overviewPortfolio() {
 					card_body {
 						row[class="align-items-center mb-2"] {
 							col("col-12 col-md-3") {
-								label("Name")[class="col-form-label text-white fst-italic fw-bold"]
+								label("Name")[class="col-form-label fst-italic fw-bold"]
 							}
 							col("col-12 col-md-9") {
 								input(portfolio.name)[class="form-control btn-dark w-100"] {
@@ -351,7 +337,8 @@ template overviewPortfolio() {
 										submit action {
 											portfolio.user := currentUser();
 											portfolio.save();
-											return url("./portfolio/edit/~portfolio.id");
+											
+											return portfolio("edit", portfolio);
 										}[class="btn btn-sm btn-success"] {
 											"Continue " icon("bi-arrow-right")
 										}							 
@@ -376,5 +363,101 @@ template editPortfolio(p: Portfolio) {
 		"Change the portfolio's name or assets, adjust your balance or set the asset order."
 	}
 	
-	portfolio_content(p)
+	row[class="mt-4"] {
+		col("col-12 col-xl-6 mb-4") {
+			form {
+				card[class="border-lighter"] {
+					card_body {
+						
+						form_row {
+							form_col_label("Name")
+							form_col_input {
+								placeholder ph_name {
+									input(p.name)[class="form-control btn-dark w-100", onchange := action {
+										p.save();
+										replace(ph_name);
+									}] {
+										validate((p.name) != "", "Please fill in a portfolio name")
+									}
+								}
+							}
+						}
+						
+						form_row {
+							form_col_label("Cost")
+							form_col_input {
+								placeholder ph_cost {
+									input(p.cost)[class="form-control btn-dark w-100", onchange := action {
+										p.save();
+										replace(ph_cost);
+									}] {
+										validate((p.cost) >= 0.0, "The cost must be non-negative")
+									}
+								}	
+							}
+						}
+						
+						form_row {
+							form_col_label("Add Asset")
+							form_col_input {
+								listitem_asset_new(p)	
+							}
+						}
+						
+						form_row[class="align-items-start"] {
+							form_col_label("Assets")
+							form_col_input {
+								if(p.assets.length > 0) {
+									list[class="ps-0 list-sortable"] {
+										for(asset : Asset in p.assets order by asset.order asc) {
+											listitem_asset(asset)
+										}
+									}
+								}else{
+									label("No assets added")[class="col-form-label"]
+								}	
+							}
+						}
+						
+						form_row {
+							form_col_input("col-12 col-md-4")
+							form_col_input {
+								row[class="align-items-center"] {
+									col("col-12 d-flex justify-content-between") {
+										submitlink action {
+											return portfolio("view", p);
+										}[class="btn btn-sm btn-dark me-auto"] {
+											"Back to portfolio"
+										}
+										
+										submit action {
+											for(asset : Asset in p.assets) {
+												asset.save();
+											}
+											p.save();
+										}[class="btn btn-sm btn-success"] { 
+											"Save" 
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				
+				form_row[class="mb-3"] {
+					form_col_input("col-12 col-md-4") 
+					form_col_input[class="text-center"] {
+						submitlink action {
+							if(p.remove()) {
+								return portfolios();
+							}
+						}[class="text-danger fs-8"] { 
+							"Remove Portfolio" 
+						}
+					}
+				}		
+			}
+		}
+	}
 }

@@ -10,12 +10,18 @@ imports helper
 imports templates
 imports entities
 
-section application initialisation
+// imports services
+
+section application init.
 
 init {
-	User{}.initAdmin();								// username: admin, password: secretpassword, email is a dummy
+	// ADMIN credentials: 	username: admin, password: Administrator123, email is a dummy
+	User{}.initAdmin();
+	
+	// USER credentials: 	username: wpl, password: Wpl2021pw, email is a dummy								
 	User{username := "wpl", password := ("Wpl2021pw" as Secret).digest(), email := "dummy@dummy.com", activated := true}.save();
 	
+	// Some of the high listed tokens are added to the system
 	Token{}.initToken("Aave", "AAVE");
 	Token{}.initToken("Algorand", "ALGO");
 	Token{}.initToken("Avalanche", "AVAX");

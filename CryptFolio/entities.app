@@ -3,9 +3,8 @@ module entities
 section data model
 
 entity User {
-	username 	: String(id,  iderror="Username is already in use", 
-							  idemptyerror="Username may not be empty")
-	email 		: Email
+	username 	: String(id, iderror="Username is already in use", idemptyerror="Username may not be empty")
+	email 		: Email 
 	password 	: Secret
 	firstName 	: String
 	lastName	: String
@@ -81,7 +80,7 @@ entity Token {
 	name 		: String (not null)
 	symbol 		: String (not null)
 	data		: TokenData (inverse = token)
-	favorite	: Bool (default = false) := tokenIsFavorite(this)
+	favorite	: Bool (default = false) := isFavorite()
 }
 
 extend entity Token {
@@ -90,6 +89,10 @@ extend entity Token {
 		this.symbol := symbol;
 		this.data := TokenData{};
 		this.save();
+	}
+	
+	function isFavorite(): Bool {
+		return ((from Asset as asset where asset.portfolio.user = ~currentUser() and asset.token = ~this).length != 0);
 	}
 }
 
@@ -127,8 +130,22 @@ entity Portfolio {
 	profit		: Float (default = 0.0) := value-cost
 }
 
-function tokenIsFavorite(token: Token): Bool {
-	return ((from Asset as asset where asset.portfolio.user = ~currentUser() and asset.token = ~token).length != 0);
+extend entity Portfolio {
+	function remove(): Bool {
+		var pid := this.id;
+		
+		for(asset : Asset in this.assets) {
+			asset.portfolio := null;
+			asset.delete();
+		}
+		this.delete();
+		
+		if((from Portfolio where id = ~pid).length == 0) {
+			return true;
+		}
+		
+		return false;
+	}
 }
 
 define email confirmationEmail(user: User) {
@@ -160,3 +177,9 @@ rule page portfolio(*) { loggedIn() }
 rule page asset(*) { loggedIn() }
 rule page watchlist { loggedIn() }
 rule page tokens { isAdmin() }
+
+
+// service pages
+// rule page users(){ true }
+// rule page addUser(){ true }
+// rule page getUser(userid: String){ true }

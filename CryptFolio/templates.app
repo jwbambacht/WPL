@@ -273,7 +273,7 @@ template dcontainer {
 }
 
 override template row {
-	div[class="row", all attributes] {
+	div[all attributes, class="row"] {
 		elements
 	}
 }
@@ -323,7 +323,7 @@ override template templateSuccess( messages: [String] ){
 // List-item of existing asset
 template listitem_asset(asset: Asset) {
 	placeholder ph {
-		listitem[class="list-group-item bg-darkest border-darkest rounded-3 text-white mb-1 pe-0"] {
+		listitem[class="list-group-item bg-darkest border-darkest rounded-3 text-white mb-1 pe-0 ps-2"] {
 			div[class="d-flex align-items-center lh-1-25"] {
 				span[class="p-0", onclick := action { 
 					asset.active := ! asset.active; 
@@ -345,7 +345,10 @@ template listitem_asset(asset: Asset) {
 				}
 			
 				span[class="input-group w-100px"] {
-					input(asset.balance)[class="form-control form-control-sm bg-darker border-0 text-white fs-8", data-symbol=asset.token.symbol]
+					input(asset.balance)[class="form-control form-control-sm bg-darker border-0 text-white fs-8", onchange := action {
+						asset.save();
+						replace(ph);
+					}]
 					div[class="input-group-text bg-darker border-0 text-white fs-10 px-2"] {
 						"~asset.token.symbol"
 					}
@@ -354,7 +357,7 @@ template listitem_asset(asset: Asset) {
 				submit action {
 					asset.portfolio := null;
 					asset.delete();
-				}[class="btn btn-sm btn-danger border-0 text-white ms-2 me-1 fs-7"] {
+				}[class="btn btn-sm btn-danger border-0 ms-2 me-1 fs-7"] {
 					icon("bi-trash-fill")
 				}
 									
@@ -363,7 +366,6 @@ template listitem_asset(asset: Asset) {
 				}
 			
 				input(asset.order)[class="hidden-input",type="hidden", data-symbol=asset.token.symbol]
-			
 			}
 			
 			validate((asset.balance) >= 0.0, "Balance should be bigger or equal to 0")
@@ -377,12 +379,17 @@ template listitem_asset_new(p: Portfolio) {
 	var asset := Asset{}
 	
 	var usedTokens := [a.token | a in p.assets]
+	var tokens := (from Token as token order by name asc)
 	
-	listitem[class="list-group-item bg-darkest border-darkest rounded-3 text-white mb-1 d-flex align-items-center pe-0"] {
+	listitem[class="list-group-item bg-darkest border-darkest rounded-3 text-white mb-1 d-flex align-items-center pe-0 ps-2"] {
 
 		if(usedTokens.length < (from Token).length) {
-			input(asset.token, (from Token as token where token not in ~usedTokens order by name asc))[class="form-select form-select-sm select-asset-new bg-darker border-0 text-white me-auto fs-7", not null]
-									
+			if(usedTokens.length > 0) {
+				input(asset.token, (from Token as token where token not in ~usedTokens order by name asc))[class="form-select form-select-sm select-asset-new bg-darker border-0 text-white me-auto fs-7", not null]
+			}else{
+				input(asset.token, tokens)[class="form-select form-select-sm select-asset-new bg-darker border-0 text-white me-auto fs-7", not null]	
+			}
+								
 			span[class="input-group w-100px", id=p.id] {
 				input(asset.balance)[class="form-control form-control-sm bg-darker border-0 text-white fs-8"]
 			}
@@ -391,7 +398,6 @@ template listitem_asset_new(p: Portfolio) {
 				asset.portfolio := p;
 				asset.order := p.assets.length-1;
 				p.save();
-					
 			}] { "Add" }
 			
 			validate((asset.balance) >= 0.0, "Balance should be bigger or equal to 0")
@@ -476,94 +482,11 @@ template portfolio_block(p: Portfolio) {
 	}	
 }
 
-template portfolio_content(p: Portfolio) {
-	
-	row[class="mt-4"] {
-		col("col-12 col-xl-6 mb-4") {
-			form {
-				card[class="border-lighter"] {
-					card_body {
-						
-						form_row {
-							form_col_label("Name")
-							form_col_input {
-								placeholder ph_name {
-									input(p.name)[class="form-control btn-dark w-100", onchange := action {
-										p.save();
-										replace(ph_name);
-									}] {
-										validate((p.name) != "", "Please fill in a portfolio name")
-									}
-								}
-							}
-						}
-						
-						form_row {
-							form_col_label("Cost")
-							form_col_input {
-								placeholder ph_cost {
-									input(p.cost)[class="form-control btn-dark w-100", onchange := action {
-										p.save();
-										replace(ph_cost);
-									}] {
-										validate((p.cost) >= 0.0, "The cost must be non-negative")
-									}
-								}	
-							}
-						}
-						
-						form_row {
-							form_col_label("Add Asset")
-							form_col_input {
-								listitem_asset_new(p)	
-							}
-						}
-						
-						form_row {
-							form_col_label("Assets")
-							form_col_input {
-								if(p.assets.length > 0) {
-									list[class="ps-0 list-sortable"] {
-										for(asset : Asset in p.assets order by asset.order asc) {
-											listitem_asset(asset)
-										}
-									}
-								}else{
-									label("No assets added")[class="col-form-label"]
-								}	
-							}
-						}
-						
-						form_row {
-							form_col_label("")
-							form_col_input {
-								row[class="align-items-center"] {
-									col("col-12 d-flex justify-content-between") {
-										submit action {
-											for(asset : Asset in p.assets) {
-												asset.portfolio := null;
-												asset.delete();
-											}
-											p.delete();
-											return portfolios();
-										}[class="btn btn-sm btn-danger"] { 
-											"Remove Portfolio" 
-										}
-										
-										submit action {
-											for(asset : Asset in p.assets) {
-												asset.save();
-											}
-											p.save();
-										}[class="btn btn-sm btn-success"] { 
-											"Save" 
-										}
-									}
-								}
-							}
-						}
-					}
-				}			
+template landingPageBlock() {
+	col("col-12 col-md-4 d-flex align-items-stretch mb-2") {
+		card[class="border-0 w-100"] {
+			card_body[class="p-3 fs-2 text-center"] {
+				elements
 			}
 		}
 	}
