@@ -87,12 +87,12 @@ template navbar() {
         			
         			if(!loggedIn()) {
         				listitem[class="nav-item"] {
-    						navigate(login())[class = "nav-link", data-page="account"] {
+    						navigate(login())[class = "nav-link", data-page="login"] {
       							"Login"
       						}
       					}
         				listitem[class="nav-item"] {
-      						navigate(register())[class = "nav-link", data-page="account"] {
+      						navigate(register(""))[class = "nav-link", data-page="register"] {
       							"Register"
       						}
         				}
@@ -613,37 +613,30 @@ template portfolio_content(p: Portfolio) {
 								}
 							}
 						}
-						
-					// 	row[class="align-items-center"] {
-					// 		col("col-12 col-md-3") {
-					// 
-					// 		}
-					// 		col("col-12 col-md-9") {
-					// 			row[class="align-items-center"] {
-					// 				col("col-12 d-flex justify-content-between") {
-					// 					submit action {
-					// 						for(asset : Asset in p.assets) {
-					// 							asset.portfolio := null;
-					// 							asset.delete();
-					// 						}
-					// 						p.delete();
-					// 						return portfolios();
-					// 					}[class="btn btn-sm btn-danger"] { 
-					// 						"Remove Portfolio" 
-					// 					}
-					// 					
-					// 					submit action {
-					// 						p.save();
-					// 					}[class="btn btn-sm btn-success"] { 
-					// 						"Save" 
-					// 					}
-					// 				}
-					// 			}
-					// 		}
-					// 	}
 					}
 				}			
 			}
+		}
+	}
+}
+
+template activateAccountEmail(user: User) {
+	row {
+		col("col-12") {
+			h1 {
+				"Please activate your CryptFolio account"
+			}
+			
+			"You can activate your account by clicking " 
+			
+			navigate(activateAccount(user.authToken)) {
+				"here"
+			}
+			
+			" or by browsing to " 
+			br 
+			br
+			output(navigate(activateAccount(user.authToken)))
 		}
 	}
 }

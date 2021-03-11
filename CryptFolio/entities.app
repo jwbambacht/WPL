@@ -31,12 +31,27 @@ entity User {
 derive CRUD User
 
 extend entity User {
+	function initAdmin() {
+		this.username := "admin";
+		this.password := ("secretpassword" as Secret).digest();
+		this.email := "admin@cryptofolio.com";
+		this.admin := true;
+		this.activated := true;
+		
+		this.save();
+	}
 	function resetPassword(password: Secret) {
 		
 		this.activated := false;
 		this.password := password.digest();
 		this.generateAuthToken();
 		this.save();
+		
+		this.sendActivationEmail();
+	}
+	
+	function sendActivationEmail() {
+		email confirmationEmail(this);	
 	}
 	
 	function generateAuthToken() {
@@ -57,22 +72,25 @@ extend entity User {
 			
 			return true;
 		}
-		
 	}
+	
+	
 }
-	 
-	// password(validate(password.length() >= 8, "Password needs to be at least 8 characters"),
-	// 	validate(/[a-z]/.find(password), "Password must contain a lower-case character"),
- //   		validate(/[A-Z]/.find(password), "Password must contain an upper-case character"),
- //   		validate(/[0-9]/.find(password), "Password must contain a digit")
- //   	)
-// } 
 
 entity Token {
 	name 		: String (not null)
 	symbol 		: String (not null)
 	data		: TokenData (inverse = token)
 	favorite	: Bool (default = false) := tokenIsFavorite(this)
+}
+
+extend entity Token {
+	function initToken(name: String, symbol: String) {
+		this.name := name;
+		this.symbol := symbol;
+		this.data := TokenData{};
+		this.save();
+	}
 }
 
 entity TokenData {
@@ -113,6 +131,14 @@ function tokenIsFavorite(token: Token): Bool {
 	return ((from Asset as asset where asset.portfolio.user = ~currentUser() and asset.token = ~token).length != 0);
 }
 
+define email confirmationEmail(user: User) {
+	to(user.email)
+	from("wplcryptfolio@gmail.com")
+	subject("CryptFolio: confirm your account")
+	
+	activateAccountEmail(user)
+}
+
 section access control
 
 principal is User with credentials username, password
@@ -127,7 +153,7 @@ rule page root { true }
 rule page login { true }
 rule page forgotPassword { true }
 rule page activateAccount(*) { true }
-rule page register { true }
+rule page register(*) { true }
 rule page account { loggedIn() }
 rule page portfolios { loggedIn() }
 rule page portfolio(*) { loggedIn() }

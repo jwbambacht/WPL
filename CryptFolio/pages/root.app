@@ -62,7 +62,7 @@ page root(){
 										"Login"
 									}
 									
-									navigate(register())[class="btn btn-dark p-2 ms-1 w-100"] {
+									navigate(register(""))[class="btn btn-dark p-2 ms-1 w-100"] {
 										"Register"
 									}
 								}
