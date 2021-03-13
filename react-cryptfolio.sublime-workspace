@@ -1,0 +1,717 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"seria",
+				"serializedObject"
+			],
+			[
+				"hidden",
+				"hidden_by_count"
+			],
+			[
+				"milea",
+				"mileage_form"
+			],
+			[
+				"bins",
+				"binsedges"
+			],
+			[
+				"anom",
+				"anomalous_regions"
+			],
+			[
+				"columns",
+				"columns_to_remove"
+			],
+			[
+				"col",
+				"columns_to_remove"
+			],
+			[
+				"non_",
+				"non_fraud_ratio"
+			],
+			[
+				"shopper",
+				"shopperinteraction"
+			],
+			[
+				"sugge",
+				"suggested_candidates_plot"
+			],
+			[
+				"experimen",
+				"experiments_one_enabled"
+			],
+			[
+				"over",
+				"overwriteModel"
+			],
+			[
+				"exp",
+				"experiments_one_enabled"
+			],
+			[
+				"calcul",
+				"calculate_mrr_mpc"
+			],
+			[
+				"button",
+				"buttonIdentifier\tconst"
+			],
+			[
+				"trans",
+				"transactionRequests\tproperty"
+			],
+			[
+				"fullname",
+				"fullname"
+			],
+			[
+				"check",
+				"checkStatus"
+			],
+			[
+				"notifi",
+				"notificationsCheck"
+			],
+			[
+				"account",
+				"accountHeader\tconst"
+			],
+			[
+				"fullName",
+				"fullNameValue\tconst"
+			],
+			[
+				"emailadd",
+				"emailaddress"
+			],
+			[
+				"get",
+				"getFullYear\tmethod"
+			],
+			[
+				"fu",
+				"fullName\tproperty"
+			],
+			[
+				"On",
+				"OnUndefined\tfunction"
+			],
+			[
+				"WATER",
+				"WATER_DEFENCE_TIME"
+			],
+			[
+				"HAND",
+				"HANDGRIP_WELDING"
+			],
+			[
+				"DO",
+				"DOCUMENT_POCKET_WELDING"
+			],
+			[
+				"REF",
+				"REFLECTION"
+			],
+			[
+				"REFL",
+				"REFLECTION_TYPE_SELECT"
+			],
+			[
+				"REFLE",
+				"REFLECTION_MOUNTING"
+			],
+			[
+				"HF",
+				"HF_STRAP_2400kg_WELDING"
+			],
+			[
+				"LNE",
+				"LENGTH_INPUT"
+			],
+			[
+				"OP",
+				"open_zoom"
+			],
+			[
+				"PEE",
+				"PEES_MOUNTING"
+			],
+			[
+				"MOU",
+				"BOLT_AND_NUT_MOUNTING"
+			],
+			[
+				"BOL",
+				"BUCKLE_BOLT_AND_NUT"
+			],
+			[
+				"HOOK",
+				"HOOK_STANDARD"
+			],
+			[
+				"BUCKLE_",
+				"BUCKLE_OVERCENTRE"
+			],
+			[
+				"HUCK",
+				"HUCKBOLT"
+			],
+			[
+				"STANDA",
+				"STANDARD_RUNNER"
+			],
+			[
+				"STAN",
+				"STANDARD_RUNNER_BOOL"
+			],
+			[
+				"LENGT",
+				"LENGTH_INPUT"
+			],
+			[
+				"HF_STRA",
+				"HF_STRAP_1300kg_WELDING"
+			],
+			[
+				"HE",
+				"HEIGHT_INPUT"
+			],
+			[
+				"NP",
+				"NPILLARS_SELECT"
+			],
+			[
+				"HF_STRAP",
+				"HF_Strap_1300kg"
+			],
+			[
+				"PVC",
+				"PVC_WELDING"
+			],
+			[
+				"LEN",
+				"LENGTH_INPUT"
+			],
+			[
+				"PILLAR",
+				"PILLAR_WELDING"
+			],
+			[
+				"PILLAR_",
+				"PILLAR_REINFORCEMENT"
+			],
+			[
+				"br",
+				"vehicleBrand"
+			],
+			[
+				"vehicle",
+				"vehicleBrand"
+			],
+			[
+				"vehicl",
+				"vehicleType"
+			],
+			[
+				"water",
+				"waterdefence"
+			],
+			[
+				"time_H",
+				"time_HF2400_welding"
+			],
+			[
+				"buck",
+				"bucklemounted"
+			],
+			[
+				"customerC",
+				"customerComment"
+			],
+			[
+				"vehi",
+				"vehicleBrand"
+			],
+			[
+				"veh",
+				"vehicleBrand"
+			],
+			[
+				"cust",
+				"customerCompany"
+			],
+			[
+				"wa",
+				"waterdefence"
+			],
+			[
+				"buckl",
+				"bucklemounted"
+			],
+			[
+				"runners",
+				"runnersMounted"
+			],
+			[
+				"custom",
+				"customerBrand"
+			],
+			[
+				"ns-",
+				"ns-list-from"
+			],
+			[
+				"badge",
+				"badge-secondary"
+			],
+			[
+				"bad",
+				"badge-secondary"
+			],
+			[
+				"tex",
+				"text-white"
+			],
+			[
+				"list-group",
+				"list-group-item"
+			],
+			[
+				"number_of",
+				"number_of_episodes"
+			],
+			[
+				"align",
+				"align-items-center"
+			],
+			[
+				"deli",
+				"Deliverable"
+			],
+			[
+				"deliv",
+				"deliverables-list"
+			],
+			[
+				"delive",
+				"deliverable"
+			],
+			[
+				"error",
+				"error_reporting"
+			],
+			[
+				"new_design",
+				"new_design_cost"
+			],
+			[
+				"colo-ll",
+				"color-ll-orange"
+			],
+			[
+				"htmls",
+				"htmlspecialchars_decode"
+			],
+			[
+				"ks_",
+				"ks_white"
+			],
+			[
+				"ks",
+				"ks_black"
+			],
+			[
+				"ex",
+				"exspray_white"
+			],
+			[
+				"back",
+				"background-ll-black"
+			],
+			[
+				"background",
+				"background-ll-orange"
+			],
+			[
+				"backgrou",
+				"background-repeat\tproperty"
+			],
+			[
+				"fetch",
+				"fetchObject"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ter",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"term",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"termi",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"terminus",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"termin",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control",
+				"Package Control: Install Package"
+			],
+			[
+				"Package ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Install Pac",
+				"Package Control: Install Package"
+			],
+			[
+				"Install ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package",
+				"Package Control: Remove Package"
+			],
+			[
+				"Install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 464.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/jbambacht/git/WPL/react-cryptfolio"
+	],
+	"file_history":
+	[
+		"/Users/jbambacht/themes/PRS01/templates/_partials/header.tpl",
+		"/Users/jbambacht/modules/ttcategoryslider/translations/es.php",
+		"/Users/jbambacht/themes/child_PRS01/templates/_partials/header.tpl",
+		"/Users/jbambacht/themes/PRS01/modules/ps_categorytree/views/templates/hook/ps_categorytree.tpl",
+		"/Users/jbambacht/themes/classic/modules/ps_categorytree/views/templates/hook/ps_categorytree.tpl",
+		"/Users/jbambacht/themes/PRS01/modules/ps_mainmenu/ps_mainmenu.tpl",
+		"/Users/jbambacht/themes/classic/modules/ps_mainmenu/ps_mainmenu.tpl",
+		"/Users/jbambacht/themes/PRS01/templates/checkout/_partials/header.tpl",
+		"/Users/jbambacht/themes/classic/templates/_partials/header.tpl",
+		"/Users/jbambacht/themes/classic/templates/checkout/_partials/header.tpl",
+		"/Users/jbambacht/presta17/themes/classic/modules/ps_mainmenu/ps_mainmenu.tpl",
+		"/Users/jbambacht/presta17/themes/classic/templates/checkout/_partials/header.tpl",
+		"/Users/jbambacht/presta17/themes/classic/templates/_partials/header.tpl",
+		"/Users/jbambacht/presta17/modules/ps_mbo/views/templates/admin/include/menu_top.tpl",
+		"/Users/jbambacht/presta17/admin123/themes/default/template/page_header_toolbar.tpl",
+		"/Users/jbambacht/modules/ttblocksearch/translations/es.php",
+		"/Users/jbambacht/modules/ttblocksearch/translations/it.php",
+		"/Users/jbambacht/modules/ttcategoryslider/translations/it.php",
+		"/Users/jbambacht/modules/redsys/views/templates/admin/company/information_es.tpl",
+		"/Users/jbambacht/modules/ps_themecusto/translations/es.php",
+		"/Users/jbambacht/modules/ttcategoryfeature/translations/es.php",
+		"/Users/jbambacht/modules/gsitemap/it.php",
+		"/Users/jbambacht/modules/cronjobs/translations/it.php",
+		"/Users/jbambacht/modules/ps_themecusto/translations/it.php",
+		"/Users/jbambacht/modules/netreviews/translations/it.php",
+		"/Users/jbambacht/modules/codfee/translations/it.php",
+		"/Users/jbambacht/modules/ps_checkout/translations/it.php",
+		"/Users/jbambacht/modules/netreviews/it.php",
+		"/Users/jbambacht/modules/ps_mbo/views/templates/admin/include/menu_top.tpl",
+		"/Users/jbambacht/modules/ps_mbo/ps_mbo.php",
+		"/Users/jbambacht/modules/tttoplink/views/templates/hook/tttoplink.tpl",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 2/vending/vending.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 3/haggle.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 3/garage.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 2/branching_bisim/choiceS.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 2/branching_bisim/choiceT.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 2/vending1.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 2/vending2.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/system-validation.sublime-project",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 2/vending/vending2.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Test/choiceT.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Test/choiceS.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Test/mcrl2-mode.el",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Test/untitled",
+		"/Users/jbambacht/Library/Caches/Transmit/D0B0252F-7615-4185-88AE-F18DF2D90D4E/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/registratie/classes/User.class.php",
+		"/Users/jbambacht/Library/Caches/Transmit/1C08E8CB-7E04-4DB1-B332-963267F0DD5C/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/registratie/classes/Trip.class.php",
+		"/Users/jbambacht/Library/Caches/Transmit/0B3CF489-23DB-4F41-8F8E-10F8DBBF682E/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/classes/Util.class.php",
+		"/Users/jbambacht/Library/Caches/Transmit/51CDC7CC-5FD8-4BFE-8E68-21CC7B3AADBC/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/Planner/backend.php",
+		"/Users/jbambacht/Library/Caches/Transmit/1FE7A190-8B36-4676-8D6D-A1A04AB630DD/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/registratie/widgets/app/widget_trip_history.php",
+		"/Users/jbambacht/Library/Caches/Transmit/F3D4FDEB-8997-4794-8E47-D6540D0B2CE1/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/backend.php",
+		"/Users/jbambacht/Library/Caches/Transmit/11F72C65-B7BB-46DD-9A62-4334F62BE967/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/assets/js/custom.js",
+		"/Users/jbambacht/Library/Caches/Transmit/C448F070-3BDD-4CD5-A8A8-37E1E9D96BFB/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/assets/style/custom.css",
+		"/Users/jbambacht/Library/Caches/Transmit/865C70E5-2295-4D47-877A-5A53CF3288AD/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/classes/Course.class.php",
+		"/Users/jbambacht/Library/Caches/Transmit/EDD11ECB-914A-42E8-B8F4-74E3396E32C7/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/classes/Deadline.class.php",
+		"/Users/jbambacht/Library/Caches/Transmit/220637ED-80DC-4027-B418-86CF24C240E5/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/index.php",
+		"/Users/jbambacht/Library/Caches/Transmit/F577AEAD-700C-4CCD-A6A5-08CD39B4DC50/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/includes/nav.php",
+		"/Users/jbambacht/Library/Caches/Transmit/DAD1EEB5-EDB8-4D5A-A481-A8C3F834DC32/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/classes/Deadline.class.php",
+		"/Users/jbambacht/Library/Caches/Transmit/7C45862A-D417-4E0B-9F15-5132C1226E25/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/index.php",
+		"/Users/jbambacht/Library/Caches/Transmit/BCBA303D-7515-4186-A355-3A3CD7BA9F74/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/Planner/index.php",
+		"/Users/jbambacht/Library/Caches/Transmit/9CB221A9-91EE-4D15-A2B9-11C4EECA0554/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/assets/js/custom.js",
+		"/Users/jbambacht/Library/Caches/Transmit/E4C649DE-31ED-442C-9B49-6ED3D84229D7/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/back.php",
+		"/Users/jbambacht/Library/Caches/Transmit/2B2DD588-B448-4BD2-8736-4BB86C83330C/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/registratie/assets/js/widgets/widget_trip_history.js",
+		"/Users/jbambacht/Library/Caches/Transmit/75A51BA0-4D98-439F-9CD0-305D25ED3A73/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/registratie/widgets/app/widget_trip_add.php",
+		"/Users/jbambacht/Library/Caches/Transmit/92A843AA-B542-41E9-A190-4D5D126A1664/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/includes/scripts.php",
+		"/Users/jbambacht/Library/Caches/Transmit/B4159057-B9A4-4C47-914A-044B73852009/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/registratie/assets/js/widgets/widget_trip_add.js",
+		"/Users/jbambacht/Library/Caches/Transmit/3924A17B-0D10-4668-BE80-07B79E89D989/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/assets/js/custom.js",
+		"/Users/jbambacht/Library/Caches/Transmit/B7A4BB02-9379-4C0F-ABD0-594135A9288C/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/registratie/assets/js/custom.js",
+		"/Users/jbambacht/git/registratie/api/auth/auth.php",
+		"/Users/jbambacht/git/registratie/pages/system/reset_password.php",
+		"/Users/jbambacht/git/registratie/classes/User.class.php",
+		"/Users/jbambacht/git/registratie/api/trip/read.php",
+		"/Users/jbambacht/git/registratie/api/tank/read.php",
+		"/Users/jbambacht/git/registratie/classes/API.class.php",
+		"/Users/jbambacht/git/registratie/classes/Tank.class.php",
+		"/Users/jbambacht/git/registratie/classes/Trip.class.php",
+		"/Users/jbambacht/git/registratie/api/index.php",
+		"/Users/jbambacht/git/registratie/.htaccess",
+		"/Users/jbambacht/git/registratie/classes/TripType.class.php",
+		"/Users/jbambacht/git/registratie/widgets/app/widget_account_profile.php",
+		"/Users/jbambacht/git/registratie/widgets/app/widget_account_password.php",
+		"/Users/jbambacht/git/registratie/widgets/app/widget_account_email.php",
+		"/Users/jbambacht/git/registratie/pages/system/activate_account.php",
+		"/Users/jbambacht/git/registratie/pages/system/logout.php",
+		"/Users/jbambacht/git/registratie/pages/system/change_email.php",
+		"/Users/jbambacht/git/registratie/index.php",
+		"/Users/jbambacht/git/registratie/pages/system/change_email_reject.php",
+		"/Users/jbambacht/git/registratie/api/user/update.php",
+		"/Users/jbambacht/git/registratie/classes/HTTP.class.php",
+		"/Users/jbambacht/git/registratie/api/triptype/update.php",
+		"/Users/jbambacht/git/registratie/api/user/read.php",
+		"/Users/jbambacht/git/registratie/classes/Auth.class.php",
+		"/Users/jbambacht/git/registratie/api/triptype/delete.php",
+		"/Users/jbambacht/git/registratie/api/user/create.php",
+		"/Users/jbambacht/git/registratie/api/trip/create.php",
+		"/Users/jbambacht/git/registratie/api/auth/init.php",
+		"/Users/jbambacht/git/registratie/api/auth/authorize.php",
+		"/Users/jbambacht/git/registratie/api/trip/find.php",
+		"/Users/jbambacht/git/registratie/api/triptype/create.php",
+		"/Users/jbambacht/git/registratie/widgets/app/widget_tank_history.php",
+		"/Users/jbambacht/git/registratie/widgets/app/widget_trip_history.php",
+		"/Users/jbambacht/git/registratie/widgets/app/widget_trip_add.php",
+		"/Users/jbambacht/git/registratie/api/triptype/read.php",
+		"/Users/jbambacht/git/registratie/api/trip/delete.php",
+		"/Users/jbambacht/git/registratie/api/trip/update.php",
+		"/Users/jbambacht/git/registratie/assets/style/custom.css",
+		"/Users/jbambacht/git/registratie/pages/system/register.php",
+		"/Users/jbambacht/git/registratie/vendor/PHPass/PasswordHash.php",
+		"/Users/jbambacht/git/registratie/api/tank/create.php",
+		"/Users/jbambacht/git/registratie/widgets/app/widget_tank_add.php",
+		"/Users/jbambacht/git/registratie/classes/Util.class.php",
+		"/Users/jbambacht/git/registratie/api/tank/delete.php",
+		"/Users/jbambacht/git/registratie/api/tank/update.php",
+		"/Users/jbambacht/git/registratie/assets/js/widgets/widget_trip_history.js",
+		"/Users/jbambacht/git/registratie/widgets/app/widget_trip_export.php",
+		"/Users/jbambacht/git/registratie/widgets/app/widget_tank_export.php",
+		"/Users/jbambacht/git/registratie/classes/Config.class.php",
+		"/Users/jbambacht/git/registratie/assets/js/widgets/widget_tank_add.js",
+		"/Users/jbambacht/git/registratie/pages/app/home.php",
+		"/Users/jbambacht/git/registratie/classes/System.class.php",
+		"/Users/jbambacht/git/registratie/includes/scripts.php",
+		"/Users/jbambacht/git/registratie/pages/app/account.php",
+		"/Users/jbambacht/git/registratie/pages/app/trip.php",
+		"/Users/jbambacht/git/registratie/pages/app/tank.php",
+		"/Users/jbambacht/git/registratie/assets/js/custom.js",
+		"/Users/jbambacht/git/registratie/assets/js/widgets/widget_trip_add.js",
+		"/Users/jbambacht/git/registratie/assets/js/trip.js",
+		"/Users/jbambacht/git/registratie/assets/js/tank.js",
+		"/Users/jbambacht/git/registratie/assets/js/home.js"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 136.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 44.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.Terminus":
+	{
+		"height": 163.0
+	},
+	"output.Terminus 2":
+	{
+		"height": 328.0
+	},
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 219.0
+	},
+	"pinned_build_system": "",
+	"project": "react-cryptfolio.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"rwe",
+				"routes/web.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 269.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
