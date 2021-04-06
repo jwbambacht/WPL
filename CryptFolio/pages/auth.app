@@ -185,7 +185,7 @@ page forgotPassword {
 											resetRequestError := "Please supply a valid emailadress";
 											resetRequestSuccess := "";
 										}else{
-											users[0].resetPassword(password);
+											users[0].resetPassword(password, "~navigate(root())");
 											resetRequestError := "";
 											resetRequestSuccess := "A confirmation mail has been sent to activate your account";
 										}
@@ -289,7 +289,7 @@ page activateAccount(token: String) {
 										}
 										div[class="btn btn-sm btn-success float-end", onclick := action {	
 											if((from User as user where user.authToken = ~authToken).length == 0) {
-												activateAccountError := "The authToken is invalid.";
+												activateAccountError := "The authentication token is invalid.";
 												replace(ph_reset_feedback);
 											}else{
 												return activateAccount(authToken);
@@ -317,7 +317,6 @@ page register(message: String) {
 	}
 	
 	var user := User{}
-	// var registerSuccess : String
 	
 	main()
 	
@@ -344,7 +343,7 @@ page register(message: String) {
 							}
 							
 							form_row_validation {
-								validate((user.username) != "", "Please fill in your username")
+								validate((user.username).length() >= 6, "Username must contain at least 6 characters")
 								validate(findUser(user.username) == null, "Username already in use")
 							}
 							
@@ -391,7 +390,7 @@ page register(message: String) {
 										user.password := user.password.digest();
 										user.generateAuthToken();
 										user.save();
-										user.sendActivationEmail();
+										user.sendActivationEmail("~navigate(root())");
 										
 		    							return register("success");
 									}[class="btn btn-sm btn-success float-end"] {

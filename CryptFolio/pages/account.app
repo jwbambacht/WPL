@@ -32,7 +32,9 @@ page account() {
 							form_row {
 								form_col_label("Username")
 								form_col_input {
-									output(currentUser().username)
+									span[class="form-control btn-dark w-100 bg-darker text-muted border-0"] {
+										output(currentUser().username)
+									}
 								}
 							}
 							
@@ -60,10 +62,12 @@ page account() {
 							form_row {
 								form_col_label("Account Type")
 								form_col_input {
-									if(isAdmin()) {
-										"Administrator"
-									}else{
-										"User"
+									span[class="form-control btn-dark w-100 bg-darker text-muted border-0"] {
+										if(isAdmin()) {
+											"Administrator"
+										}else{
+											"User"
+										}
 									}
 								}
 							}

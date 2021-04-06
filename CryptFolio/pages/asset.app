@@ -8,7 +8,7 @@ page asset(asset: Asset) {
 		}
 		
 		if(asset.portfolio.user != currentUser()) {
-			return portfolios();
+			return accessDenied();
 		}
 	}
 	
@@ -20,16 +20,16 @@ page asset(asset: Asset) {
 	define body() {
 		
 		pageTitle {
-			span[class="fw-bold fs-1 me-2"] {
+			span[class="fw-bold fs-1 me-3"] {
 				"Asset: "
 			}
-			span[class="fs-3"] {
+			span[class="fs-1 text-secondary fw-bold"] {
 				"~asset.name"	
 			}
 		}
 		
 		row {
-			col("col-12 col-lg-4 col-xl-3 mb-3") {
+			col("col-12 col-lg-4 col-xl-3 mb-3 text-center") {
 				card[class="border-0"] {
 					card_body[class="p-3 rounded-3"] {
 						row {
@@ -62,7 +62,7 @@ page asset(asset: Asset) {
 									}
 								}
 								
-								badge[class="bg-dark d-flex align-items-center fs-7 text-white fw-bold py-2 mb-3"] {
+								badge[class="bg-dark d-flex align-items-center fs-7 text-white fw-bold py-2 mb-1"] {
 									span[class="me-auto"] {
 										"Portfolio:"
 									}
@@ -73,6 +73,20 @@ page asset(asset: Asset) {
 										}
 									}
 									
+								}
+								
+								badge[class="bg-dark d-flex align-items-center fs-7 text-white fw-bold py-2 mb-3"] {
+									span[class="me-auto"] {
+										"Change:"
+									}
+									badge[class="~bgColor(asset.value-asset.value24h) me-2"] {
+										icon("~arrowIcon(asset.value-asset.value24h)")
+										"$~nDecimals(absolute(asset.value-asset.value24h),2,true)"
+									}
+									badge[class="~bgColor(asset.token.data.change)"] {
+										icon("~arrowIcon(asset.token.data.change)")
+										"~nDecimals(absolute(asset.token.data.change),2,true)%"
+									}
 								}
 								   
 								badge[class="bg-dark d-flex align-items-center fs-7 text-white fw-bold py-2 mb-1"] {
@@ -91,20 +105,6 @@ page asset(asset: Asset) {
 									}
 									span {
 										"$~nDecimals(asset.token.data.prevDay,2,true)"
-									}
-								}
-								
-								badge[class="bg-dark d-flex align-items-center fs-7 text-white fw-bold py-2 mb-1"] {
-									span[class="me-auto"] {
-										"Change:"
-									}
-									badge[class="~bgColor(asset.value-asset.value24h) me-2"] {
-										icon("~arrowIcon(asset.value-asset.value24h)")
-										"$~nDecimals(absolute(asset.value-asset.value24h),2,true)"
-									}
-									badge[class="~bgColor(asset.token.data.change)"] {
-										icon("~arrowIcon(asset.token.data.change)")
-										"~nDecimals(absolute(asset.token.data.change),2,true)%"
 									}
 								}
 								
@@ -140,8 +140,8 @@ page asset(asset: Asset) {
 						
 							col("col-12 col-md-6 col-lg-12") {
 							
-								badge[class="bg-darker w-100 px-2 py-2 mb-1 lh-1-25 text-center fs-4 text-muted"] {
-									"Other portfolios:"
+								badge[class="bg-darker w-100 px-2 py-2 mb-1 lh-1-25 text-center fs-4 text-white"] {
+									"In Other portfolios:"
 								}
 							
 								if((from Asset as a where a.portfolio.user = ~currentUser() and a.token = ~asset.token and a != ~asset).length == 0) {
@@ -169,19 +169,23 @@ page asset(asset: Asset) {
 						}
 					}
 				}
+				navigate(portfolio("view",asset.portfolio))[class="fs-7 text-muted"] {
+					icon("bi bi-arrow-left")[class="me-2"]
+					"Back to portfolio"
+				}
 			}
 			
 			col("col-12 col-lg-8 col-xl-9 mb-3") {
 				card[class="border-0"] {
 					card_body[class="p-3 rounded-3"] {
 						
-						badge[class="bg-darker w-100 py-2 lh-1-25 fs-4 text-secondary"] {
+						badge[class="bg-darker w-100 py-2 lh-1-25 fs-4 text-white"] {
 							"Price/Volume Chart"
 						}
 						
 						div[id="asset-chart", data-symbol=asset.token.symbol] {
 							figure[class="highcharts-figure mb-0"] {
-								div[class="w-100 chart-spinner-container"]	{
+								div[class="w-100 chart-spinner-container asset-spinner"]	{
 									div[class="spinner-grow text-light", role="status"] {
 										span[class="visually-hidden"] {
 											"Loading..."
@@ -191,11 +195,9 @@ page asset(asset: Asset) {
 		
 								div[id="asset-chart-container", class="w-100 h-400px"]
 							}
-							col("col-12 mt-2") {
-								row[class="mx-1 text-center fs-9"] {
-									for(index: Int from 0 to intervals.length) {
-										badge_interval(index==interval_selected, intervals.get(index), "asset")
-									}
+							col("col-12 text-center mt-2") {
+								for(index: Int from 0 to intervals.length) {
+									badge_interval(index==interval_selected, intervals.get(index), "asset")
 								}
 							}
 						}

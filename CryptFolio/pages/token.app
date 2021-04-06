@@ -15,7 +15,7 @@ page tokens {
 		var newToken := Token{}
 		
 		pageTitle {
-			"Manage tokens"
+			"Manage Tokens"
 		}
 		
 		pageSubTitle {
@@ -30,6 +30,7 @@ page tokens {
 							"Add New Token"
 						}
 					}
+					
 					card_body[class="rounded-3 pb-2"] {
 						form {
 							form_row {
@@ -64,7 +65,7 @@ page tokens {
 									submit action {
 										newToken.save();
 									}[class="btn btn-sm btn-success"] {
-										"Add"	
+										"Add Token"	
 									}
 								}
 							}
@@ -80,32 +81,34 @@ page tokens {
 							"Existing Tokens"
 						}
 					}
-					card_body[class="p-0 mb-1"] {
+					card_body[class="p-3"] {
 						form {
-							list[class="ps-0 mb-0 pt-2 pb-1"] {
+							list[class="p-0 m-0"] {
 								for(token : Token order by token.name asc) {
-									listitem[class="list-group-item bg-lighter border-lighter mb-0 py-1"] {
-										div[class="input-group"] {
-											input(token.name)[class="form-control form-control-sm bg-darkest border-darkest text-white me-1"]
-											input(token.symbol)[class="form-control form-control-sm bg-darkest border-darkest text-white me-1"]
-					
-											submit action {
-												for(asset : Asset) {
-													if(asset.token.name == token.name) {
-														asset.portfolio := null;
-														asset.token := null;
-														asset.delete();
+									listitem[class="list-group-item border-0 rounded-3 bg-darkest mb-1 py-2 px-2"] {
+										span[class="d-flex align-items-center"] {
+											div[class="input-group"] {
+												input(token.name)[class="form-control form-control-sm bg-darker border-0 text-white me-1 fs-8"]
+												input(token.symbol)[class="form-control form-control-sm bg-darker border-0 text-white me-1 fs-8"]
+						
+												submit action {
+													for(asset : Asset) {
+														if(asset.token.name == token.name) {
+															asset.portfolio := null;
+															asset.token := null;
+															asset.delete();
+														}
 													}
+													token.delete();
+												}[class="btn btn-sm bg-danger text-white me-1 button fs-8"] {
+													"Delete"
 												}
-												token.delete();
-											}[class="btn btn-sm bg-danger text-white p-1 me-1"] {
-												icon("bi-trash-fill")
-											}
-											
-											submit action {
-												token.save();
-											}[class="btn btn-sm bg-success text-white p-1"] {
-												icon("bi-check")
+												
+												submit action {
+													token.save();
+												}[class="btn btn-sm bg-success text-white button fs-8"] {
+													"Save"
+												}
 											}
 										}
 										validate((token.name != ""), "Please give a name to the token")

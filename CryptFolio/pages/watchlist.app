@@ -2,62 +2,70 @@ module pages/watchlist
 
 page watchlist() {
 	
-	init {
-		fetchData();
-	}
-	
 	var tokens := (from Token as token order by token.name asc)
+	var filteredTokens := tokens
 	
 	main()
 	
 	define body() {
 		
-		pageTitle {
+		pageTitle[class="d-flex justify-content-between align-items-center"] {
 			"Watchlist"
+			
+		div {
+        	span[class="d-none d-sm-block d-flex align-items-center"] {
+        		badge[class="btn bg-lighter fs-7 py-2 ms-2 filter-button", onclick := action {
+					filteredTokens := [ token | token in tokens where token.data.change > 0.0 order by token.data.change desc];
+					replace(ph_tokens);
+				}] {
+					span[class="d-none d-sm-block"] {
+						"Gainers"	
+					}
+					icon("bi-hand-thumbs-up d-sm-none")
+				}
+				badge[class="btn bg-lighter fs-7 py-2 ms-2 filter-button", onclick := action {
+					filteredTokens := [ token | token in tokens where token.data.change < 0.0 order by token.data.change asc];
+					replace(ph_tokens);
+				}] {
+					span[class="d-none d-sm-block"] {
+						"Losers"	
+					}
+					icon("bi-hand-thumbs-down d-sm-none")
+				}
+				badge[class="btn bg-lighter fs-7 py-2 filter-button ms-2", onclick := action {
+					filteredTokens := [ token | token in tokens order by token.data.volume desc];
+					replace(ph_tokens);
+				}] {
+					span[class="d-none d-sm-block"] {
+						"Volume"	
+					}
+					icon("bi-layers d-sm-none")
+				}
+				if(loggedIn()) {
+					badge[class="btn bg-lighter text-warning fs-8 py-2 ms-2 filter-button", onclick := action {
+						filteredTokens := [ token | token in tokens where token.favorite order by token.name asc];
+						replace(ph_tokens);
+					}] {
+						icon("bi-star-fill")
+					}
+				}	
+				badge[class="btn bg-lighter fs-8 py-2 ms-2 filter-button", onclick := action {
+					filteredTokens := tokens;
+					replace(ph_tokens);
+				}] {
+					icon("bi-arrow-clockwise")
+				}	
+        	}
 		}	
+		}
 		
 		pageSubTitle {
-			"The lists below includes statistics of all coins available on this platform. The list can be sorted by the biggest gainers, losers, and highest volume."
+			"The list below includes statistics of all coins available on this platform. You can search for a coin or sort the list by the coin with the highest gain, loss, or volume."
 		}
 		
 		row[class="mt-4 mb-3"] {
 			col("col-12") {
 				card[class="border-0"] {
-					card_header[class="fs-3 d-flex justify-content-between align-items-center"] {
-						span[class="fw-bold me-auto"] {
-							"Tokens"
-						}
-						span {
-							badge[class="btn bg-secondary me-2 fs-7 filter-button", onclick := action {
-								tokens := (from Token as token order by token.data.change desc);
-								replace(ph_tokens);
-							}] {
-								span[class="d-none d-sm-block"] {
-									"Top Gainers"	
-								}
-								icon("bi-hand-thumbs-up d-sm-none")
-							}
-							badge[class="btn bg-secondary me-2 fs-7 filter-button", onclick := action {
-								tokens := (from Token as token order by token.data.change asc);
-								replace(ph_tokens);
-							}] {
-								span[class="d-none d-sm-block"] {
-									"Top Losers"	
-								}
-								icon("bi-hand-thumbs-down d-sm-none")
-							}
-							badge[class="btn bg-secondary fs-7 filter-button", onclick := action {
-								tokens := (from Token as token order by token.data.volume desc);
-								replace(ph_tokens);
-							}] {
-								span[class="d-none d-sm-block"] {
-									"Volume"	
-								}
-								icon("bi-layers d-sm-none")
-							}
-						}
-						
-					}
 					card_body[class="rounded-3 py-2"] {
 						row[class="mb-1"] {
 							col("col") {
@@ -84,15 +92,17 @@ page watchlist() {
 						}
 						
 						placeholder ph_tokens {
-							for(token : Token in tokens) {
+							for(token : Token in filteredTokens) {
 								row[class="mb-1"] {
 									col("col") {
 										badge[class="d-flex align-items-center"] {
-											span {
-												if(token.favorite) {
-													icon("bi-star-fill me-2 text-warning")
-												}else{
-													icon("bi-star me-2")
+											if(loggedIn()) {
+												span {
+													if(token.favorite) {
+														icon("bi-star-fill me-2 text-warning")
+													}else{
+														icon("bi-star me-2")
+													}
 												}
 											}
 											span[class="d-none d-lg-block"] {
