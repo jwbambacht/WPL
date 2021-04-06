@@ -10,16 +10,30 @@ imports helper
 imports templates
 imports entities
 
-// imports services
+imports services
+imports serviceFunctions
 
-section application init.
+imports errorPages
+
+section application init
 
 init {
 	// ADMIN credentials: 	username: admin, password: Administrator123, email is a dummy
-	User{}.initAdmin();
+	User{
+		username := "admin", 
+		password := ("Administrator123" as Secret).digest(), 
+		email := "dummy@dummy.com",
+		admin := true, 
+		activated := true
+	}.save();
 	
-	// USER credentials: 	username: wpl, password: Wpl2021pw, email is a dummy								
-	User{username := "wpl", password := ("Wpl2021pw" as Secret).digest(), email := "dummy@dummy.com", activated := true}.save();
+	// USER credentials: 	username: wpluser, password: Wpl2021pw, email is a dummy								
+	User{
+		username := "wpluser", 
+		password := ("Wpl2021pw" as Secret).digest(), 
+		email := "dummy@dummy.com", 
+		activated := true
+	}.save();
 	
 	// Some of the high listed tokens are added to the system
 	Token{}.initToken("Aave", "AAVE");
@@ -66,11 +80,26 @@ init {
 	Token{}.initToken("VeChain", "VET");
 	Token{}.initToken("yearn.finance", "YFI");
 	Token{}.initToken("Zcash", "ZEC");
+	
+	// Add dummy portfolio's to both users
+	var adminPortfolio := Portfolio{name := "My Wallet", user := findUser("admin"), cost := 1200.0};
+	adminPortfolio.addAsset(Asset{token := getToken("BTC"), balance := 0.33, order := 0});
+	adminPortfolio.addAsset(Asset{token := getToken("ETH"), balance := 2.5, order := 1});
+	adminPortfolio.addAsset(Asset{token := getToken("XRP"), balance := 10000.0, order := 2});
+	adminPortfolio.save();
+	
+	var userPortfolio := Portfolio{name := "Binance", user := findUser("wpl"), cost := 375.0};
+	userPortfolio.addAsset(Asset{token := getToken("DOGE"), balance := 10000.0, order := 0});
+	userPortfolio.addAsset(Asset{token := getToken("ADA"), balance := 100.0, order := 1});
+	userPortfolio.addAsset(Asset{token := getToken("EOS"), balance := 12.0, order := 2});
+	userPortfolio.addAsset(Asset{token := getToken("XRP"), balance := 1200.0, order := 3});
+	userPortfolio.save();
+	
 }
 
 section pages
 
-imports pages/root				// public
+imports pages/root				// public / authenticated
 imports pages/auth				// public
 imports pages/account 			// authenticated
 
@@ -78,28 +107,3 @@ imports pages/portfolio			// authenticated
 imports pages/asset				// authenticated
 imports pages/watchlist			// authenticated
 imports pages/token				// admin
-
-override page accessDenied {
-	init {
-		return root();
-	}
-}
-
-define ignore-access-control override page pagenotfound() {
-	main()
-	
-	define body() {
-		pageTitle[class="text-center fs-100pt"] {
-			"404"
-  		}
-  	
-  		pageSubTitle[class="text-center"] {
-  			"The page you are looking for was not found."
-	  		br
-  			br
-  			navigate(root())[class="text-muted"] {
-  				"Return the the Dashboard"
-  			}
-  		}
-  	}
-}
