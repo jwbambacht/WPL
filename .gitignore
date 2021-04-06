@@ -14,3 +14,4 @@ clean-project.xml
 reposearch clean-project.xml.launch
 Servers/
 tomcat/
+*.sublime*
