@@ -120,9 +120,16 @@ nav {
 
 /* Highchart */
 .chart-spinner-container {
-	position: absolute; 
-	z-index: 100;
-	margin-left: calc(50% - 32px);
+  position: absolute; 
+  z-index: 100;
+}
+.asset-spinner {
+    margin-left: calc(50% - 32px);
+}
+.portfolio-spinner {
+    margin-right: auto; 
+    margin-left: auto; 
+    padding-right: 32px;
 }
 #portfolio-chart * .chart-spinner-container {
 	margin-top: 100px; 

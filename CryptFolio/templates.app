@@ -1,6 +1,6 @@
 module templates
 
-imports tmpls/sections
+imports sections
 
 override template main() {
 	title { 
@@ -60,6 +60,11 @@ template navbar() {
       						}
       					}
       				}
+					listitem[class="nav-item"] {
+						navigate(watchlist())[class = "nav-link", data-page="watchlist"] {
+  							"Watchlist"
+  						}
+  					}
       				
       				if(isAdmin()) {
       					listitem[class="nav-item"] {
@@ -140,11 +145,11 @@ template badge {
 
 template badge_interval(selected: Bool, interval: String, datapage: String) {
 	if(selected == true) {
-		badge[class="col btn btn-sm btn-dark me-1 mb-1 change-chart-interval px-1 text-white selected-interval", data-interval=interval, data-page=datapage, all attributes] {
+		badge[class="col btn btn-sm btn-dark me-2 mb-1 change-chart-interval text-white selected-interval", data-interval=interval, data-page=datapage, all attributes] {
 			"~interval"
 		}
 	}else{
-		badge[class="col btn btn-sm btn-dark me-1 mb-1 change-chart-interval px-1 text-muted", data-interval=interval, data-page=datapage, all attributes] {
+		badge[class="col btn btn-sm btn-dark me-2 mb-1 change-chart-interval text-muted", data-interval=interval, data-page=datapage, all attributes] {
 			"~interval"
 		}
 	}
@@ -153,24 +158,6 @@ template badge_interval(selected: Bool, interval: String, datapage: String) {
 template icon(name: String) {
 	<i class="bi "+name all attributes></i>
 }
-
-// template card {
-// 	div[class="card bg-lighter rounded-3 text-white p-0", all attributes] {
-// 		elements
-// 	}
-// }
-// 
-// template card_header {
-// 	div[class="card-header bg-lighter", all attributes] {
-// 		elements
-// 	}
-// }
-// 
-// template card_body {
-// 	div[class="card-body bg-lighter", all attributes] {
-// 		elements	
-// 	}
-// }
 
 // Cards
 template card {
@@ -367,7 +354,9 @@ template listitem_asset(asset: Asset) {
 			
 				input(asset.order)[class="hidden-input",type="hidden", data-symbol=asset.token.symbol]
 			}
-			
+		}
+		
+		div[class="text-center"] {
 			validate((asset.balance) >= 0.0, "Balance should be bigger or equal to 0")
 		}
 	}
@@ -380,10 +369,11 @@ template listitem_asset_new(p: Portfolio) {
 	
 	var usedTokens := [a.token | a in p.assets]
 	var tokens := (from Token as token order by name asc)
-	
-	listitem[class="list-group-item bg-darkest border-darkest rounded-3 text-white mb-1 d-flex align-items-center pe-0 ps-2"] {
 
-		if(usedTokens.length < (from Token).length) {
+	if(usedTokens.length < (from Token).length) {
+		
+		listitem[class="list-group-item bg-darkest border-darkest rounded-3 text-white mb-1 d-flex align-items-center pe-0 ps-2"] {
+			
 			if(usedTokens.length > 0) {
 				input(asset.token, (from Token as token where token not in ~usedTokens order by name asc))[class="form-select form-select-sm select-asset-new bg-darker border-0 text-white me-auto fs-7", not null]
 			}else{
@@ -394,15 +384,19 @@ template listitem_asset_new(p: Portfolio) {
 				input(asset.balance)[class="form-control form-control-sm bg-darker border-0 text-white fs-8"]
 			}
 				
-			span[class="btn btn-sm btn-success border-0 text-white ms-2 me-2 w-48px fs-7", onclick := action {
+			submit action {
 				asset.portfolio := p;
 				asset.order := p.assets.length-1;
 				p.save();
-			}] { "Add" }
-			
-			validate((asset.balance) >= 0.0, "Balance should be bigger or equal to 0")
-			validate((asset.token) != null, "")
-		}else{
+			}[class="btn btn-sm btn-success border-0 text-white ms-2 me-2 w-48px fs-7"] { 
+				"Add" 
+			}
+		}
+		
+		validate((asset.balance) >= 0.0, "Balance should be bigger or equal to 0")
+		validate((asset.token) != null, "")
+	}else{
+		listitem[class="list-group-item bg-darkest border-darkest rounded-3 text-white mb-1 d-flex align-items-center pe-0 ps-2"] {
 			"All tokens already included in your portfolio"
 		}
 	}
@@ -443,7 +437,7 @@ template portfolio_block(p: Portfolio) {
 			}
 			card_body[class="p-0"] {
 				list[class="list-group list-group-flush bg-lighter portfolio-list"] {
-					for(asset : Asset in p.assets where asset.active == true && asset.portfolio.user == currentUser() order by asset.order asc) {
+					for(asset : Asset in p.assets where asset.active == true && asset.portfolio.user == currentUser() order by asset.order asc limit 3) {
 						listitem[class="list-group-item bg-lighter text-white portfolio-row", data-symbol=asset.token.symbol, data-balance=asset.balance, data-price=""] {
 							row {
 								col("col-12 d-flex justify-content-between") {
@@ -466,12 +460,16 @@ template portfolio_block(p: Portfolio) {
 						}
 					}
 					
-					listitem[class="list-group-item bg-lighter d-flex"] {
-						navigate(portfolio("edit",p))[class="text-muted fs-7 me-auto"] {
+					listitem[class="list-group-item bg-lighter d-flex justify-content-between text-muted fs-7"] {
+						navigate(portfolio("edit",p))[class="me-auto text-muted"] {
 							icon("bi-pencil-fill")[class="me-2"] 
 							"Edit"
 						}
-						navigate(portfolio("view",p))[class="text-white fs-7"] { 
+						span[class="me-auto"] {
+							output([ x | x in p.assets where x.active == true && x.portfolio.user == currentUser()].length) 
+							" assets in total"
+						}
+						navigate(portfolio("view",p))[class="text-muted"] { 
 							"Open"
 							icon("bi-arrow-right")[class="ms-2"]
 						}
@@ -492,7 +490,9 @@ template landingPageBlock() {
 	}
 }
 
-template activateAccountEmail(user: User) {
+template activateAccountEmail(user: User, baseURL: String) {
+	var url := baseURL + "/activateAccount/~user.authToken"
+	
 	row {
 		col("col-12") {
 			h1 {
@@ -501,14 +501,14 @@ template activateAccountEmail(user: User) {
 			
 			"You can activate your account by clicking " 
 			
-			navigate(activateAccount(user.authToken)) {
+			navigate(url(url)) {
 				"here"
 			}
 			
 			" or by browsing to " 
 			br 
 			br
-			output(navigate(activateAccount(user.authToken)))
+			output(url)
 		}
 	}
 }
