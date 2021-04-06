@@ -1,5 +1,3 @@
-
-
 body {
   background-color: #343a40;
 }
@@ -124,8 +122,16 @@ nav {
 .chart-spinner-container {
   position: absolute; 
   z-index: 100;
-  margin-left: calc(50% - 32px);
 }
+.chart-spinner-container.asset-spinner {
+    margin-left: calc(50% - 32px);
+}
+.chart-spinner-container.portfolio-spinner {
+    margin-right: auto; 
+    margin-left: auto; 
+    padding-right: 32px;
+}
+
 #portfolio-chart * .chart-spinner-container {
   margin-top: 100px; 
   height: 200px;
@@ -139,6 +145,9 @@ nav {
 }
 .highcharts-button {
     display: none;
+}
+.highcharts-range-selector-group {
+  display: none !important;
 }
 
 /* Custom */
@@ -166,4 +175,11 @@ nav {
 }
 .select-asset-new {
   width: calc(100% - 100px - 48px - 22px);
+}
+.searchbar {
+  max-width: 400px;
+}
+.search::placeholder {
+  font-style: italic;
+  font-size: 7pt;
 }

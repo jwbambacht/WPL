@@ -1,0 +1,2010 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"interval",
+				"intervalSelector"
+			],
+			[
+				"handle",
+				"handleChangeAsset"
+			],
+			[
+				"handleC",
+				"handleChangeAsset"
+			],
+			[
+				"portf",
+				"getPortfolioData"
+			],
+			[
+				"getPo",
+				"getPortfolioData"
+			],
+			[
+				"handleS",
+				"handleState"
+			],
+			[
+				"password",
+				"password_confirmation"
+			],
+			[
+				"check",
+				"checkLoginStatus"
+			],
+			[
+				"reg",
+				"registrationSuccess"
+			],
+			[
+				"registr",
+				"registrationSuccess"
+			],
+			[
+				"seria",
+				"serializedObject"
+			],
+			[
+				"hidden",
+				"hidden_by_count"
+			],
+			[
+				"milea",
+				"mileage_form"
+			],
+			[
+				"bins",
+				"binsedges"
+			],
+			[
+				"anom",
+				"anomalous_regions"
+			],
+			[
+				"columns",
+				"columns_to_remove"
+			],
+			[
+				"col",
+				"columns_to_remove"
+			],
+			[
+				"non_",
+				"non_fraud_ratio"
+			],
+			[
+				"shopper",
+				"shopperinteraction"
+			],
+			[
+				"sugge",
+				"suggested_candidates_plot"
+			],
+			[
+				"experimen",
+				"experiments_one_enabled"
+			],
+			[
+				"over",
+				"overwriteModel"
+			],
+			[
+				"exp",
+				"experiments_one_enabled"
+			],
+			[
+				"calcul",
+				"calculate_mrr_mpc"
+			],
+			[
+				"button",
+				"buttonIdentifier\tconst"
+			],
+			[
+				"trans",
+				"transactionRequests\tproperty"
+			],
+			[
+				"fullname",
+				"fullname"
+			],
+			[
+				"notifi",
+				"notificationsCheck"
+			],
+			[
+				"account",
+				"accountHeader\tconst"
+			],
+			[
+				"fullName",
+				"fullNameValue\tconst"
+			],
+			[
+				"emailadd",
+				"emailaddress"
+			],
+			[
+				"get",
+				"getFullYear\tmethod"
+			],
+			[
+				"fu",
+				"fullName\tproperty"
+			],
+			[
+				"On",
+				"OnUndefined\tfunction"
+			],
+			[
+				"WATER",
+				"WATER_DEFENCE_TIME"
+			],
+			[
+				"HAND",
+				"HANDGRIP_WELDING"
+			],
+			[
+				"DO",
+				"DOCUMENT_POCKET_WELDING"
+			],
+			[
+				"REF",
+				"REFLECTION"
+			],
+			[
+				"REFL",
+				"REFLECTION_TYPE_SELECT"
+			],
+			[
+				"REFLE",
+				"REFLECTION_MOUNTING"
+			],
+			[
+				"HF",
+				"HF_STRAP_2400kg_WELDING"
+			],
+			[
+				"LNE",
+				"LENGTH_INPUT"
+			],
+			[
+				"OP",
+				"open_zoom"
+			],
+			[
+				"PEE",
+				"PEES_MOUNTING"
+			],
+			[
+				"MOU",
+				"BOLT_AND_NUT_MOUNTING"
+			],
+			[
+				"BOL",
+				"BUCKLE_BOLT_AND_NUT"
+			],
+			[
+				"HOOK",
+				"HOOK_STANDARD"
+			],
+			[
+				"BUCKLE_",
+				"BUCKLE_OVERCENTRE"
+			],
+			[
+				"HUCK",
+				"HUCKBOLT"
+			],
+			[
+				"STANDA",
+				"STANDARD_RUNNER"
+			],
+			[
+				"STAN",
+				"STANDARD_RUNNER_BOOL"
+			],
+			[
+				"LENGT",
+				"LENGTH_INPUT"
+			],
+			[
+				"HF_STRA",
+				"HF_STRAP_1300kg_WELDING"
+			],
+			[
+				"HE",
+				"HEIGHT_INPUT"
+			],
+			[
+				"NP",
+				"NPILLARS_SELECT"
+			],
+			[
+				"HF_STRAP",
+				"HF_Strap_1300kg"
+			],
+			[
+				"PVC",
+				"PVC_WELDING"
+			],
+			[
+				"LEN",
+				"LENGTH_INPUT"
+			],
+			[
+				"PILLAR",
+				"PILLAR_WELDING"
+			],
+			[
+				"PILLAR_",
+				"PILLAR_REINFORCEMENT"
+			],
+			[
+				"br",
+				"vehicleBrand"
+			],
+			[
+				"vehicle",
+				"vehicleBrand"
+			],
+			[
+				"vehicl",
+				"vehicleType"
+			],
+			[
+				"water",
+				"waterdefence"
+			],
+			[
+				"time_H",
+				"time_HF2400_welding"
+			],
+			[
+				"buck",
+				"bucklemounted"
+			],
+			[
+				"customerC",
+				"customerComment"
+			],
+			[
+				"vehi",
+				"vehicleBrand"
+			],
+			[
+				"veh",
+				"vehicleBrand"
+			],
+			[
+				"cust",
+				"customerCompany"
+			],
+			[
+				"wa",
+				"waterdefence"
+			],
+			[
+				"buckl",
+				"bucklemounted"
+			],
+			[
+				"runners",
+				"runnersMounted"
+			],
+			[
+				"custom",
+				"customerBrand"
+			],
+			[
+				"ns-",
+				"ns-list-from"
+			],
+			[
+				"badge",
+				"badge-secondary"
+			],
+			[
+				"bad",
+				"badge-secondary"
+			],
+			[
+				"tex",
+				"text-white"
+			],
+			[
+				"list-group",
+				"list-group-item"
+			],
+			[
+				"number_of",
+				"number_of_episodes"
+			],
+			[
+				"align",
+				"align-items-center"
+			],
+			[
+				"deli",
+				"Deliverable"
+			],
+			[
+				"deliv",
+				"deliverables-list"
+			],
+			[
+				"delive",
+				"deliverable"
+			],
+			[
+				"error",
+				"error_reporting"
+			],
+			[
+				"new_design",
+				"new_design_cost"
+			],
+			[
+				"colo-ll",
+				"color-ll-orange"
+			],
+			[
+				"htmls",
+				"htmlspecialchars_decode"
+			],
+			[
+				"ks_",
+				"ks_white"
+			],
+			[
+				"ks",
+				"ks_black"
+			],
+			[
+				"ex",
+				"exspray_white"
+			],
+			[
+				"back",
+				"background-ll-black"
+			],
+			[
+				"background",
+				"background-ll-orange"
+			],
+			[
+				"backgrou",
+				"background-repeat\tproperty"
+			],
+			[
+				"fetch",
+				"fetchObject"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "cryptfolio-react/src/App.js",
+			"settings":
+			{
+				"buffer_size": 8369,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/PortfolioView.jsx",
+			"settings":
+			{
+				"buffer_size": 22270,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/App.css",
+			"settings":
+			{
+				"buffer_size": 2992,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/Asset.jsx",
+			"settings":
+			{
+				"buffer_size": 18550,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/elements/Chart.jsx",
+			"settings":
+			{
+				"buffer_size": 8842,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/elements/UIElements.js",
+			"settings":
+			{
+				"buffer_size": 721,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/elements/Card.js",
+			"settings":
+			{
+				"buffer_size": 413,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "import React from 'react';"
+			}
+		},
+		{
+			"file": "cryptfolio-react/public/assets/css/custom.css",
+			"settings":
+			{
+				"buffer_size": 2740,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/PortfolioEdit.jsx",
+			"settings":
+			{
+				"buffer_size": 22399,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/Watchlist.jsx",
+			"settings":
+			{
+				"buffer_size": 12977,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/Register.js",
+			"settings":
+			{
+				"buffer_size": 8358,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "Register.js"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/Dashboard.jsx",
+			"settings":
+			{
+				"buffer_size": 13461,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/Login.jsx",
+			"settings":
+			{
+				"buffer_size": 8061,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/Portfolios.jsx",
+			"settings":
+			{
+				"buffer_size": 12991,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/Account.jsx",
+			"settings":
+			{
+				"buffer_size": 14679,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "Account.jsx"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/Tokens.jsx",
+			"settings":
+			{
+				"buffer_size": 12139,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "Token.jsx"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/partials/Footer.jsx",
+			"settings":
+			{
+				"buffer_size": 673,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/components/partials/Header.jsx",
+			"settings":
+			{
+				"buffer_size": 5463,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/services/authservice.js",
+			"settings":
+			{
+				"buffer_size": 4896,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "authservice.js"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/services/userservice.js",
+			"settings":
+			{
+				"buffer_size": 3552,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/services/tokenservice.js",
+			"settings":
+			{
+				"buffer_size": 3518,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "tokenservice.js"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/services/portfolioservice.js",
+			"settings":
+			{
+				"buffer_size": 4593,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "portfolioservice.js"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/services/assetservice.js",
+			"settings":
+			{
+				"buffer_size": 4606,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/utils/helper.jsx",
+			"settings":
+			{
+				"buffer_size": 1226,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cryptfolio-react/src/utils/jqfunctions.js",
+			"settings":
+			{
+				"buffer_size": 318,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"term",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"lint",
+				"ESLint Fix: Fix this file"
+			],
+			[
+				"ter",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"package control:in",
+				"Package Control: Install Package"
+			],
+			[
+				"package control",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"termi",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"terminus",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"termin",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control",
+				"Package Control: Install Package"
+			],
+			[
+				"Package ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Install Pac",
+				"Package Control: Install Package"
+			],
+			[
+				"Install ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package",
+				"Package Control: Remove Package"
+			],
+			[
+				"Install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 464.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/jbambacht/git/WPL/cryptfolio-react",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/public",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/public/assets",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/public/assets/js",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components/elements",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components/partials",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/utils"
+	],
+	"file_history":
+	[
+		"/Users/jbambacht/git/WPL/cryptfolio-react/package.json",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components/Asset.jsx",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/.gitignore",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/.env",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/.eslintrc.json",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/.hcscript",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/.babelrc",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/webpack.config.js",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/App.css",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/public/index.html",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/public/assets/js/highcharts.theme.js",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/public/assets/js/fetchData.js",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/public/assets/js/highcharts-data.js",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/public/assets/js/highstock.js",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components/partials/Footer.jsx",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components/Portfolios.jsx",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components/Portfolio.jsx",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components/watchlist.jsx",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components/Home.jsx",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components/Dashboard.jsx",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/services/userservice.js",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/constants.js",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/context/auth.js",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/PrivateRoute.jsx",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components/Preferences.jsx",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components/partials/Main.jsx",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/index.js",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components/Admin.jsx",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/.env",
+		"/Users/jbambacht/git/WPL/cryptfolio-react/src/components/Logout.jsx",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/index.tsx",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/App.css",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/components/Dashboard.tsx",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/components/Preferences.tsx",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/services/userService.ts",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/services/userservice.ts",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/service/userservice.ts",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/service/user.ts",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/assets/css/bootstrap-icons.css",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/public/index.html",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/helper.tsx",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/App.tsx",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/.eslintrc.js",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/node_modules/jquery/dist/jquery.min.js",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/node_modules/bootstrap/dist/css/bootstrap.min.css",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/node_modules/bootstrap/package.json",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/server.js",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/package-lock.json",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/setupProxy.ts",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/react-app-env.d.ts",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/types.ts",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/components/AddTodo.tsx",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/type.d.ts",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/components/TodoItem.tsx",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/tsconfig.json",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/.prettierrc.js",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/setupTests.ts",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/reportWebVitals.ts",
+		"/Users/jbambacht/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Users/jbambacht/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/yarn.lock",
+		"/Users/jbambacht/git/WPL/react-cryptfolio/src/index.css",
+		"/Users/jbambacht/themes/PRS01/templates/_partials/header.tpl",
+		"/Users/jbambacht/modules/ttcategoryslider/translations/es.php",
+		"/Users/jbambacht/themes/child_PRS01/templates/_partials/header.tpl",
+		"/Users/jbambacht/themes/PRS01/modules/ps_categorytree/views/templates/hook/ps_categorytree.tpl",
+		"/Users/jbambacht/themes/classic/modules/ps_categorytree/views/templates/hook/ps_categorytree.tpl",
+		"/Users/jbambacht/themes/PRS01/modules/ps_mainmenu/ps_mainmenu.tpl",
+		"/Users/jbambacht/themes/classic/modules/ps_mainmenu/ps_mainmenu.tpl",
+		"/Users/jbambacht/themes/PRS01/templates/checkout/_partials/header.tpl",
+		"/Users/jbambacht/themes/classic/templates/_partials/header.tpl",
+		"/Users/jbambacht/themes/classic/templates/checkout/_partials/header.tpl",
+		"/Users/jbambacht/presta17/themes/classic/modules/ps_mainmenu/ps_mainmenu.tpl",
+		"/Users/jbambacht/presta17/themes/classic/templates/checkout/_partials/header.tpl",
+		"/Users/jbambacht/presta17/themes/classic/templates/_partials/header.tpl",
+		"/Users/jbambacht/presta17/modules/ps_mbo/views/templates/admin/include/menu_top.tpl",
+		"/Users/jbambacht/presta17/admin123/themes/default/template/page_header_toolbar.tpl",
+		"/Users/jbambacht/modules/ttblocksearch/translations/es.php",
+		"/Users/jbambacht/modules/ttblocksearch/translations/it.php",
+		"/Users/jbambacht/modules/ttcategoryslider/translations/it.php",
+		"/Users/jbambacht/modules/redsys/views/templates/admin/company/information_es.tpl",
+		"/Users/jbambacht/modules/ps_themecusto/translations/es.php",
+		"/Users/jbambacht/modules/ttcategoryfeature/translations/es.php",
+		"/Users/jbambacht/modules/gsitemap/it.php",
+		"/Users/jbambacht/modules/cronjobs/translations/it.php",
+		"/Users/jbambacht/modules/ps_themecusto/translations/it.php",
+		"/Users/jbambacht/modules/netreviews/translations/it.php",
+		"/Users/jbambacht/modules/codfee/translations/it.php",
+		"/Users/jbambacht/modules/ps_checkout/translations/it.php",
+		"/Users/jbambacht/modules/netreviews/it.php",
+		"/Users/jbambacht/modules/ps_mbo/views/templates/admin/include/menu_top.tpl",
+		"/Users/jbambacht/modules/ps_mbo/ps_mbo.php",
+		"/Users/jbambacht/modules/tttoplink/views/templates/hook/tttoplink.tpl",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 2/vending/vending.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 3/haggle.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 3/garage.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 2/branching_bisim/choiceS.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 2/branching_bisim/choiceT.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 2/vending1.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 2/vending2.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/system-validation.sublime-project",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Week 2/vending/vending2.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Test/choiceT.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Test/choiceS.mcrl2",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Test/mcrl2-mode.el",
+		"/Users/jbambacht/git/system-validation/Programming Assignments/Test/untitled",
+		"/Users/jbambacht/Library/Caches/Transmit/D0B0252F-7615-4185-88AE-F18DF2D90D4E/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/registratie/classes/User.class.php",
+		"/Users/jbambacht/Library/Caches/Transmit/1C08E8CB-7E04-4DB1-B332-963267F0DD5C/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/registratie/classes/Trip.class.php",
+		"/Users/jbambacht/Library/Caches/Transmit/0B3CF489-23DB-4F41-8F8E-10F8DBBF682E/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/classes/Util.class.php",
+		"/Users/jbambacht/Library/Caches/Transmit/51CDC7CC-5FD8-4BFE-8E68-21CC7B3AADBC/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/Planner/backend.php",
+		"/Users/jbambacht/Library/Caches/Transmit/1FE7A190-8B36-4676-8D6D-A1A04AB630DD/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/registratie/widgets/app/widget_trip_history.php",
+		"/Users/jbambacht/Library/Caches/Transmit/F3D4FDEB-8997-4794-8E47-D6540D0B2CE1/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/backend.php",
+		"/Users/jbambacht/Library/Caches/Transmit/11F72C65-B7BB-46DD-9A62-4334F62BE967/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/assets/js/custom.js",
+		"/Users/jbambacht/Library/Caches/Transmit/C448F070-3BDD-4CD5-A8A8-37E1E9D96BFB/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/assets/style/custom.css",
+		"/Users/jbambacht/Library/Caches/Transmit/865C70E5-2295-4D47-877A-5A53CF3288AD/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/classes/Course.class.php",
+		"/Users/jbambacht/Library/Caches/Transmit/EDD11ECB-914A-42E8-B8F4-74E3396E32C7/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/classes/Deadline.class.php",
+		"/Users/jbambacht/Library/Caches/Transmit/220637ED-80DC-4027-B418-86CF24C240E5/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/index.php",
+		"/Users/jbambacht/Library/Caches/Transmit/F577AEAD-700C-4CCD-A6A5-08CD39B4DC50/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/includes/nav.php",
+		"/Users/jbambacht/Library/Caches/Transmit/DAD1EEB5-EDB8-4D5A-A481-A8C3F834DC32/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/classes/Deadline.class.php",
+		"/Users/jbambacht/Library/Caches/Transmit/7C45862A-D417-4E0B-9F15-5132C1226E25/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/index.php",
+		"/Users/jbambacht/Library/Caches/Transmit/BCBA303D-7515-4186-A355-3A3CD7BA9F74/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/Planner/index.php",
+		"/Users/jbambacht/Library/Caches/Transmit/9CB221A9-91EE-4D15-A2B9-11C4EECA0554/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/assets/js/custom.js",
+		"/Users/jbambacht/Library/Caches/Transmit/E4C649DE-31ED-442C-9B49-6ED3D84229D7/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/back.php",
+		"/Users/jbambacht/Library/Caches/Transmit/2B2DD588-B448-4BD2-8736-4BB86C83330C/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/registratie/assets/js/widgets/widget_trip_history.js",
+		"/Users/jbambacht/Library/Caches/Transmit/75A51BA0-4D98-439F-9CD0-305D25ED3A73/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/registratie/widgets/app/widget_trip_add.php",
+		"/Users/jbambacht/Library/Caches/Transmit/92A843AA-B542-41E9-A190-4D5D126A1664/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/includes/scripts.php",
+		"/Users/jbambacht/Library/Caches/Transmit/B4159057-B9A4-4C47-914A-044B73852009/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/registratie/assets/js/widgets/widget_trip_add.js",
+		"/Users/jbambacht/Library/Caches/Transmit/3924A17B-0D10-4668-BE80-07B79E89D989/ftp.jbambacht.nl/domains/jbambacht.nl/public_html/deadlines/assets/js/custom.js"
+	],
+	"find":
+	{
+		"height": 48.0
+	},
+	"find_in_files":
+	{
+		"height": 136.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"baseState",
+			"fetched",
+			"page=\"asset\"",
+			"binance",
+			"plotCh",
+			"sort",
+			"forE",
+			"this",
+			"this.",
+			"element",
+			"volumeColor",
+			"map",
+			"class=",
+			"portfol",
+			"class=",
+			"isLoading",
+			"currentType",
+			"class=",
+			"currentTyp",
+			"updatePo",
+			"this.state.asset",
+			"class=",
+			"button",
+			"class=",
+			"useHistory",
+			"useHist",
+			"authser",
+			"class=",
+			"data.ok",
+			"0",
+			"Home",
+			"class=",
+			"block"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 11,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "cryptfolio-react/src/App.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8369,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5411,
+								5411
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 91.0,
+						"translation.y": 1735.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "cryptfolio-react/src/components/PortfolioView.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22270,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2692,
+								2704
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 3.0,
+						"translation.y": 983.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "cryptfolio-react/src/App.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2992,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1699,
+								1699
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1543.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "cryptfolio-react/src/components/Asset.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18550,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14386,
+								14386
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 178.0,
+						"translation.y": 3551.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "cryptfolio-react/src/components/elements/Chart.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8842,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6250,
+								5989
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2514.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "cryptfolio-react/src/components/elements/UIElements.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 721,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								304,
+								304
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "cryptfolio-react/src/components/elements/Card.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 413,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								263,
+								263
+							]
+						],
+						"settings":
+						{
+							"auto_name": "import React from 'react';",
+							"incomplete_sync": null,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "cryptfolio-react/public/assets/css/custom.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2740,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1791,
+								1791
+							],
+							[
+								1836,
+								1836
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1432.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "cryptfolio-react/src/components/PortfolioEdit.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22399,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7257,
+								7257
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5018.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "cryptfolio-react/src/components/Watchlist.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12977,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								461,
+								461
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "cryptfolio-react/src/components/Register.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8358,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								806,
+								806
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Register.js",
+							"incomplete_sync": null,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "cryptfolio-react/src/components/Dashboard.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13461,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7819,
+								7819
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 135.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "cryptfolio-react/src/components/Login.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8061,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1351,
+								1351
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "cryptfolio-react/src/components/Portfolios.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12991,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6176,
+								6176
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 267.0,
+						"translation.y": 1404.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 23,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "cryptfolio-react/src/components/Account.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14679,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2938,
+								2938
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Account.jsx",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 723.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 24,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "cryptfolio-react/src/components/Tokens.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12139,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8409,
+								8409
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Token.jsx",
+							"incomplete_sync": null,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 187.0,
+						"translation.y": 2445.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "cryptfolio-react/src/components/partials/Footer.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 673,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								471,
+								471
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "cryptfolio-react/src/components/partials/Header.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5463,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2842,
+								2573
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 18,
+					"file": "cryptfolio-react/src/services/authservice.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4896,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								310,
+								310
+							]
+						],
+						"settings":
+						{
+							"auto_name": "authservice.js",
+							"incomplete_sync": null,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1110.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "cryptfolio-react/src/services/userservice.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3552,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								88,
+								90
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 314.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "cryptfolio-react/src/services/tokenservice.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3518,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								978,
+								978
+							]
+						],
+						"settings":
+						{
+							"auto_name": "tokenservice.js",
+							"incomplete_sync": null,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 375.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "cryptfolio-react/src/services/portfolioservice.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4593,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3144,
+								3146
+							]
+						],
+						"settings":
+						{
+							"auto_name": "portfolioservice.js",
+							"incomplete_sync": null,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 824.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 22,
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "cryptfolio-react/src/services/assetservice.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4606,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								120,
+								120
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "cryptfolio-react/src/utils/helper.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1226,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1226,
+								1226
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 24,
+					"file": "cryptfolio-react/src/utils/jqfunctions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 318,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								318,
+								318
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 44.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SFTP":
+	{
+		"height": 0.0
+	},
+	"output.Terminus":
+	{
+		"height": 169.0
+	},
+	"output.Terminus 2":
+	{
+		"height": 328.0
+	},
+	"output.Terminus 4":
+	{
+		"height": 276.0
+	},
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 219.0
+	},
+	"pinned_build_system": "",
+	"project": "cryptfolio-react.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"rwe",
+				"routes/web.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 269.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
