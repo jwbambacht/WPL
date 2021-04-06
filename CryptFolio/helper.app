@@ -7,6 +7,29 @@ native class request.Request as Request {
 	static doGet(String) : String 
 }
 
+native class utils.AbstractDispatchServletHelper as DispatchServlet {
+  getResponse(): HttpServletResponse
+}
+native class javax.servlet.http.HttpServletResponse as HttpServletResponse {
+  setStatus( Int )
+}
+
+native class errors.Error as Error {
+	constructor(String, Int)
+	getCode() : Int
+	getMessage() : String
+}
+
+native class errors.ErrorList as ErrorList {
+	constructor()
+	addError(String, Int)
+	addErrors([String], Int)
+	getMessages() : [String]
+	getStatusCode() : Int
+	noErrors() : Bool
+}
+
+
 section data fetching
 
 function fetchData() {
@@ -155,4 +178,8 @@ function nDecimals(value: Float, n: Int, initial: Bool) : Float {
 	}
 	
 	return val;
+}
+
+function cleanPassword(password: Secret): Secret {
+	return password.split("/").concat().split("+").concat().split("-").concat();
 }
