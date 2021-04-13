@@ -18,7 +18,6 @@ const tokenservice = {
             .then(helper.handleResponse)
             .then((data) => {
                 if (data.status == 200) {
-                    console.log('Successfully added token');
                     handleSuccess(data.result, 'add', 'Token successfully added');
                 } else {
                     handleErrors(data.errors, 'add');
@@ -43,10 +42,9 @@ const tokenservice = {
             .then(helper.handleResponse)
             .then((data) => {
                 if (data.status == 200) {
-                    console.log('Successfully added token');
-                    handleSuccess(data.result, tokenObject.id, 'Token successfully saved!');
+                    handleSuccess(data.result, 'update', 'Token successfully saved!');
                 } else {
-                    handleErrors(data.errors, tokenObject.id);
+                    handleErrors(data.errors, 'update');
                 }
             })
             .catch((error) => {
@@ -54,7 +52,7 @@ const tokenservice = {
             });
     },
     removeToken: function (tokenID, handleErrors, handleSuccess) {
-        fetch(process.env.REACT_APP_API_TOKEN_DELETE + '/' + tokenID, {
+        fetch([process.env.REACT_APP_API_TOKEN_DELETE, tokenID].join('/'), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -67,7 +65,6 @@ const tokenservice = {
             .then(helper.handleResponse)
             .then((data) => {
                 if (data.status == 200) {
-                    console.log('Successfully added token');
                     handleSuccess(data.result, 'remove', 'Token successfully removed!');
                 } else {
                     handleErrors(data.errors, tokenID);

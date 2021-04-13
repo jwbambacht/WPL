@@ -44,7 +44,7 @@ const authservice = {
                 password: user.password,
                 password_confirmation: user.password_confirmation,
                 email: user.email,
-                baseURL: process.env.REACT_APP_BASE_URL,
+                baseURL: process.env.REACT_APP_BASE_URL + '/',
             }),
         })
             .then(helper.handleResponse)

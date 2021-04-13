@@ -1,5 +1,5 @@
 const helpers = {
-    handleResponse: function (response: Response) {
+    handleResponse: function (response) {
         return response.text().then((text) => {
             if (response.status == 404) {
                 console.log('404 error');
@@ -10,7 +10,7 @@ const helpers = {
             return text && JSON.parse(text);
         });
     },
-    nDecimals: function (value: number, n: number, initial: boolean) {
+    nDecimals: function (value, n, initial) {
         if (value == 0 && initial) {
             return 0;
         }

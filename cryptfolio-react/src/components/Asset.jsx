@@ -213,7 +213,6 @@ export default class Asset extends Component {
                     <UI.CardHeaderTitle classes="fs-1 me-3">Asset: </UI.CardHeaderTitle>
                     <UI.CardHeaderTitle classes="fs-1 text-secondary">{this.state.token.name}</UI.CardHeaderTitle>
                 </UI.PageTitle>
-                <UI.PageSubTitle>You have added the following portfolios</UI.PageSubTitle>
 
                 {this.state.isLoading && (
                     <UI.Col classes="col-12 text-center py-4">

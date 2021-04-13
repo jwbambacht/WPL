@@ -135,7 +135,7 @@ export default class PortfolioEdit extends Component {
     handleClickRemovePortfolio(e) {
         e.preventDefault();
 
-        if (window.confirm('Are u sure')) {
+        if (window.confirm('Are u sure?')) {
             if (portfolioservice.removePortfolio(this.state.portfolio.id, this.handleErrors, this.handleSuccess)) {
                 setTimeout(() => {
                     this.props.history.push('/portfolios');
@@ -170,8 +170,6 @@ export default class PortfolioEdit extends Component {
         this.setState({
             success: { [type]: message },
         });
-
-        console.log(this.state);
 
         if (type != 'general') {
             this.getData();
@@ -410,88 +408,102 @@ export default class PortfolioEdit extends Component {
                                             )}
                                             <UI.List classes="mb-0 ps-0">
                                                 {this.state.assets.map((asset, index) => (
-                                                    <UI.ListItem
-                                                        classes="asset-list-item bg-darkest text-white mb-1 pe-0 ps-2"
-                                                        key={asset.id}
-                                                    >
-                                                        <div className="d-flex align-items-center lh-1-25">
-                                                            <span className="p-0">
-                                                                {asset.active == true ? (
-                                                                    <span
-                                                                        className="btn btn-sm btn-success px-1 py-0 me-2"
-                                                                        onClick={(event) =>
+                                                    <>
+                                                        <UI.ListItem
+                                                            classes="asset-list-item bg-darkest text-white mb-1 pe-0 ps-2"
+                                                            key={asset.id}
+                                                        >
+                                                            <div className="d-flex align-items-center lh-1-25">
+                                                                <span className="p-0">
+                                                                    {asset.active == true ? (
+                                                                        <span
+                                                                            className="btn btn-sm btn-success px-1 py-0 me-2"
+                                                                            onClick={(event) =>
+                                                                                this.handleChangeAsset(
+                                                                                    event,
+                                                                                    index,
+                                                                                    'active',
+                                                                                )
+                                                                            }
+                                                                        >
+                                                                            <UI.Icon icon="bi-check" />
+                                                                        </span>
+                                                                    ) : (
+                                                                        <span
+                                                                            className="btn btn-sm btn-danger px-1 py-0 me-2"
+                                                                            onClick={(event) =>
+                                                                                this.handleChangeAsset(
+                                                                                    event,
+                                                                                    index,
+                                                                                    'active',
+                                                                                )
+                                                                            }
+                                                                        >
+                                                                            <UI.Icon icon="bi-x" />
+                                                                        </span>
+                                                                    )}
+                                                                </span>
+                                                                <span className="me-auto fs-7">{asset.token.name}</span>
+                                                                <UI.FormInputGroup classes="w-100px">
+                                                                    <UI.Input
+                                                                        type="text"
+                                                                        value={asset.balance.toString()}
+                                                                        name="balance"
+                                                                        onChange={(event) =>
                                                                             this.handleChangeAsset(
                                                                                 event,
                                                                                 index,
-                                                                                'active',
+                                                                                'balance',
                                                                             )
                                                                         }
-                                                                    >
-                                                                        <UI.Icon icon="bi-check" />
-                                                                    </span>
-                                                                ) : (
-                                                                    <span
-                                                                        className="btn btn-sm btn-danger px-1 py-0 me-2"
-                                                                        onClick={(event) =>
-                                                                            this.handleChangeAsset(
-                                                                                event,
-                                                                                index,
-                                                                                'active',
-                                                                            )
-                                                                        }
-                                                                    >
-                                                                        <UI.Icon icon="bi-x" />
-                                                                    </span>
-                                                                )}
-                                                            </span>
-                                                            <span className="me-auto fs-7">{asset.token.name}</span>
-                                                            <UI.FormInputGroup classes="w-100px">
-                                                                <UI.Input
-                                                                    type="text"
-                                                                    value={asset.balance.toString()}
-                                                                    name="balance"
-                                                                    onChange={(event) =>
-                                                                        this.handleChangeAsset(event, index, 'balance')
+                                                                        classes="form-control-sm bg-darker"
+                                                                        size="fs-8"
+                                                                    />
+                                                                    <div className="input-group-text bg-darker border-0 text-white fs-10 px-2">
+                                                                        {asset.token.symbol}
+                                                                    </div>
+                                                                </UI.FormInputGroup>
+                                                                <button
+                                                                    className="btn btn-sm btn-danger border-0 ms-2 me-2 fs-7"
+                                                                    onClick={(event) =>
+                                                                        this.handleClickRemoveAsset(event, asset.id)
                                                                     }
-                                                                    classes="form-control-sm bg-darker"
-                                                                    size="fs-8"
-                                                                />
-                                                                <div className="input-group-text bg-darker border-0 text-white fs-10 px-2">
-                                                                    {asset.token.symbol}
-                                                                </div>
-                                                            </UI.FormInputGroup>
-                                                            <button
-                                                                className="btn btn-sm btn-danger border-0 ms-2 me-2 fs-7"
-                                                                onClick={(event) =>
-                                                                    this.handleClickRemoveAsset(event, asset.id)
-                                                                }
-                                                            >
-                                                                <UI.Icon icon="bi-trash-fill" />
-                                                            </button>
-                                                        </div>
+                                                                >
+                                                                    <UI.Icon icon="bi-trash-fill" />
+                                                                </button>
+                                                            </div>
 
-                                                        <UI.Row classes="fst-italic text-center">
+                                                            <UI.Input
+                                                                type="hidden"
+                                                                id={asset.id}
+                                                                value={asset.order}
+                                                                name="order"
+                                                                onChange={() => {}}
+                                                                classes="hidden-input"
+                                                            />
+                                                        </UI.ListItem>
+
+                                                        <UI.Row classes="fst-italic text-center fs-8">
                                                             <UI.Col classes="col-12 text-success">
-                                                                {this.state.success[asset.id]}
+                                                                {this.state.success[asset.id] != null && (
+                                                                    <div className="mb-2">
+                                                                        {this.state.success[asset.id]}
+                                                                    </div>
+                                                                )}
                                                             </UI.Col>
                                                             <UI.Col classes="col-12 text-danger">
                                                                 {this.state.errors[asset.id] != null &&
                                                                     this.state.errors[asset.id].map((error, index) => (
-                                                                        <div key={'update-portfolio-error-' + index}>
+                                                                        <div
+                                                                            className="mb-2"
+                                                                            key={'update-portfolio-error-' + index}
+                                                                        >
                                                                             {error}
                                                                         </div>
                                                                     ))}
                                                             </UI.Col>
                                                         </UI.Row>
-                                                        <UI.Input
-                                                            type="hidden"
-                                                            id={asset.id}
-                                                            value={asset.order}
-                                                            name="order"
-                                                            onChange={() => {}}
-                                                            classes="hidden-input"
-                                                        />
-                                                    </UI.ListItem>
+                                                    </>
                                                 ))}
                                             </UI.List>
                                         </UI.Col>

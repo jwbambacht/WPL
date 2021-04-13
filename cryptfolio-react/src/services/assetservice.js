@@ -3,7 +3,7 @@ import helper from '../utils/helper';
 import authservice from './authservice';
 
 const assetservice = {
-    addAsset: function (asset: object, handleErrors: void, handleSuccess: void) {
+    addAsset: function (asset, handleErrors, handleSuccess) {
         fetch(process.env.REACT_APP_API_ASSET_CREATE, {
             method: 'POST',
             headers: {
@@ -44,7 +44,7 @@ const assetservice = {
                 if (data.status == 200) {
                     handleSuccess('Asset successfully saved!', asset.id);
                 } else {
-                    handleErrors(data.errors);
+                    handleErrors(data.errors, asset.id);
                 }
             })
             .catch((error) => {

@@ -171,13 +171,13 @@ export default class Tokens extends Component {
                                 </UI.FormRow>
 
                                 <UI.FormRow>
-                                    <UI.FormColInput classes="offset-md-4 text-success fst-italic">
+                                    <UI.FormColInput classes="offset-md-4 text-success fst-italic fs-8">
                                         {this.state.currentType == 'add' && this.state.success}
                                     </UI.FormColInput>
                                 </UI.FormRow>
 
                                 <UI.FormRow>
-                                    <UI.FormColInput classes="offset-md-4 text-danger fst-italic">
+                                    <UI.FormColInput classes="offset-md-4 text-danger fst-italic fs-8">
                                         {this.state.currentType == 'add' &&
                                             this.state.errors.map((error, index) => (
                                                 <div key={'new-token-error-' + index}>{error}</div>
@@ -202,9 +202,21 @@ export default class Tokens extends Component {
                         <UI.Card>
                             <UI.CardHeader classes="d-flex justify-content-between align-items-center">
                                 <UI.CardHeaderTitle>Existing Tokens</UI.CardHeaderTitle>
-                                <div className="text-success fs-6 fst-italic">
-                                    {this.state.currentType == 'remove' && this.state.success}
-                                </div>
+                                <span>
+                                    <div className="text-success fs-8 fst-italic">
+                                        {this.state.currentType == 'remove' && this.state.success}
+                                    </div>
+                                    <div className="text-success fs-8 fst-italic">
+                                        {this.state.currentType == 'update' && this.state.success && (
+                                            <div className="mb-2">{this.state.success}</div>
+                                        )}
+                                    </div>
+                                    <div className="text-danger fs-8 fst-italic">
+                                        {this.state.errors.map((error, index) => (
+                                            <div key={'change-error-' + index}>{error}</div>
+                                        ))}
+                                    </div>
+                                </span>
                             </UI.CardHeader>
                             <UI.CardBody>
                                 {this.state.isLoading && (
@@ -214,13 +226,13 @@ export default class Tokens extends Component {
                                 )}
 
                                 <UI.List classes="p-0 m-0">
-                                    {this.state.tokens.map((item, index) => (
-                                        <UI.ListItem classes="bg-darkest mb-1 py-2 px-2" key={item.id}>
+                                    {this.state.tokens.map((token, index) => (
+                                        <UI.ListItem classes="bg-darkest mb-1 py-2 px-2" key={token.id}>
                                             <span className="d-flex align-items-center">
                                                 <UI.FormInputGroup>
                                                     <UI.Input
                                                         type="text"
-                                                        value={item.name}
+                                                        value={token.name}
                                                         onChange={(event) =>
                                                             this.handleChangeUpdateToken(event, index, 'name')
                                                         }
@@ -229,7 +241,7 @@ export default class Tokens extends Component {
                                                     />
                                                     <UI.Input
                                                         type="text"
-                                                        value={item.symbol}
+                                                        value={token.symbol}
                                                         onChange={(event) =>
                                                             this.handleChangeUpdateToken(event, index, 'symbol')
                                                         }
@@ -240,37 +252,16 @@ export default class Tokens extends Component {
                                                         className="btn btn-sm bg-danger text-white me-1 button fs-8"
                                                         onClick={(event) => this.handleClick(event, 'remove', index)}
                                                     >
-                                                        Delete
+                                                        <UI.Icon icon="bi-trash" />
                                                     </button>
                                                     <button
                                                         className="btn btn-sm bg-success text-white button fs-8"
                                                         onClick={(event) => this.handleClick(event, 'update', index)}
                                                     >
-                                                        Save
+                                                        <UI.Icon icon="bi-check" />
                                                     </button>
                                                 </UI.FormInputGroup>
                                             </span>
-
-                                            {this.state.currentType == item.id && (
-                                                <>
-                                                    <UI.Row classes="text-success text-center fs-7">
-                                                        <div className="col-12 fst-italic">
-                                                            {this.state.success && (
-                                                                <div className="pt-2">{this.state.success}</div>
-                                                            )}
-                                                        </div>
-                                                    </UI.Row>
-                                                    <UI.Row classes="text-danger text-center fs-7">
-                                                        <UI.Col classes="col-12 fst-italic">
-                                                            {this.state.errors.map((error, index) => (
-                                                                <div className="pt-2" key={'change-error-' + index}>
-                                                                    {error}
-                                                                </div>
-                                                            ))}
-                                                        </UI.Col>
-                                                    </UI.Row>
-                                                </>
-                                            )}
                                         </UI.ListItem>
                                     ))}
                                 </UI.List>

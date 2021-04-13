@@ -100,10 +100,10 @@ export default class PortfolioView extends Component {
         return (
             <>
                 <UI.PageTitle>
-                    <span className="fw-bold fs-1 me-2">Portfolio: </span>
-                    <span className="fs-3">{this.state.portfolio.name}</span>
+                    <UI.CardHeaderTitle classes="fs-1 me-3">Portfolio: </UI.CardHeaderTitle>
+                    <UI.CardHeaderTitle classes="fs-1 text-secondary">{this.state.portfolio.name}</UI.CardHeaderTitle>
                 </UI.PageTitle>
-                <UI.PageSubTitle>You have added the following portfolios</UI.PageSubTitle>
+                <UI.PageSubTitle>Your portfolio consists of the following assets:</UI.PageSubTitle>
 
                 {this.state.isLoading && (
                     <UI.Col classes="col-12 text-center py-4">

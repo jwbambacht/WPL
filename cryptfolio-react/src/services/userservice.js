@@ -3,7 +3,7 @@ import helper from '../utils/helper';
 import authservice from './authservice';
 
 const userservice = {
-    updateProfile: function (user: object, handleErrors, handleSuccess) {
+    updateProfile: function (user, handleErrors, handleSuccess) {
         fetch(process.env.REACT_APP_API_USER_PROFILE, {
             method: 'PUT',
             headers: {
@@ -25,11 +25,10 @@ const userservice = {
                     authservice.setUserState(data.result.user);
                     handleSuccess('profile', 'Profile successfully saved!');
                 } else if (data.status == 400) {
-                    console.log('BAD REQUEST!!!');
                     handleErrors(data.errors, 'profile');
                 } else if (data.status == 401) {
-                    console.log('AUTHORIZATION ISSUE!!!');
                     authservice.removeStorage();
+                    handleErrors(data.errors, 'profile');
                 }
             })
             .catch((error) => {
@@ -71,11 +70,9 @@ const userservice = {
     },
     getUser: function () {
         return fetch(
-            process.env.REACT_APP_API_USER_GET +
-                '/' +
-                authservice.getTokenState() +
-                '/' +
-                authservice.getUserState().username,
+            [process.env.REACT_APP_API_USER_GET, authservice.getTokenState(), authservice.getUserState().username].join(
+                '/',
+            ),
             {
                 method: 'GET',
                 headers: {
@@ -105,7 +102,7 @@ const userservice = {
                 username: username,
                 password: password,
                 password_confirmation: password_confirmation,
-                baseURL: process.env.REACT_APP_BASE_URL,
+                baseURL: process.env.REACT_APP_BASE_URL + '/',
             }),
         })
             .then(helper.handleResponse)
@@ -122,7 +119,7 @@ const userservice = {
             });
     },
     activateAccount: function (authToken, handleErrors, handleSuccess) {
-        fetch([process.env.REACT_APP_API_USER_ACTIVATE].join('/'), {
+        fetch(process.env.REACT_APP_API_USER_ACTIVATE, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
