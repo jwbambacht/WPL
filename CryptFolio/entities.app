@@ -137,16 +137,19 @@ extend entity User {
 		return ((userToken[0] == userPassword[0]) && (userPassword[0] == userUsername));
 	}
 	
+	// Method that sends the activation mail. The baseURL depends whether the request is started by the fronted or backend.
 	function sendActivationEmail(baseURL: String) {
 		email confirmationEmail(this, baseURL);	
 	}
 	
+	// Method that generates an authentication token
 	function generateAuthToken() {
 		var randomString := email+now().format("yyyyMMddHmmss");
 		
 		this.authToken := cleanPassword((randomString as Secret).digest());
 	}
 	
+	// Method that generates an API token that may expire depending on its parameters
 	function generateAPIToken(hours: Int, doesNotExpire: Bool) {
 		var randomString := username+now().format("yyyyMMddHmmss");
 		
@@ -164,6 +167,7 @@ extend entity User {
 		}.save();
 	}
 	
+	// Method that activates an account
 	function activateAccount(token: String): Bool {
 		var users := (from User as user where authToken = ~token);
 		
@@ -178,10 +182,12 @@ extend entity User {
 		}
 	}
 	
+	// Method that looks up (if found) an user with a combination of username and API token
 	function findUserByAPI(username: String, token: String): [User] {
 		return (from User where username = ~username and session.apiToken = ~token);
 	}
 	
+	// Method that creates a JSON object from this User object
 	function createJSONObject(): JSONObject {
 		var obj := JSONObject();
 		obj.put("username", this.username);
@@ -202,6 +208,8 @@ entity UserSession {
 }
 
 extend entity UserSession {
+	
+	// Method that cleans expires session API tokens
 	function cleanSessions() {
 		for (s : UserSession where s.expiresAt != null && s.expiresAt.before(now())) {
 			s.delete();
@@ -209,6 +217,7 @@ extend entity UserSession {
 	}	
 }
 
+// Every minute the expires sessions are cleared
 invoke UserSession{}.cleanSessions() every 1 minutes
 
 entity Token {
@@ -219,17 +228,20 @@ entity Token {
 }
 
 extend entity Token {
-	function initToken(name: String, symbol: String) {
+	// Method for initial add of tokens
+	function addToken(name: String, symbol: String) {
 		this.name := name;
 		this.symbol := symbol;
 		this.data := TokenData{};
 		this.save();
 	}
 	
+	// Method that checks if a token is in any portfolios of the user, and then marked as favorite 
 	function isFavorite(): Bool {
 		return ((from Asset as asset where asset.portfolio.user = ~currentUser() and asset.token = ~this).length != 0);
 	}
 	
+	// Method that creates a JSON object from this Token object. Parameter makes it possible to include of exclude the tokens price data.
 	function createJSONObject(includeData: Bool): JSONObject {
 		var obj := JSONObject();
 		obj.put("id",this.id);
@@ -243,6 +255,7 @@ extend entity Token {
 		return obj;
 	}
 	
+	// Method that removes a token from the system completely, including every portfolio
 	function removeToken() {
 		for(asset : Asset) {
 			if(asset.token.name == this.name) {
@@ -271,6 +284,7 @@ entity TokenData {
 }
 
 extend entity TokenData {
+	// Method that creates a JSON object from this TokenData object
 	function createJSONObject(): JSONObject {
 		var obj := JSONObject();
 		obj.put("price",this.price);
@@ -296,6 +310,7 @@ entity Asset {
 }
 
 extend entity Asset {
+	// Method that creates a JSON object from this Asset object. Parameters makes it possible to include or exclude the portfolio and tokens price data.
 	function createJSONObject(includePortfolio: Bool, includeData: Bool): JSONObject {
 		var obj := JSONObject();
 		obj.put("id", this.id);
@@ -327,6 +342,7 @@ entity Portfolio {
 }
 
 extend entity Portfolio {
+	// Method that removes this portfolio
 	function remove(): Bool {
 		var pid := this.id;
 		
@@ -343,10 +359,12 @@ extend entity Portfolio {
 		return false;
 	}
 	
+	// Method that adds an asset to this portfiolio
 	function addAsset(asset: Asset) {
 		this.assets.add(asset);
 	}
 	
+	// Method that creates a JSON object from this Portfolio object. Parameters makes it possible to include or exclude the assets and the tokens price data.
 	function createJSONObject(includeAssets: Bool, includeData: Bool): JSONObject {
 		var obj := JSONObject();
 		obj.put("id", this.id);
@@ -372,7 +390,7 @@ extend entity Portfolio {
 	}
 }
 
-
+// Definition of the confirmation email. BaseURL depends on fronted or backend.
 define email confirmationEmail(user: User, baseURL: String) {
 	to(user.email)
 	from("wplcryptfolio@gmail.com")
@@ -387,10 +405,12 @@ principal is User with credentials username, password
 
 access control rules 
 
+// Check whether the current logged in user is also administrator.
 predicate isAdmin() { 
 	loggedIn() && currentUser().admin
 }
 
+// Define the access control rules for the backend
 rule page root { true }
 rule page login { true }
 rule page forgotPassword { true }
@@ -403,4 +423,5 @@ rule page asset(*) { loggedIn() }
 rule page watchlist { true }
 rule page tokens { isAdmin() }
 
+// Define the access control rules for the external frontend using API
 rule page api(*) { true } 

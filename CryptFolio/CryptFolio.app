@@ -1,24 +1,28 @@
 application CryptFolio
 
 description {
-	A portfolio manager for crypto currencies
+	A portfolio tracker for crypto currencies
 }
+
 
 section imports
 
-imports helper
-imports templates
-imports entities
+imports helper				// helper functions
+imports templates			// html templates
+imports entities			// entities and properties
 
-imports services
-imports serviceFunctions
+imports services			// api external frontend
+imports serviceFunctions	// api helper functions
 
-imports errorPages
+imports errorPages			// error pages content
+
 
 section application init
 
+// The following users, tokens, portfolios are inserted in the database on the first launch of the application
 init {
-	// ADMIN credentials: 	username: admin, password: Administrator123, email is a dummy
+	// ADMIN credentials:
+	// username: admin, password: Administrator123, email is a dummy
 	User{
 		username := "admin", 
 		password := ("Administrator123" as Secret).digest(), 
@@ -27,7 +31,8 @@ init {
 		activated := true
 	}.save();
 	
-	// USER credentials: 	username: wpluser, password: Wpl2021pw, email is a dummy								
+	// USER credentials:
+	// username: wpluser, password: Wpl2021pw, email is a dummy								
 	User{
 		username := "wpluser", 
 		password := ("Wpl2021pw" as Secret).digest(), 
@@ -35,51 +40,51 @@ init {
 		activated := true
 	}.save();
 	
-	// Some of the high listed tokens are added to the system
-	Token{}.initToken("Aave", "AAVE");
-	Token{}.initToken("Algorand", "ALGO");
-	Token{}.initToken("Avalanche", "AVAX");
-	Token{}.initToken("Binance Coin", "BNB");
-	Token{}.initToken("Bitcoin", "BTC");
-	Token{}.initToken("Bitcoin Cash", "BCH");
-	Token{}.initToken("Cardano", "ADA");
-	Token{}.initToken("Chainlink", "LINK");
-	Token{}.initToken("Compound", "COMP");
-	Token{}.initToken("Cosmos", "ATOM");
-	Token{}.initToken("Dai", "DAI");
-	Token{}.initToken("Dash", "DASH");
-	Token{}.initToken("Decred", "DCR");
-	Token{}.initToken("Dogecoin", "DOGE");
-	Token{}.initToken("Elrond", "EGLD");
-	Token{}.initToken("EOS", "EOS");
-	Token{}.initToken("Ethereum", "ETH");
-	Token{}.initToken("Filecoin", "FIL");
-	Token{}.initToken("FTX Token", "FTT");
-	Token{}.initToken("Holo", "HOT");
-	Token{}.initToken("Icon", "ICX");
-	Token{}.initToken("Kusama", "KSM");
-	Token{}.initToken("Litecoin", "LTC");
-	Token{}.initToken("Maker", "MKR");
-	Token{}.initToken("Monero", "XMR");
-	Token{}.initToken("NEM", "XEM");
-	Token{}.initToken("Neo", "NEO");
-	Token{}.initToken("PancakeSwap", "CAKE");
-	Token{}.initToken("Polkadot", "DOT");
-	Token{}.initToken("Ripple", "XRP");
-	Token{}.initToken("Solana", "SOL");
-	Token{}.initToken("Stellar", "XLM");
-	Token{}.initToken("SushiSwap", "SUSHI");
-	Token{}.initToken("Synthetix", "SNX");
-	Token{}.initToken("Terra", "LUNA");
-	Token{}.initToken("Tezos", "XTZ");
-	Token{}.initToken("The Graph", "GRT");
-	Token{}.initToken("THETA", "THETA");
-	Token{}.initToken("Tron", "TRX");
-	Token{}.initToken("Uniswap", "UNI");
-	Token{}.initToken("USD Coin", "USDC");
-	Token{}.initToken("VeChain", "VET");
-	Token{}.initToken("yearn.finance", "YFI");
-	Token{}.initToken("Zcash", "ZEC");
+	// Some high listed tokens are added to the system
+	Token{}.addToken("Aave", "AAVE");
+	Token{}.addToken("Algorand", "ALGO");
+	Token{}.addToken("Avalanche", "AVAX");
+	Token{}.addToken("Binance Coin", "BNB");
+	Token{}.addToken("Bitcoin", "BTC");
+	Token{}.addToken("Bitcoin Cash", "BCH");
+	Token{}.addToken("Cardano", "ADA");
+	Token{}.addToken("Chainlink", "LINK");
+	Token{}.addToken("Compound", "COMP");
+	Token{}.addToken("Cosmos", "ATOM");
+	Token{}.addToken("Dai", "DAI");
+	Token{}.addToken("Dash", "DASH");
+	Token{}.addToken("Decred", "DCR");
+	Token{}.addToken("Dogecoin", "DOGE");
+	Token{}.addToken("Elrond", "EGLD");
+	Token{}.addToken("EOS", "EOS");
+	Token{}.addToken("Ethereum", "ETH");
+	Token{}.addToken("Filecoin", "FIL");
+	Token{}.addToken("FTX Token", "FTT");
+	Token{}.addToken("Holo", "HOT");
+	Token{}.addToken("Icon", "ICX");
+	Token{}.addToken("Kusama", "KSM");
+	Token{}.addToken("Litecoin", "LTC");
+	Token{}.addToken("Maker", "MKR");
+	Token{}.addToken("Monero", "XMR");
+	Token{}.addToken("NEM", "XEM");
+	Token{}.addToken("Neo", "NEO");
+	Token{}.addToken("PancakeSwap", "CAKE");
+	Token{}.addToken("Polkadot", "DOT");
+	Token{}.addToken("Ripple", "XRP");
+	Token{}.addToken("Solana", "SOL");
+	Token{}.addToken("Stellar", "XLM");
+	Token{}.addToken("SushiSwap", "SUSHI");
+	Token{}.addToken("Synthetix", "SNX");
+	Token{}.addToken("Terra", "LUNA");
+	Token{}.addToken("Tezos", "XTZ");
+	Token{}.addToken("The Graph", "GRT");
+	Token{}.addToken("THETA", "THETA");
+	Token{}.addToken("Tron", "TRX");
+	Token{}.addToken("Uniswap", "UNI");
+	Token{}.addToken("USD Coin", "USDC");
+	Token{}.addToken("VeChain", "VET");
+	Token{}.addToken("yearn.finance", "YFI");
+	Token{}.addToken("Zcash", "ZEC");
 	
 	// Add dummy portfolio's to both users
 	var adminPortfolio := Portfolio{name := "My Wallet", user := findUser("admin"), cost := 1200.0};
@@ -88,7 +93,7 @@ init {
 	adminPortfolio.addAsset(Asset{token := getToken("XRP"), balance := 10000.0, order := 2});
 	adminPortfolio.save();
 	
-	var userPortfolio := Portfolio{name := "Binance", user := findUser("wpl"), cost := 375.0};
+	var userPortfolio := Portfolio{name := "Binance", user := findUser("wpluser"), cost := 375.0};
 	userPortfolio.addAsset(Asset{token := getToken("DOGE"), balance := 10000.0, order := 0});
 	userPortfolio.addAsset(Asset{token := getToken("ADA"), balance := 100.0, order := 1});
 	userPortfolio.addAsset(Asset{token := getToken("EOS"), balance := 12.0, order := 2});
@@ -97,13 +102,15 @@ init {
 	
 }
 
+
 section pages
 
-imports pages/root				// public / authenticated
-imports pages/auth				// public
+imports pages/root				// public & authenticated
+imports pages/auth				// not authenticated
 imports pages/account 			// authenticated
 
+imports pages/portfolios		// authenticated
 imports pages/portfolio			// authenticated
 imports pages/asset				// authenticated
 imports pages/watchlist			// authenticated
-imports pages/token				// admin
+imports pages/token				// authenticated & administrator

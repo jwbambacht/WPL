@@ -1,5 +1,6 @@
 module pages/watchlist
 
+// Page that gives a broad overview of all tokens and their data. Enables to sort and filter by top gainers, top losers, highest volume, and favorite tokens.
 page watchlist() {
 	
 	var tokens := (from Token as token order by token.name asc)

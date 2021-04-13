@@ -1,5 +1,6 @@
 module pages/token
 
+// Page for administrator that enables basic management of the tokens
 page tokens {
 	
 	init {
@@ -75,19 +76,23 @@ page tokens {
 			}
 			
 			col("col-12 col-md-6 mb-4") {
-				card[class="border-lighter"] {
-					card_header[class="fs-3"] {
-						span[class="fw-bold"] {
-							"Existing Tokens"
+				form {
+					card[class="border-lighter"] {
+						card_header[class="fs-3 d-flex align-items-center justify-content-between"] {
+							span[class="fw-bold"] {
+								"Existing Tokens"
+							}
+							submit action {} [class="btn bg-success text-white button fs-8"] {
+								"Save Tokens"
+							}
 						}
-					}
-					card_body[class="p-3"] {
-						form {
+						card_body[class="p-3"] {
 							list[class="p-0 m-0"] {
 								for(token : Token order by token.name asc) {
 									listitem[class="list-group-item border-0 rounded-3 bg-darkest mb-1 py-2 px-2"] {
-										span[class="d-flex align-items-center"] {
-											div[class="input-group"] {
+										div[class="d-flex align-items-center"] {
+											image("images/icons/" + "~token.symbol" + ".png")[class="me-2 token-icon-sm"]
+  											div[class="input-group"] {
 												input(token.name)[class="form-control form-control-sm bg-darker border-0 text-white me-1 fs-8"]
 												input(token.symbol)[class="form-control form-control-sm bg-darker border-0 text-white me-1 fs-8"]
 						
@@ -100,19 +105,15 @@ page tokens {
 														}
 													}
 													token.delete();
-												}[class="btn btn-sm bg-danger text-white me-1 button fs-8"] {
-													"Delete"
-												}
-												
-												submit action {
-													token.save();
-												}[class="btn btn-sm bg-success text-white button fs-8"] {
-													"Save"
+												}[class="btn btn-sm bg-danger text-white button"] {
+													icon("bi-trash")
 												}
 											}
 										}
-										validate((token.name != ""), "Please give a name to the token")
-										validate((token.symbol != ""), "Please give the symbol for the token")
+										div {
+											validate((token.name != ""), "Please give a name to the token")
+											validate((token.symbol != ""), "Please give the symbol for the token")
+										}
 									}
 								}
 							}

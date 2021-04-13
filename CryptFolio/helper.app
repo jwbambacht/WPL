@@ -2,24 +2,28 @@ module helper
 
 section native java
 
+// Definition of a request java class that takes a (string) url and returns a JSON string with the response.
 native class request.Request as Request {
 	constructor()
 	static doGet(String) : String 
 }
 
+// Java class extensions that enables to change the status code of the response to the external API
 native class utils.AbstractDispatchServletHelper as DispatchServlet {
   getResponse(): HttpServletResponse
 }
 native class javax.servlet.http.HttpServletResponse as HttpServletResponse {
-  setStatus( Int )
+  setStatus(Int)
 }
 
+// Definition of a Java error class that includes the code and message of error
 native class errors.Error as Error {
 	constructor(String, Int)
 	getCode() : Int
 	getMessage() : String
 }
 
+// Definition of Java class that collects all errors during a request
 native class errors.ErrorList as ErrorList {
 	constructor()
 	addError(String, Int)
@@ -29,9 +33,9 @@ native class errors.ErrorList as ErrorList {
 	noErrors() : Bool
 }
 
-
 section data fetching
 
+// Method that fetches the tokens price data from the Binance API, processes it and inserts/updates the TokenData entities
 function fetchData() {
 	var response := Request.doGet("https://api.binance.com/api/v3/ticker/24hr");
 
@@ -56,8 +60,10 @@ function fetchData() {
 	log("API Fetch success");
 }
 
+// The tokens price data is fetched every 30 seconds
 invoke fetchData() every 30 seconds
 
+// Method that contains the logic of inserting/updating token data
 function updateTokenData(symbol: String, obj: JSONObject) {
 	var token := getToken(symbol);
 	
@@ -77,26 +83,32 @@ function updateTokenData(symbol: String, obj: JSONObject) {
 
 section helper functions
 
+// Method that returns the current user
 function currentUser(): User {
 	return securityContext.principal;
 }
 
+// Method that returns the portfolios of the loggedin user
 function myPortfolios() : [Portfolio] {
 	return (from Portfolio as p where p.user = ~currentUser());
 }
 
+// Method that returns the assets of the loggedin user
 function myAssets(): [Asset] {
 	return (from Asset as a where a.portfolio.user = ~currentUser());
 }
 
+// Method that returns the token given a symbol
 function getToken(symbol: String): Token {
 	return (from Token as token where token.symbol = ~symbol)[0];
 }
 
+// Method that checks whether a token exists, given a symbol
 function isToken(symbol: String): Bool {
 	return (from Token as token where token.symbol = ~symbol).length == 1;
 }
 
+// Method that calculates the percential change
 function changePercentage(old: Float, new: Float): Float {
 	if(old == 0.0) {
 		return 0.0;
@@ -104,6 +116,7 @@ function changePercentage(old: Float, new: Float): Float {
 	return (new-old)/old*100.0;
 }
 
+// Method that sums a list of float numbers
 function sum(list: [Float]): Float {
 	var total := 0.0;
 	
@@ -114,6 +127,7 @@ function sum(list: [Float]): Float {
 	return total;
 }
 
+// Method that determines the text color given a value
 function textColor(value: Float): String {
 	if(value > 0.0) {
 		return "text-success";
@@ -123,6 +137,7 @@ function textColor(value: Float): String {
 	return "text-white";
 }
 
+// Method that determines the background color given a value
 function bgColor(value: Float): String {
 	if(value > 0.0) {
 		return "bg-success";
@@ -131,6 +146,8 @@ function bgColor(value: Float): String {
 	}
 	return "bg-secondary";
 }
+
+// Method that determines the direction of an arrow icon given a value
 function arrowIcon(value: Float): String  {
 	if(value > 0.0) {
 		return "bi-caret-up-fill";
@@ -140,6 +157,8 @@ function arrowIcon(value: Float): String  {
 		return "bi-caret-right-fill";
 	}
 }
+
+// Method that returns the absolute value
 function absolute(value: Float): Float {
 	if(value < 0.0) {
 		return value*-1.0;
@@ -148,6 +167,7 @@ function absolute(value: Float): Float {
 	return value;
 }
 
+// Method that determines the number of decimal places of value to enable the significance of decimals
 function nDecimals(value: Float, n: Int, initial: Bool) : Float {
 	
 	if(value == 0.0 && initial == true) {
@@ -180,6 +200,7 @@ function nDecimals(value: Float, n: Int, initial: Bool) : Float {
 	return val;
 }
 
+// Method that removes unwanted tokens "/", "+", and "-" from a token such that is usable to be used in an API GET request as url parameter
 function cleanPassword(password: Secret): Secret {
 	return password.split("/").concat().split("+").concat().split("-").concat();
 }

@@ -15,7 +15,7 @@ page root(){
 				"An overview of your portfolio's is given below."
 			}
 		}
-		
+		 
 		if(loggedIn()) {
 			if(myPortfolios().length == 0) {
 				row[class="mt-4 mb-2"] {

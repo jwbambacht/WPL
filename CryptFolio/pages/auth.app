@@ -1,5 +1,6 @@
 module pages/auth
 
+// Page where the users can login
 override page login {
 	
 	init {
@@ -79,18 +80,23 @@ override page login {
 										"Go to Register page"
 									}
 									div[class="btn btn-sm btn-success float-end", onclick := action {	
-										if(findUser(username).activated) {
-											if(authenticate(username, password)) {									
-												getSessionManager().stayLoggedIn := stayLoggedIn;
-										
-												return root();
-											}else{
-												loginError := "The login credentials are not valid";
-												replace(ph_login_error);
-											}
+										if(findUser(username) == null) {
+											loginError := "The login credentials are not valid";
+											replace(ph_login_error);
 										}else{
-											loginError := "Please activate your account";
-											replace(ph_login_error);	
+											if(findUser(username).activated) {
+												if(authenticate(username, password)) {									
+													getSessionManager().stayLoggedIn := stayLoggedIn;
+											
+													return root();
+												}else{
+													loginError := "The login credentials are not valid";
+													replace(ph_login_error);
+												}
+											}else{
+												loginError := "Please activate your account";
+												replace(ph_login_error);	
+											}
 										}
 									}] {
 										"Login"
@@ -105,6 +111,115 @@ override page login {
 	}
 }
 
+// Page where the people can register an account
+page register(message: String) {
+	
+	init {
+		if(loggedIn()) {
+			return root();
+		}
+	}
+	
+	var user := User{}
+	var password_confirmation : Secret
+	
+	main()
+	
+	define body() {
+		
+		row[class="mt-4"] {
+			col("col-12 col-md-6 offset-md-3") {
+				card[class="border-0"] {
+					card_header[class="fs-3"] {
+						div[class="fw-bold"] {
+							"Register"
+						}
+						div[class="fs-6 text-muted"] {
+							"Please fill in the details below to create your account."
+						}
+					}
+					card_body[class="rounded-3 pb-2"] {
+						form {
+							form_row {
+								form_col_label("Username")
+								form_col_input {
+									input(user.username)[class="form-control btn-dark w-100"]
+								}
+							}
+							
+							form_row_validation {
+								validate((user.username).length() >= 6, "Username must contain at least 6 characters")
+								validate(findUser(user.username) == null, "Username already in use")
+							}
+							
+							form_row {
+								form_col_label("Email")
+								form_col_input {
+									input(user.email)[class="form-control btn-dark w-100"]
+								}
+							}
+							
+							form_row_validation {
+								validate((user.email) != "", "Please fill in your email")
+								validate((findUserByEmail(user.email).length) == 0, "Emailadress already in use")
+							}
+							
+							form_row {
+								form_col_label("Password")
+								form_col_input {
+									input(user.password)[class="form-control btn-dark w-100"]
+								}
+							}
+							
+							form_row {
+								form_col_label("Password Confirmation")
+								form_col_input {
+									input(password_confirmation)[class="form-control btn-dark w-100"]
+								}
+							}
+							
+							form_row_validation {
+								validate(user.password == password_confirmation, "Passwords are not identical")
+								validate(user.password != "", "Please fill in a password")
+								validate(user.password.length() >= 8, "Password must contain at least 8 characters")
+								validate(/[a-z]/.find(user.password), "Password must contain a lower-case character")
+								validate(/[A-Z]/.find(user.password), "Password must contain an upper-case character")
+								validate(/[0-9]/.find(user.password), "Password must contain a digit")
+							}
+							
+							form_row_validation[class="mt-2 mb-2"] {
+								if(message == "success") {
+									templateSuccess(["A confirmation mail has been sent to activate your account"])
+								}
+							}
+							
+							form_row {
+								form_col_label("")
+								form_col_input {
+									navigate(login())[class="btn btn-sm btn-dark float-start"] {
+										"Go to Login"
+									}
+									submit action {										
+										user.password := user.password.digest();
+										user.generateAuthToken();
+										user.save();
+										user.sendActivationEmail("~navigate(root())");
+										
+		    							return register("success");
+									}[class="btn btn-sm btn-success float-end"] {
+										"Register Account"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Forgot password page. After setting a new password a confirmation mail is sent to the user.
 page forgotPassword {
 	
 	init {
@@ -204,6 +319,7 @@ page forgotPassword {
 	}
 }
 
+// Page where an account can be activated using the authentication token.
 page activateAccount(token: String) {
 	
 	init {
@@ -297,104 +413,6 @@ page activateAccount(token: String) {
 										}] {
 											"Activate Account"
 										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-page register(message: String) {
-	
-	init {
-		if(loggedIn()) {
-			return root();
-		}
-	}
-	
-	var user := User{}
-	
-	main()
-	
-	define body() {
-		
-		row[class="mt-4"] {
-			col("col-12 col-md-6 offset-md-3") {
-				card[class="border-0"] {
-					card_header[class="fs-3"] {
-						div[class="fw-bold"] {
-							"Register"
-						}
-						div[class="fs-6 text-muted"] {
-							"Please fill in the details below to create your account."
-						}
-					}
-					card_body[class="rounded-3 pb-2"] {
-						form {
-							form_row {
-								form_col_label("Username")
-								form_col_input {
-									input(user.username)[class="form-control btn-dark w-100"]
-								}
-							}
-							
-							form_row_validation {
-								validate((user.username).length() >= 6, "Username must contain at least 6 characters")
-								validate(findUser(user.username) == null, "Username already in use")
-							}
-							
-							form_row {
-								form_col_label("Password")
-								form_col_input {
-									input(user.password)[class="form-control btn-dark w-100"]
-								}
-							}
-							
-							form_row_validation {
-								validate(user.password != "", "Please fill in a password")
-								validate(user.password.length() >= 8, "Password must contain at least 8 characters")
-								validate(/[a-z]/.find(user.password), "Password must contain a lower-case character")
-								validate(/[A-Z]/.find(user.password), "Password must contain an upper-case character")
-								validate(/[0-9]/.find(user.password), "Password must contain a digit")
-							}
-							
-							form_row {
-								form_col_label("Email")
-								form_col_input {
-									input(user.email)[class="form-control btn-dark w-100"]
-								}
-							}
-							
-							form_row_validation {
-								validate((user.email) != "", "Please fill in your email")
-								validate((findUserByEmail(user.email).length) == 0, "Emailadress already in use")
-							}
-							
-							form_row_validation[class="mt-2 mb-2"] {
-								if(message == "success") {
-									templateSuccess(["A confirmation mail has been sent to activate your account"])
-								}
-							}
-							
-							form_row {
-								form_col_label("")
-								form_col_input {
-									navigate(login())[class="btn btn-sm btn-dark float-start"] {
-										"Go to Login"
-									}
-									submit action {										
-										user.password := user.password.digest();
-										user.generateAuthToken();
-										user.save();
-										user.sendActivationEmail("~navigate(root())");
-										
-		    							return register("success");
-									}[class="btn btn-sm btn-success float-end"] {
-										"Register Account"
 									}
 								}
 							}

@@ -172,3 +172,9 @@ nav {
 .select-asset-new {
 	width: calc(100% - 100px - 48px - 22px);
 }
+.token-icon-sm {
+	height: 20px; 
+	width: 20px;
+	border-radius: 10px;
+	margin-bottom: 2px;
+}

@@ -2,6 +2,7 @@ module templates
 
 imports sections
 
+// Basic template of a page
 override template main() {
 	title { 
 		"CryptFolio - The Cryptocurrency Portfolio Tracker" 
@@ -19,7 +20,7 @@ override template main() {
 	
 	footerSection {
 		dcontainer [class="text-center"] {
-			rawoutput("&copy;") " 2021 Cryptofolio. Built for Web Programming Languages using "
+			rawoutput("&copy;") " 2021 CryptFolio. Built for Web Programming Languages using "
 			navigate(url("https://www.webdsl.org"))[class="link-dark", target="_blank"] {
 				"WebDSL"
 			}
@@ -29,6 +30,7 @@ override template main() {
 	footerScrips()
 }
 
+// Navbar template
 template navbar() {
 		
 	nav {
@@ -136,7 +138,6 @@ define pageSubTitle {
 }
 
 // UI Elements
-
 template badge {
 	span[class="badge", all attributes] {
 		elements
@@ -352,7 +353,10 @@ template listitem_asset(asset: Asset) {
 					icon("bi-three-dots-vertical")
 				}
 			
-				input(asset.order)[class="hidden-input",type="hidden", data-symbol=asset.token.symbol]
+				input(asset.order)[class="hidden-input",type="hidden", data-symbol=asset.token.symbol, onchange := action {
+					asset.save();
+					replace(ph);
+				}]
 			}
 		}
 		
@@ -402,6 +406,7 @@ template listitem_asset_new(p: Portfolio) {
 	}
 }
 
+// Block on root page that links to create a first portfolio
 template portfolio_block_new() {
 	col("col-12 col-md-6") {
 		navigate(portfolios())[class="text-white"] {
@@ -418,6 +423,7 @@ template portfolio_block_new() {
 	}
 }
 
+// Block on root page that views information of a portfolio
 template portfolio_block(p: Portfolio) {
 	col("col-12 col-md-6 mb-4") {
 		card[class="border-lighter portfolio", portfolio-id="~p.id"] {
@@ -480,6 +486,7 @@ template portfolio_block(p: Portfolio) {
 	}	
 }
 
+// Card block on homepage that shows information on this application
 template landingPageBlock() {
 	col("col-12 col-md-4 d-flex align-items-stretch mb-2") {
 		card[class="border-0 w-100"] {
@@ -490,8 +497,9 @@ template landingPageBlock() {
 	}
 }
 
+// Activation email template (very basic)
 template activateAccountEmail(user: User, baseURL: String) {
-	var url := baseURL + "/activateAccount/~user.authToken"
+	var url := baseURL + "activateAccount/~user.authToken"
 	
 	row {
 		col("col-12") {

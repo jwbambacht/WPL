@@ -1,5 +1,6 @@
 module pages/asset
 
+// Page that displays information of an asset
 page asset(asset: Asset) {
 	
 	init {

@@ -1,11 +1,13 @@
 module pages/account
 
+// Page that shows the profile information of an user and enables the modification of some details, including password
 page account() {
 
 	var password : Secret
 	var passwordRepeat : Secret
 	var profileSuccess : String := ""
 	var passwordSuccess : String := ""
+	var passwordError : [String]
 	
 	main()
 	
@@ -125,6 +127,7 @@ page account() {
 									validate((password != "" && passwordRepeat != ""), "Password cannot be empty")
 									validate((password == passwordRepeat), "The new passwords don't match")
 									templateSuccess([passwordSuccess])
+									errorTemplateInput(passwordError)
 								}
 							}
 							
@@ -132,12 +135,21 @@ page account() {
 								form_col_label("")
 								form_col_input[class="text-end"] {
 									div[class="btn btn-sm btn-success", onclick := action {
-										currentUser().password := password;
-										currentUser().password := currentUser().password.digest();
-										currentUser().save();
+										var errors := User{}.validatePassword(password as Secret);
 										
-										passwordSuccess := "Password successfully changed";
-										replace(ph_password);	
+										if(errors.length == 0) {
+											currentUser().password := password;
+											currentUser().password := currentUser().password.digest();
+											currentUser().save();
+										
+											passwordSuccess := "Password successfully changed";
+											passwordError := [""];
+										}else{
+											passwordError := errors;
+											passwordSuccess := "";
+										}
+										
+										replace(ph_password);
 									}] {
 										"Save"
 									}

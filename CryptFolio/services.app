@@ -1,10 +1,14 @@
 module services
 
+// All API services
+// API GET consists of the following format: .../api/endpoint/spec/param1/param2/param3
+// Only the endpoint is required in all services
 service api(endpoint: String, spec: String, param1: String, param2: String, param3: String) {
 	var response: JSONObject;
 	var result := JSONObject();
 	var errorList := ErrorList();
-	
+	 
+	// Request does not contain any parameters (.../api)
 	if(endpoint.length() == 0 && spec.length() == 0 && param1.length() == 0 && param2.length() == 0 && param3.length() == 0) {
 		 errorList.addError("No endpoint provided", 400);
 	}else{
@@ -12,6 +16,8 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 			if(getHttpMethod() == "POST") {
 				var body := JSONObject(readRequestBody());
 				
+				// Register user
+				// .../api/auth/register (POST)
 				if(spec =="register") {
 					
 					var username := body.getString("username");
@@ -48,6 +54,9 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 						result.put("register", true);
 						result.put("message", "Please activate your account by clicking the link in the confirmation mail.");	
 					}
+				
+				// Login user	
+				// .../api/auth/login (POST)
 				}else if(spec == "login") {
 					var username := body.getString("username");
 					var password := body.getString("password");
@@ -63,7 +72,7 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 					
 					if(errorList.noErrors()) {
 						if(!findUser(username).activated) {
-							errorList.addError("Please activate your account first", 401);
+							errorList.addError("Please activate your account", 401);
 						}
 					}
 					
@@ -86,7 +95,10 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 						}else{
 							errorList.addError("No user found identified by this credentials", 401);
 						}
-					}				
+					}		
+				
+				// Logout user
+				// .../api/auth/logout (POST)		
 				}else if(spec == "logout") {
 			
 					var token := body.getString("token");
@@ -112,6 +124,8 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 						}		
 					}
 					
+				// Check user session
+				// .../api/auth/check (POST)
 				}else if(spec == "check") {
 			
 					var token := body.getString("token");
@@ -136,9 +150,14 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 							
 						}
 					}
+				// No other specifications for POST request known
+				// .../api/not(auth) (POST)
 				}else{
 					errorList.addError("Specification for ~endpoint and ~getHttpMethod() unknown",400);
 				}
+			
+			// Other request methods than POST are not allowed
+			// .../api/auth/... (not POST)
 			}else{
 				errorList.addError("The selected method ~getHttpMethod() is not allowed", 405);
 			}
@@ -151,6 +170,8 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 				
 				errorList := checkAuthorization(token, username, false, errorList);
 				
+				// Create a portfolio 
+				// .../api/portfolio/create (POST)
 				if(spec == "create") {
 					var portfolioName := body.getString("portfolioName");
 					
@@ -171,6 +192,9 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 							errorList.addError("A portfolio with the same name already exists", 400);
 						}
 					}	
+					
+				// Delete a portfolio
+				// .../api/portfolio/delete (POST)
 				}else if(spec == "delete") {
 					var portfolioID := param1;
 										
@@ -186,16 +210,24 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 							result.put("delete", true);
 						}
 					}
+					
+				// No other specifications for POST request known
+				// .../api/portfolio/not(auth) (POST)
 				}else{
 					errorList.addError("Specification for ~endpoint and ~getHttpMethod() unknown",400);
 				}
 			}else if(getHttpMethod() == "GET") {
+				
+				// .../api/portfolio (GET)
 				if(spec.length() == 0 && param1.length() == 0 && param2.length() == 0) {
 					errorList.addError("No token, username provided, and portfolio id provided",400);
+					
 				}else{
 					
 					var includeData := false;
 					
+					// Get a portfolio of user, with or without token price data
+					// .../api/portfolio/{portfolio_id}/{api_token}/{username}/{?data?} (GET)
 					if(spec.length() > 0 && param1.length() > 0 && param2.length() > 0 && spec.parseUUID() != null) {
 						var portfolioID := spec;
 						var token := param1;
@@ -227,6 +259,9 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 							
 							result.put("portfolio", pObject);
 						}
+					
+					// Get all portfolios of user, with or without token price data
+					// .../api/portfolio/{api_token}/{username}/{?data?} (GET)
 					}else {
 						var token := spec;
 						var username := param1;
@@ -250,6 +285,9 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 						}
 					}
 				}
+			
+			// Update a portfolio
+			// .../api/portfolio (PUT)
 			}else if(getHttpMethod() == "PUT") {
 				
 				var body := JSONObject(readRequestBody());
@@ -277,6 +315,9 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 						result.put("portfolio",portfolio[0].createJSONObject(true, true));
 					}
 				}	
+				
+			// Other request methods than POST, PUT, and GET are not allowed
+			// .../api/portfolio/... (not POST, PUT, GET)
 			}else{
 				errorList.addError("The selected method ~getHttpMethod() is not allowed", 405);
 			}
@@ -289,6 +330,8 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 				
 				errorList := checkAuthorization(token, username, false, errorList);
 					
+				// Create asset for a portfolio 
+				// .../api/asset/create (POST)
 				if(spec == "create") {
 					var assetObject := body.getJSONObject("asset");
 					var portfolioID := assetObject.getString("portfolioID");
@@ -317,8 +360,6 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 						var tokenAsset := (from Token where id = ~tokenID.parseUUID());
 						var portfolio := (from Portfolio where id = ~portfolioID.parseUUID() and user.username = ~username and user.session.apiToken = ~token);
 						
-						// CHECK WHETHER THE TOKEN IS ALREADY IN THE PORTFOLIO
-						
 						var asset := Asset{
 							token := tokenAsset[0]
 							portfolio := portfolio[0]
@@ -328,7 +369,9 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 						
 						result.put("asset", asset.createJSONObject(false, false));
 					}
-					
+				
+				// Delete asset from a portfolio 
+				// .../api/asset/delete (POST)
 				}else if(spec == "delete") {
 					var assetID := param1;
 								
@@ -345,13 +388,23 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 							result.put("delete", true);
 						}
 					}
+				
+				// No other specifications for POST request known
+				// .../api/asset/not(auth) (POST)
 				}else{
 					errorList.addError("Specification for ~endpoint and ~getHttpMethod() unknown",400);
 				}
 			}else if(getHttpMethod() == "GET") {
+				
+				// Not enough parameters provided
+				// .../api/asset (GET)
 				if(spec.length() == 0 && param1.length() == 0 && param2.length() == 0 && param3.length() == 0) {
 					errorList.addError("No token, username, asset id or portfolio id provided", 400);
+					
 				}else{
+					
+					// Get asset from a portfolio
+					// .../api/asset/{asset_id}/{api_token}/{username} (GET)
 					if(spec.length() > 0 && param1.length() > 0 && param2.length() > 0 && param3.length() == 0 && spec.parseUUID() != null) {
 						var assetID := spec;
 						var token := param1;
@@ -378,6 +431,9 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 								
 							result.put("asset", aObject);
 						}
+					
+					// Get all assets from a portfolio
+					// .../api/asset/{portfolio_id}/{api_token}/{username} (GET)
 					}else if(spec == "portfolio" && param1.length() > 0 && param1.parseUUID() != null && param2.length() > 0 && param3.length() > 0) {
 						var portfolioID := param1;
 						var token := param2;
@@ -396,6 +452,8 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 							
 							result.put("assets", aArray);	
 						}
+						
+					// No valid asset or portfolio id or not all parameters correctly provided
 					}else{
 						if(spec.parseUUID() != null) {
 							errorList.addError("Asset id is not a valid UUID", 400);
@@ -404,6 +462,9 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 						}
 					}
 				}
+				
+			// Update asset
+			// .../api/asset (PUT)
 			}else if(getHttpMethod() == "PUT") {
 			
 				var body := JSONObject(readRequestBody());
@@ -433,7 +494,9 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 						result.put("asset",asset[0].createJSONObject(true, false));
 					}
 				}
-				
+			
+			// Other request methods than POST, PUT, and GET are not allowed
+			// .../api/asset/... (not POST, PUT, GET)
 			}else{
 				errorList.addError("The selected method ~getHttpMethod() is not allowed", 405);
 			}
@@ -446,6 +509,8 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 				
 				errorList := checkAuthorization(token, username, true, errorList);
 				
+				// Create token
+				// .../api/token (POST)
 				if(spec == "create" && errorList.noErrors()) {
 					var tokenObject := body.getJSONObject("tokenObject");
 					errorList := checkJSONObjectNull(tokenObject, "Token", errorList);
@@ -473,6 +538,9 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 						
 						result.put("token", newToken.createJSONObject(false));
 					}	
+				
+				// Delete token
+				// .../api/token (POST)
 				}else if(spec == "delete" && errorList.noErrors()) {
 					var tokenID := param1;
 					
@@ -490,6 +558,8 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 						}
 					}
 					
+				// No other specifications for POST request known
+				// .../api/token/not(auth) (POST)
 				}else if(errorList.noErrors()) {
 					errorList.addError("Specification for ~endpoint and ~getHttpMethod() unknown",400);
 				}
@@ -565,11 +635,15 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 					}	
 				}
 				
+			// Other request methods than POST, PUT, and GET are not allowed
+			// .../api/token/... (not POST, PUT, GET)
 			}else{
 				errorList.addError("The selected method ~getHttpMethod() is not allowed", 405);
 			}
 		}else if(endpoint == "user") {
 			
+			// Get user with username and api_token
+			// .../api/user/{api_token}/{username} (GET)
 			if(getHttpMethod() == "GET") {
 				var token := spec;
 				var username := param1;
@@ -591,6 +665,9 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 				}
 				
 				if(errorList.noErrors()) {
+					
+					// Update user profile
+					// .../api/user/profile (PUT)
 					if(spec == "profile") {
 						var token := body.getString("token");
 						errorList := checkAuthorization(token, username, false, errorList);
@@ -615,7 +692,8 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 							result.put("user", user.createJSONObject());	
 						}
 						
-						
+					// Update user password
+					// .../api/user/password (PUT)
 					}else if(spec == "password") {
 						var token : String;
 						var type := "update";
@@ -670,9 +748,12 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 						}
 					}
 				}
+			
 			}else if(getHttpMethod() == "POST") {
 				var body := JSONObject(readRequestBody());
 				
+				// Activate user
+				// .../api/user/activate (POST)
 				if(spec == "activate") {
 					if(body.has("authToken")) {
 						var authToken := body.getString("authToken");	
@@ -694,6 +775,9 @@ service api(endpoint: String, spec: String, param1: String, param2: String, para
 						errorList.addError("No authentication token provided", 400);	
 					}
 				}
+				
+			// Other request methods than POST, PUT, and GET are not allowed
+			// .../api/user/... (not POST, PUT, GET)
 			}else{
 				errorList.addError("The selected method ~getHttpMethod() is not allowed", 405);
 			}

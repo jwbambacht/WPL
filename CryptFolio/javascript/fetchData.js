@@ -48,6 +48,7 @@ $(document).ready(function() {
 				var element = $(this).find(".hidden-input");
 				
 				element.val(index);
+				element.trigger('change');
 			});
 		}
 	});
